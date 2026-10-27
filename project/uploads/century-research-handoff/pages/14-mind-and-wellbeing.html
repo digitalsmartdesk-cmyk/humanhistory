@@ -1,0 +1,166 @@
+<title>Mind and Wellbeing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: headline numbers, one chart of share removed, nineteen defenses grouped by area, a section on thinning, patterns, limits, sources. */
+:root{
+  --bg:#edf0f2;
+  --surface:#f8fafb;
+  --ink:#18222b;
+  --ink-2:#4a5866;
+  --line:#c9d1d8;
+  --accent:#1f7a5a;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#7fd6b5;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#7fd6b5;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.65;padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:840px;margin:0 auto}
+a{color:var(--accent)}
+header{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,9.5vw,76px);line-height:1;margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,3.8vw,26px);line-height:1.25;margin:0;color:var(--accent);text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:64ch}
+.asof{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);padding-top:12px;border-top:2px solid var(--accent)}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--font-mono);font-size:12.5px;margin:0 0 8px}
+nav.jump a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);outline:none}
+h2{font-family:var(--font-display);font-weight:600;font-size:26px;line-height:1.15;margin:48px 0 10px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.note{font-size:13px;color:var(--ink-2);max-width:70ch}
+.chart-h{font-family:var(--font-display);font-weight:600;font-size:17px;margin:26px 0 2px}
+.rg{margin:8px 0 6px}
+.rg-axis{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 16px}
+.rg-axis div{position:relative;height:18px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2)}
+.rg-axis div span{position:absolute;top:0;transform:translateX(-50%)}
+.rg-axis div span:first-child{transform:none}
+.rg-axis div span:last-child{transform:translateX(-100%)}
+.rg-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 16px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.rg-lab{font-size:14px;line-height:1.3;min-width:0}
+.rg-lab b{display:block;font-weight:500}
+.rg-lab small{display:block;font-family:var(--font-mono);font-size:11px;color:var(--ink-2)}
+.rg-track{position:relative;height:20px;background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--line)}
+.rg-track.dlog{background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/12.5% 100%}
+.rg-bar{position:absolute;top:3px;bottom:3px;background:var(--accent);min-width:6px}
+.rg-bar.hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 4px,transparent 4px 7px);outline:1px solid var(--accent);outline-offset:-1px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.chip{font:500 13px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.count{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.grp{margin-top:8px}
+.gh{font-family:var(--font-display);font-weight:600;font-size:24px;margin:26px 0 4px;display:flex;align-items:baseline;gap:12px}
+.gh span{font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--ink-2)}
+.list{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--accent)}
+.item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 22px;padding:14px 0 18px;border-bottom:1px solid var(--line);position:relative}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-29px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.when{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:1.4}
+.when small{display:block;font-weight:400;font-size:11.5px;color:var(--accent);margin-top:3px}
+.what{min-width:0}
+.what h3{font-size:20px}
+.meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.what p{max-width:64ch}
+dl.kv{display:grid;grid-template-columns:90px minmax(0,1fr);gap:6px 16px;margin:10px 0 8px}
+dl.kv dt{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+dl.kv dd{margin:0;font-size:14.5px}
+.solid{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+.solid b{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.pat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 26px;margin-top:18px}
+.pat>div{min-width:0;border-top:2px solid var(--accent);padding-top:10px}
+.pat h3{font-size:18px}
+.pat p{font-size:14.5px;margin:4px 0 0}
+ul.plain{margin:10px 0 0;padding-left:20px;max-width:70ch}
+ul.plain li{margin-bottom:8px}
+.src h3{font-size:16px;margin:20px 0 6px}
+.src ul{list-style:none;margin:0;padding:0}
+.src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px}
+.src li a{word-break:break-word}
+.src li span{font-family:var(--font-mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;max-width:72ch}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 14px 12px;min-width:0}
+.stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:30px;line-height:1.1;overflow-wrap:anywhere}
+.stat span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.thin{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.thin>div{min-width:0;background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+.thin h3{font-size:18px}
+.thin p{font-size:14.5px;margin:4px 0 0}
+.thin .src-tag{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2);margin-top:8px}
+.rg-pt{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--ink)}
+.rg-mark{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed var(--ink)}
+.legend{font-size:12.5px;color:var(--ink-2);margin:2px 0 6px}
+@media (max-width:620px){
+  .rg-axis{grid-template-columns:minmax(0,1fr)}
+  .rg-axis>span{display:none}
+  .rg-row{grid-template-columns:minmax(0,1fr)}
+  .item{grid-template-columns:minmax(0,1fr)}
+  .list{padding-left:18px}
+  .item:before{left:-25px}
+  dl.kv{grid-template-columns:minmax(0,1fr);gap:0}
+  dl.kv dd{margin-bottom:8px}
+  .src li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.snap{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 6px}
+.snap th{text-align:left;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding:6px 14px 6px 0;border-bottom:2px solid var(--accent)}
+.snap td{vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.snap td.m{font-weight:500;width:21%}
+.snap td.na{color:var(--ink-2)}
+.dom{margin-top:34px}
+.dom h3{font-size:22px;margin-bottom:2px}
+.dom .intro{font-size:14.5px;color:var(--ink-2);max-width:68ch;margin:0 0 4px}
+@media (max-width:620px){
+  .snap,.snap tbody,.snap tr,.snap td{display:block;width:auto}
+  .snap thead{display:none}
+  .snap tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .snap td{border:0;padding:2px 0}
+  .snap td.m{width:auto;font-size:15.5px;padding-bottom:2px}
+  .snap td[data-l]::before{content:attr(data-l);display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-top:6px}
+}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Chapter 14 · How people live</div>
+  <h1>Mind and wellbeing</h1>
+  <p class="sub">Seven entries on mental disorders, care, suicide, drugs, loneliness and life satisfaction</p>
+  <p class="lede">How many people live with a mental disorder, how many get help, how connected people are and how satisfied they say they are. The sources give the present and the recent past, with no long series.</p>
+  <div class="asof">Figures current to 27 October 2026. This chapter includes figures on suicide. Most come from WHO's own pages.</div>
+</header>
+<nav class="jump" aria-label="Sections"><a href="#scale">The scale</a><a href="#entries">Mind and wellbeing</a><a href="#strains">Where it is hard</a><a href="#patterns">What it shows</a><a href="#limits">Limits</a><a href="#sources">Sources</a></nav>
+<h2 id="scale">The scale</h2>
+<div class="stats"><div class="stat"><b>1.2 billion</b><span>people living with a mental disorder in 2023, nearly 1 in 7 (WHO)</span></div><div class="stat"><b>One third</b><span>of people with depression receive formal mental health care, and 40% of those with psychosis (WHO)</span></div><div class="stat"><b>2%</b><span>of total health budgets is the median share governments spend on mental health (WHO, 2025)</span></div><div class="stat"><b>1 in 6</b><span>people worldwide are affected by loneliness, linked to more than 871,000 deaths a year (WHO)</span></div></div><h3 class="chart-h">People living with mental disorders, millions</h3>
+<p class="note">WHO&#x27;s modelled estimates for 2023, with the drug use figure from the UN as reported. Several bars count children and adolescents only, as labelled.</p>
+<div class="rg" role="img" aria-label="Bar chart of people with mental disorders, from 1.2 billion with any disorder to 4.7 million adolescents with eating disorders"><div class="rg-axis"><span></span><div><span style="left:0.000%">0</span><span style="left:33.333%">400</span><span style="left:66.667%">800</span><span style="left:100.000%">1,200</span></div></div><div class="rg-row"><div class="rg-lab"><b>Any mental disorder, 2023</b><small>1.2 billion</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:100.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Anxiety disorders, 2023</b><small>470 million, 146 million of them children and adolescents</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:39.17%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Depression, 2023</b><small>322 million, 43 million of them children and adolescents</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:26.83%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Drug use disorders, 2022</b><small>63 million (UN World Drug Report 2025, as reported)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:5.25%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Conduct-dissocial disorder, 2023</b><small>39 million children and adolescents</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:3.25%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Eating disorders, 2023</b><small>4.7 million children and adolescents</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:0.39%"></i></div></div></div><h3 class="chart-h">Share of people with each condition who receive care</h3>
+<p class="note">WHO&#x27;s figures for psychosis and depression, and the UN&#x27;s for serious drug use disorders. Hatched bars are my reading of &#x27;one third&#x27; and &#x27;one in five&#x27;.</p>
+<div class="rg" role="img" aria-label="Bar chart of share receiving care: 40 percent for psychosis, one third for depression, one in five for serious drug use disorders"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:25.000%">25%</span><span style="left:50.000%">50%</span><span style="left:75.000%">75%</span><span style="left:100.000%">100%</span></div></div><div class="rg-row"><div class="rg-lab"><b>People with psychosis</b><small>40% receive formal mental health care</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:40.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>People with depression</b><small>One third receive formal care</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:33.30%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>People with serious drug use disorders</b><small>About one in five receive treatment</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:20.00%"></i></div></div></div><h3 class="chart-h">Share of people who report loneliness</h3>
+<p class="note">WHO&#x27;s Commission on Social Connection. The aged 13 to 29 bar spans 17 to 21%. The whole-population bar is my reading of &#x27;1 in 6&#x27;.</p>
+<div class="rg" role="img" aria-label="Bar chart of loneliness in low and high income countries, among people aged 13 to 29 and overall"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:33.333%">10%</span><span style="left:66.667%">20%</span><span style="left:100.000%">30%</span></div></div><div class="rg-row"><div class="rg-lab"><b>Low-income countries</b><small>About 24%</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:80.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>High-income countries</b><small>About 11%</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:36.67%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Aged 13 to 29</b><small>17 to 21%, highest in teenagers</small></div><div class="rg-track"><i class="rg-bar" style="left:56.67%;width:13.33%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Whole population</b><small>1 in 6, which I read as about 17%</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:55.67%"></i></div></div></div>
+<h2 id="entries">Mind and wellbeing</h2>
+<p>Seven entries in two groups. Each gives the scale, what the source says about change and how solid the figures are.</p>
+<section class="grp"><h3 class="gh">Burden and care <span>4 entries</span></h3><ol class="list"><li class="item"><div class="when">2023<small>Mental disorders</small></div><div class="what"><h3>How many people live with a mental disorder</h3><p>WHO&#x27;s fact sheet says nearly 1 in 7 people, 1.2 billion, were living with a mental disorder in 2023. That included 470 million with anxiety disorders, 146 million of them children and adolescents, and 322 million with depression, 43 million of them children and adolescents. Among adolescents aged 10 to 19 it counts 3.3 million with bipolar disorder, 4.7 million with eating disorders and 39 million with conduct-dissocial disorder.</p><dl class="kv"><dt>Disability</dt><dd>WHO&#x27;s 2025 reports describe anxiety and depression as the second leading cause of long-term disability, with over 1 billion people living with mental health conditions.</dd><dt>Over a life</dt><dd>Our World in Data cites an estimate, with no year, that 1 in 3 women and 1 in 5 men will experience major depression in their lives.</dd></dl><p class="solid"><b>How solid</b> The WHO figures are modelled estimates. The pages give no earlier figures, so they show scale and not change.</p></div></li><li class="item"><div class="when">2024 to 2025<small>Care</small></div><div class="what"><h3>Whether people get help</h3><p>Most people with mental disorders do not have access to effective care. Only 40% of people with psychosis and one third of people with depression receive formal mental health care. The median government spends just 2% of its total health budget on mental health, according to a September 2025 WHO release citing the Mental Health Atlas 2024. For drug use disorders, the UN report says only about one in five people with serious disorders receive treatment.</p><dl class="kv"><dt>Gaps</dt><dd>WHO describes stark disparities between high- and low-income countries and a shortage of workforce, but the pages I read give no figures.</dd></dl><p class="solid"><b>How solid</b> WHO&#x27;s own pages, plus a news report for the drug figure. The release gave no reference year for the spending figure.</p></div></li><li class="item"><div class="when">2021<small>Suicide</small></div><div class="what"><h3>Deaths by suicide</h3><p>WHO says 727,000 people take their own life each year, though the same page elsewhere says more than 720,000. In 2021, 73% of suicides, close to three quarters, were in low- and middle-income countries, and suicide was the third leading cause of death among 15 to 29 year olds. WHO says many people are not seeking help and so are not getting the help they need.</p><dl class="kv"><dt>Support</dt><dd>If this subject is close to you, speaking to a doctor, a trusted person or a local crisis line is a sensible step.</dd></dl><p class="solid"><b>How solid</b> The page gives no year for the 727,000, no rate per 100,000 and no trend. I did not find a long-run series.</p></div></li><li class="item"><div class="when">2022 to 2023<small>Drugs</small></div><div class="what"><h3>Drug use</h3><p>The 2025 World Drug Report, as reported, says more than 316 million people used drugs in 2023, 6% of adults aged 15 to 65, up from 5.2% in 2013. About 63 million people had drug use disorders in 2022, and there were about 25 million cocaine users. Fentanyl caused more than 100,000 deaths in the United States in 2023.</p><p class="solid"><b>How solid</b> A news report of a UN report. I did not read the report, and I found no figure for drug use before 2013.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Connection and satisfaction <span>3 entries</span></h3><ol class="list"><li class="item"><div class="when">2025<small>Loneliness</small></div><div class="what"><h3>Loneliness and isolation</h3><p>WHO&#x27;s Commission on Social Connection says 1 in 6 people worldwide is affected by loneliness, linked to more than 871,000 deaths a year, about 100 an hour. Between 17% and 21% of people aged 13 to 29 report loneliness, highest among teenagers. About 24% of people in low-income countries report it, about double the 11% in high-income countries.</p><dl class="kv"><dt>Isolation</dt><dd>Social isolation is estimated to affect up to 1 in 3 older adults and 1 in 4 adolescents, though data on older adults are limited.</dd></dl><p class="solid"><b>How solid</b> From WHO&#x27;s own news release. How the 871,000 deaths were attributed is not stated on the page.</p></div></li><li class="item"><div class="when">2026<small>Life satisfaction</small></div><div class="what"><h3>How satisfied people say they are</h3><p>In the World Happiness Report 2026 Finland ranked first for a record ninth year, Costa Rica fourth, its highest ranking, and Switzerland tenth. Our World in Data says countries with higher average incomes tend to report higher life satisfaction, and that the share saying they are very or rather happy rose in most countries with two or more surveys. In Albania it went from 33.4% in 1998 to 73.9% in 2022, while in Greece satisfaction fell from about 67% in 2007 to 32.4% five years later.</p><dl class="kv"><dt>Measure</dt><dd>Life satisfaction is the Gallup World Poll&#x27;s 0 to 10 ladder, from the worst to the best possible life, asked in more than 160 countries.</dd></dl><p class="solid"><b>How solid</b> The report page gives rankings but no global average, scale or data years, and I did not read the full report. The trend figures are from two survey series that do not cover the whole world.</p></div></li><li class="item"><div class="when">2026<small>Young people and screens</small></div><div class="what"><h3>Screens and the well-being of the young</h3><p>The World Happiness Report 2026 says heavy social media use appears to be contributing to the drop in well-being among young people in English-speaking countries and Western Europe, especially among girls. WHO&#x27;s report on social connection also calls for attention to excessive screen time and negative online interactions.</p><p class="solid"><b>How solid</b> Tentative. The wording is &#x27;appears to be&#x27;, so it is an observed association and not a proven cause, and it is limited to some regions.</p></div></li></ol></section>
+<h2 id="strains">Where the record is hard</h2>
+<p class="note">These four points come from the same sources as the entries above.</p><div class="thin"><div><h3>Most people get no formal care</h3><p>Only one third of people with depression, 40% of those with psychosis and about one in five with serious drug use disorders receive treatment, and the median government spends 2% of its health budget on mental health.</p><p class="src-tag">WHO; UN, via a news report</p></div><div><h3>Loneliness is reported more in poorer countries</h3><p>About 24% of people in low-income countries report loneliness against about 11% in high-income ones, and WHO describes stark disparities in mental health care between high- and low-income countries.</p><p class="src-tag">WHO</p></div><div><h3>Loneliness is common among the young</h3><p>17% to 21% of people aged 13 to 29 report loneliness, highest among teenagers, and the World Happiness Report links heavy social media use to falling well-being among young people in some regions.</p><p class="src-tag">WHO; World Happiness Report 2026</p></div><div><h3>Satisfaction can fall quickly</h3><p>In Greece the share satisfied fell from about 67% in 2007 to 32.4% five years later, after the financial crisis.</p><p class="src-tag">Our World in Data</p></div></div>
+<h2 id="patterns">What the record shows</h2>
+<p class="note">These are my reading of the entries, not findings from the sources.</p><div class="pat"><div><h3>The scale is large and the care is thin</h3><p>More than 1 in 7 people live with a mental disorder, and for depression only one third receive formal care while governments spend a median 2% of health budgets on mental health.</p></div><div><h3>The record cannot say whether mental illness has become more common</h3><p>None of the pages I read gives a long-run series of prevalence, and Our World in Data says many people do not report symptoms, which makes prevalence hard to estimate. The 1925 comparison cannot be made on these figures.</p></div><div><h3>Life satisfaction goes with income and is hit by crises</h3><p>Across countries higher average income goes with higher satisfaction, it rose in most countries with repeated surveys, and Greece fell sharply after the financial crisis. These are patterns in two survey series, not a cause.</p></div><div><h3>The young are a focus of the 2025 and 2026 reports</h3><p>WHO and the World Happiness Report both single out young people, for loneliness and for the possible effect of screens, and both are cautious about cause.</p></div><div><h3>Loneliness and care both differ by income</h3><p>Loneliness is reported about twice as often in low-income countries as in high-income ones, and WHO describes stark gaps in care between them, though the pages give no figures for the care gap.</p></div></div>
+<h2 id="limits">What this chapter cannot show</h2>
+<ul class="plain"><li>Mental health is measured here by modelled counts, surveys and self-reports, and many people do not report symptoms.</li><li>I found no long-run series on mental disorders, suicide, loneliness or life satisfaction, so this chapter cannot compare the century before 1925 with the century after.</li><li>Several figures are news reports of reports: the World Drug Report and the Happiness Report rankings were not read in full.</li><li>Life satisfaction is a self-rating on a 0 to 10 ladder, and cultures answer such questions differently.</li><li>Not covered: sleep, stress at work, dementia, grief, the effect of war and violence, and the experience of people with severe illness.</li><li>A count of deaths by suicide says nothing about why individuals take their own lives, and I found no rate per 100,000 or share of the poorer countries&#x27; population to set the 73% against.</li></ul>
+<section class="src" id="sources"><h2>Sources</h2><p class="note">Tags: P is a primary source or the institution's own page. S is a secondary source such as a data compilation or news report.</p><h3>Burden and care</h3><ul><li><a href="https://www.who.int/news-room/fact-sheets/detail/mental-disorders">WHO, Mental disorders fact sheet</a><span>P</span></li><li><a href="https://www.who.int/thailand/news/feature-stories/detail/2-new-who-reports-reveal-urgent-need-to-scale-up-mental-health-services-globally">WHO, Two new reports reveal urgent need to scale up mental health services</a><span>P</span></li><li><a href="https://www.who.int/news-room/fact-sheets/detail/suicide">WHO, Suicide fact sheet</a><span>P</span></li><li><a href="https://ourworldindata.org/mental-health">Our World in Data, Mental health</a><span>S</span></li><li><a href="https://orain.eus/en/current-events/society-and-social-news-now/2025/06/26/more-than-300-million-people-use-drugs-in-the-world-6-of-adults/">Orain, More than 300 million people use drugs (UN World Drug Report 2025)</a><span>S</span></li></ul><h3>Connection and satisfaction</h3><ul><li><a href="https://who.int/news/item/30-06-2025-social-connection-linked-to-improved-heath-and-reduced-risk-of-early-death">WHO, Social connection linked to improved health and reduced risk of early death</a><span>P</span></li><li><a href="https://www.unsdsn.org/resources/world-happiness-report-2026">UN Sustainable Development Solutions Network, World Happiness Report 2026</a><span>P</span></li><li><a href="https://ourworldindata.org/happiness-and-life-satisfaction">Our World in Data, Happiness and life satisfaction</a><span>S</span></li></ul></section>
+<footer>Two readings of the sources' wording are mine: that 'one third' is about 33% and 'one in five' about 20% in the chart on care, and that '1 in 6' is about 17% in the loneliness chart. The observations under “What the record shows” are my own reading.</footer>
+</div>

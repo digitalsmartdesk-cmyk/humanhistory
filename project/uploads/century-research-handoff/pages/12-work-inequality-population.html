@@ -1,0 +1,167 @@
+<title>Work, Inequality and Population</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: headline numbers, one chart of share removed, nineteen defenses grouped by area, a section on thinning, patterns, limits, sources. */
+:root{
+  --bg:#edf0f2;
+  --surface:#f8fafb;
+  --ink:#18222b;
+  --ink-2:#4a5866;
+  --line:#c9d1d8;
+  --accent:#44546a;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#a9b8cf;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#a9b8cf;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.65;padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:840px;margin:0 auto}
+a{color:var(--accent)}
+header{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,9.5vw,76px);line-height:1;margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,3.8vw,26px);line-height:1.25;margin:0;color:var(--accent);text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:64ch}
+.asof{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);padding-top:12px;border-top:2px solid var(--accent)}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--font-mono);font-size:12.5px;margin:0 0 8px}
+nav.jump a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);outline:none}
+h2{font-family:var(--font-display);font-weight:600;font-size:26px;line-height:1.15;margin:48px 0 10px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.note{font-size:13px;color:var(--ink-2);max-width:70ch}
+.chart-h{font-family:var(--font-display);font-weight:600;font-size:17px;margin:26px 0 2px}
+.rg{margin:8px 0 6px}
+.rg-axis{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 16px}
+.rg-axis div{position:relative;height:18px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2)}
+.rg-axis div span{position:absolute;top:0;transform:translateX(-50%)}
+.rg-axis div span:first-child{transform:none}
+.rg-axis div span:last-child{transform:translateX(-100%)}
+.rg-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 16px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.rg-lab{font-size:14px;line-height:1.3;min-width:0}
+.rg-lab b{display:block;font-weight:500}
+.rg-lab small{display:block;font-family:var(--font-mono);font-size:11px;color:var(--ink-2)}
+.rg-track{position:relative;height:20px;background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--line)}
+.rg-track.dlog{background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/12.5% 100%}
+.rg-bar{position:absolute;top:3px;bottom:3px;background:var(--accent);min-width:6px}
+.rg-bar.hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 4px,transparent 4px 7px);outline:1px solid var(--accent);outline-offset:-1px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.chip{font:500 13px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.count{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.grp{margin-top:8px}
+.gh{font-family:var(--font-display);font-weight:600;font-size:24px;margin:26px 0 4px;display:flex;align-items:baseline;gap:12px}
+.gh span{font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--ink-2)}
+.list{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--accent)}
+.item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 22px;padding:14px 0 18px;border-bottom:1px solid var(--line);position:relative}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-29px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.when{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:1.4}
+.when small{display:block;font-weight:400;font-size:11.5px;color:var(--accent);margin-top:3px}
+.what{min-width:0}
+.what h3{font-size:20px}
+.meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.what p{max-width:64ch}
+dl.kv{display:grid;grid-template-columns:90px minmax(0,1fr);gap:6px 16px;margin:10px 0 8px}
+dl.kv dt{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+dl.kv dd{margin:0;font-size:14.5px}
+.solid{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+.solid b{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.pat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 26px;margin-top:18px}
+.pat>div{min-width:0;border-top:2px solid var(--accent);padding-top:10px}
+.pat h3{font-size:18px}
+.pat p{font-size:14.5px;margin:4px 0 0}
+ul.plain{margin:10px 0 0;padding-left:20px;max-width:70ch}
+ul.plain li{margin-bottom:8px}
+.src h3{font-size:16px;margin:20px 0 6px}
+.src ul{list-style:none;margin:0;padding:0}
+.src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px}
+.src li a{word-break:break-word}
+.src li span{font-family:var(--font-mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;max-width:72ch}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 14px 12px;min-width:0}
+.stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:30px;line-height:1.1;overflow-wrap:anywhere}
+.stat span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.thin{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.thin>div{min-width:0;background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+.thin h3{font-size:18px}
+.thin p{font-size:14.5px;margin:4px 0 0}
+.thin .src-tag{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2);margin-top:8px}
+.rg-pt{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--ink)}
+.rg-mark{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed var(--ink)}
+.legend{font-size:12.5px;color:var(--ink-2);margin:2px 0 6px}
+@media (max-width:620px){
+  .rg-axis{grid-template-columns:minmax(0,1fr)}
+  .rg-axis>span{display:none}
+  .rg-row{grid-template-columns:minmax(0,1fr)}
+  .item{grid-template-columns:minmax(0,1fr)}
+  .list{padding-left:18px}
+  .item:before{left:-25px}
+  dl.kv{grid-template-columns:minmax(0,1fr);gap:0}
+  dl.kv dd{margin-bottom:8px}
+  .src li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.snap{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 6px}
+.snap th{text-align:left;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding:6px 14px 6px 0;border-bottom:2px solid var(--accent)}
+.snap td{vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.snap td.m{font-weight:500;width:21%}
+.snap td.na{color:var(--ink-2)}
+.dom{margin-top:34px}
+.dom h3{font-size:22px;margin-bottom:2px}
+.dom .intro{font-size:14.5px;color:var(--ink-2);max-width:68ch;margin:0 0 4px}
+@media (max-width:620px){
+  .snap,.snap tbody,.snap tr,.snap td{display:block;width:auto}
+  .snap thead{display:none}
+  .snap tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .snap td{border:0;padding:2px 0}
+  .snap td.m{width:auto;font-size:15.5px;padding-bottom:2px}
+  .snap td[data-l]::before{content:attr(data-l);display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-top:6px}
+}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Chapter 12 · How people live</div>
+  <h1>Work, inequality and population</h1>
+  <p class="sub">Ten entries on jobs, child labour, shares of income and wealth, fertility and ageing</p>
+  <p class="lede">How the world works, who holds its income and wealth, and how many people there are and will be. This chapter describes the present and the recent past, since most of its series do not reach back to 1825 or 1925.</p>
+  <div class="asof">Figures current to 27 October 2026. Several come from news reports of ILO and World Inequality Report findings.</div>
+</header>
+<nav class="jump" aria-label="Sections"><a href="#scale">The picture</a><a href="#entries">How people live</a><a href="#strains">Where it is hard</a><a href="#patterns">What it shows</a><a href="#limits">Limits</a><a href="#sources">Sources</a></nav>
+<h2 id="scale">The picture</h2>
+<div class="stats"><div class="stat"><b>8.2 billion → 10.3 billion</b><span>world population in 2024 and the UN&#x27;s projected peak, in the mid-2080s, before a slow decline</span></div><div class="stat"><b>4.9 → 2.3</b><span>children per woman worldwide, in the 1950s and in 2023</span></div><div class="stat"><b>246 million → 138 million</b><span>children in child labour, 2000 and 2024 (ILO and UNICEF)</span></div><div class="stat"><b>53% and 8%</b><span>of global income taken by the richest 10% and by the poorer half of adults (World Inequality Report 2026)</span></div></div><h3 class="chart-h">Children in child labour, millions</h3>
+<p class="note">The 2000 and 2024 bars are from the 2025 ILO and UNICEF release. The 2013 bar is from an earlier ILO report and may use a different method. The 2020 bar is my estimate from the &#x27;over 20 million&#x27; fall the release reports, so it is hatched.</p>
+<div class="rg" role="img" aria-label="Bar chart of children in child labour, from 246 million in 2000 to about 138 million in 2024"><div class="rg-axis"><span></span><div><span style="left:0.000%">0</span><span style="left:33.333%">100</span><span style="left:66.667%">200</span><span style="left:100.000%">300</span></div></div><div class="rg-row"><div class="rg-lab"><b>2000</b><small>246 million (ILO and UNICEF, 2025 release)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:82.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2013</b><small>265 million, almost 17% of children (ILO, 2013 report)</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:88.33%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2020</b><small>At least about 158 million: 138 plus the &#x27;over 20 million&#x27; fall since</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:52.67%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2024</b><small>Nearly 138 million; 54 million in hazardous work</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:46.00%"></i></div></div></div><h3 class="chart-h">Shares of global income and wealth, percent</h3>
+<p class="note">The World Inequality Report 2026 as reported for 2025. &#x27;Poorer half&#x27; means the poorer half of adults, about 2.8 billion people.</p>
+<div class="rg" role="img" aria-label="Bar chart of shares of income and wealth held by the richest 10 percent, richest 1 percent and poorer half"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:25.000%">25%</span><span style="left:50.000%">50%</span><span style="left:75.000%">75%</span><span style="left:100.000%">100%</span></div></div><div class="rg-row"><div class="rg-lab"><b>Richest 10%, income</b><small>53% of global income</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:53.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Poorer half, income</b><small>8% of global income</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:8.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Richest 10%, wealth</b><small>75% of global wealth</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:75.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Richest 1%, wealth</b><small>37% of global wealth</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:37.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Poorer half, wealth</b><small>2% of global wealth</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:2.00%"></i></div></div></div><h3 class="chart-h">Children per woman</h3>
+<p class="note">Different places and years, so compare the sizes. Hatched bars are rough figures: &#x27;around&#x27;, &#x27;about&#x27; or &#x27;less than 1&#x27;.</p>
+<div class="rg" role="img" aria-label="Bar chart of children per woman for the world, Niger, South Korea and India"><div class="rg-axis"><span></span><div><span style="left:0.000%">0</span><span style="left:28.571%">2</span><span style="left:57.143%">4</span><span style="left:85.714%">6</span></div></div><div class="rg-row"><div class="rg-lab"><b>World, 1950s</b><small>4.9 children per woman</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:70.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>World, 2023</b><small>2.3</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:32.86%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Replacement level</b><small>2.1, the UN&#x27;s figure</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:30.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Niger, 2023</b><small>6</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:85.71%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>South Korea, 1950s</b><small>Around 6</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:85.71%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>South Korea, 2023</b><small>Less than 1</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:14.29%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>India, 1970s</b><small>About 5</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:71.43%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>India, 2023</b><small>About 2</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:28.57%"></i></div></div></div>
+<h2 id="entries">How people live</h2>
+<p>Ten entries in three groups. Each gives the scale, what the source says about change and how solid the figures are.</p>
+<section class="grp"><h3 class="gh">Work <span>4 entries</span></h3><ol class="list"><li class="item"><div class="when">Today<small>Sectors</small></div><div class="what"><h3>From the farm to other work</h3><p>Around one-quarter of the world&#x27;s labour force works in agriculture. In many low- and middle-income countries the majority works in farming and relies on it as its main income, as most people did in rich countries a few centuries ago. As countries get richer the share working in agriculture tends to fall as people move into industry and services.</p><dl class="kv"><dt>Productivity</dt><dd>Value added per farm worker can differ ten-fold between countries.</dd></dl><p class="solid"><b>How solid</b> The page gives the one-quarter figure and these statements, but its history is in charts whose data the text does not include. I have no figure for the share in agriculture in 1825 or 1925.</p></div></li><li class="item"><div class="when">2000 to 2024<small>Child labour</small></div><div class="what"><h3>Children at work</h3><p>The ILO and UNICEF estimate nearly 138 million children were in child labour in 2024, down from 246 million in 2000, with about 54 million in hazardous work. Agriculture accounts for 61%, services 27% and industry 13%. Sub-Saharan Africa has about 87 million, nearly two-thirds of the total, while in Asia and the Pacific prevalence fell from 6% to 3% since 2020.</p><dl class="kv"><dt>History</dt><dd>Child work was widespread in 19th-century Europe and North America and fell rapidly around the turn of the 20th century. Our World in Data says England&#x27;s 1900 child labour rate was similar to today&#x27;s global rate. Among 12 to 14 year olds in England and Wales it fell to about 6–7% after the First World War and rose to 15.3% by 1944.</dd><dt>Risk</dt><dd>The release warns that global funding cuts threaten to roll back the gains.</dd></dl><p class="solid"><b>How solid</b> The 2024 and 2000 figures are from the ILO and UNICEF release. Our World in Data gives 265 million in 2013 from an earlier ILO report, and the two reports may not use the same method, so I do not draw a straight line through them.</p></div></li><li class="item"><div class="when">1990 to 2024<small>Women&#x27;s work</small></div><div class="what"><h3>Women in paid work</h3><p>Around half of women worldwide take part in the labour force, a figure ILO estimates say has stayed around 50% since the early 1990s, while men&#x27;s participation fell from 80% in 1990 to around 73%. In 2024 it was 62% in Sweden, 56% in Germany and 41% in Italy.</p><dl class="kv"><dt>Unpaid work</dt><dd>Women spend more time on unpaid care than men in every country, in some by more than six times. Average US household housework fell from 58 hours a week in 1900 to 18 in 1975.</dd></dl><p class="solid"><b>How solid</b> From Our World in Data&#x27;s page on the ILO&#x27;s modelled estimates. The page gives no regional percentages and no US participation figures for 1900 or 1950.</p></div></li><li class="item"><div class="when">2026<small>Informal work</small></div><div class="what"><h3>Work outside formal protection</h3><p>An ILO analysis reported on 12 May 2026 found nearly 58% of workers globally in informal jobs.</p><p class="solid"><b>How solid</b> Thin. It is a news report of an ILO analysis, with no worker count, no regions and no definition, and I did not read the ILO&#x27;s own page.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Inequality <span>2 entries</span></h3><ol class="list"><li class="item"><div class="when">Today<small>Between countries</small></div><div class="what"><h3>How much depends on where you live</h3><p>Milanovic (2015) is cited as finding that the country a person lives in explains two-thirds of the variation of income differences among all people. The poorer half of the world, almost 4 billion people, live on less than $6.70 a day, and someone on $30 a day is in the richest 15%. Swedes are about 30 times richer than in 1820, and about 96% of the world&#x27;s people live in the country they were born in.</p><dl class="kv"><dt>Prices</dt><dd>The figures use 2011 international dollars from an earlier World Bank release, and the page notes the World Bank has since updated its data.</dd></dl><p class="solid"><b>How solid</b> From Our World in Data&#x27;s introduction to global inequality. The page gives no Gini or Theil values and no top-10% shares, so I cannot show how total inequality moved over two centuries.</p></div></li><li class="item"><div class="when">2025<small>Shares of income and wealth</small></div><div class="what"><h3>Who holds what, now</h3><p>The World Inequality Report 2026, as reported, says the richest 10% earn 53% of global income and the poorer half of adults, about 2.8 billion, 8%. The richest 10% own 75% of global wealth, the richest 1% own 37% and the poorer half 2%. Around 56,000 people, the top 0.001%, hold more wealth than 2.8 billion adults together.</p><dl class="kv"><dt>Regions</dt><dd>Average wealth in North America and Oceania in 2025 is more than sixteen times that of Sub-Saharan Africa.</dd></dl><p class="solid"><b>How solid</b> From a news report of the report, not the report. It gives no earlier shares, so it shows how things stand and not whether they have changed.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Population and where people live <span>4 entries</span></h3><ol class="list"><li class="item"><div class="when">1963 to 2086<small>Growth</small></div><div class="what"><h3>The peak of population</h3><p>Population growth peaked in the 1960s at over 2% a year, 2.3% in 1963 on the chart, and was 0.9% in 2023. The UN projects a peak of about 10.3 billion in the mid-2080s and about 10.2 billion by 2100, from 8.2 billion in 2024. 63 countries have already passed their peak, including China, Germany, Japan and Russia. The number of children under five peaked in 2017.</p><dl class="kv"><dt>Versions</dt><dd>Our World in Data&#x27;s text says the peak is in 2086 at just over 10.4 billion, while a chart on the same page says about 10.3 billion in 2084, and the two seem to come from different UN editions.</dd></dl><p class="solid"><b>How solid</b> These are projections and the page says they are sensitive to assumptions about fertility.</p></div></li><li class="item"><div class="when">1950s to 2023<small>Fertility</small></div><div class="what"><h3>Fewer children per woman</h3><p>The world&#x27;s fertility rate was 4.9 in the 1950s and 2.3 in 2023. Niger had 6 in 2023. South Korea fell from around 6 in the 1950s to less than 1, and most countries in East Asia were below 1. India fell from about 5 in the 1970s to about 2. More than half of all countries are below the replacement level of 2.1, and nearly a fifth have fewer than 1.4.</p><p class="solid"><b>How solid</b> Our World in Data and the UN, read through a summarizing tool. The UN page gave no world fertility rate for 2024 and none for 1950 itself, so the 1950s figure is Our World in Data&#x27;s.</p></div></li><li class="item"><div class="when">Late 2070s<small>Ageing</small></div><div class="what"><h3>More old people than children</h3><p>The UN expects people aged 65 or over to outnumber children under 18 by the late 2070s. Global life expectancy was 73.3 in 2024, up from 70.9 in the pandemic.</p><p class="solid"><b>How solid</b> A projection. The page gave no share of the population aged 65 or over today, and its pandemic life expectancy of 70.9 differs from the 71.5 that WHO gives in Chapter 3, and I did not check why.</p></div></li><li class="item"><div class="when">Today<small>Crowding</small></div><div class="what"><h3>Cities and slums</h3><p>Around one in four people in urban areas live in slum households, and in sub-Saharan Africa more than half of urban residents do, with Chad near 80%.</p><dl class="kv"><dt>Link</dt><dd>Chapter 1 gives the rise in the share of people living in cities.</dd></dl><p class="solid"><b>How solid</b> From Our World in Data&#x27;s page on urbanization. It gives no total count of people living in slums and no year for the shares.</p></div></li></ol></section>
+<h2 id="strains">Where the record is hard</h2>
+<p class="note">These four points come from the same sources as the entries above.</p><div class="thin"><div><h3>Child labour is concentrated</h3><p>About 87 million of the 138 million children in child labour are in sub-Saharan Africa, nearly two-thirds. 54 million are in hazardous work.</p><p class="src-tag">ILO and UNICEF</p></div><div><h3>Most work is informal</h3><p>Nearly 58% of workers worldwide are in informal jobs, on a news report of an ILO analysis.</p><p class="src-tag">ILO, via a news report</p></div><div><h3>Wealth is held by few</h3><p>The richest 10% own 75% of global wealth and the poorer half own 2%. Average wealth in North America and Oceania is more than sixteen times that of Sub-Saharan Africa.</p><p class="src-tag">World Inequality Report 2026, via a news report</p></div><div><h3>Shrinking and ageing populations</h3><p>63 countries have passed their population peak, nearly a fifth have fertility below 1.4, and people aged 65 or over are expected to outnumber children under 18 by the late 2070s.</p><p class="src-tag">UN World Population Prospects 2024</p></div></div>
+<h2 id="patterns">What the record shows</h2>
+<p class="note">These are my reading of the entries and my arithmetic, not findings from the sources.</p><div class="pat"><div><h3>Where people live now matters more than much else</h3><p>The country of residence explains two-thirds of income differences, 96% of people live where they were born, and child labour, informal work, slum living and low internet access all concentrate in the poorer regions, on the figures in this and the earlier chapters.</p></div><div><h3>Child labour has fallen by almost half in 24 years and is still large</h3><p>From 246 million in 2000 to 138 million in 2024 is a fall of 44%, on my division, and the ILO release says funding cuts could reverse it.</p></div><div><h3>The turn in population is already here for many countries</h3><p>More than half of countries are below replacement fertility and 63 have passed their peak, while the world total is projected to keep rising until the 2080s.</p></div><div><h3>Shares of income and wealth are given for one year only</h3><p>The 2025 figures show the shape of inequality but not its history, so this chapter cannot say whether inequality rose or fell across the century.</p></div><div><h3>The data do not fall on 1825 and 1925</h3><p>Child labour starts in 2000, fertility in the 1950s, inequality shares in 2025. A comparison of the two centuries cannot be made on these figures.</p></div></div>
+<h2 id="limits">What this chapter cannot show</h2>
+<ul class="plain"><li>Almost no series here reaches back to 1825 or 1925. The chapter describes the present and the last seven decades.</li><li>Several figures are news reports of the World Inequality Report and ILO analyses. I did not read the reports themselves.</li><li>The child labour totals for 2000 and 2013 come from different reports and may not be on the same footing.</li><li>Informal work, women&#x27;s work and slum living are given with few numbers and no earlier dates.</li><li>Population projections depend on assumptions about fertility and differ between UN editions.</li><li>Pay, hours and working conditions in rich countries are covered only in Chapter 4, and not here.</li></ul>
+<section class="src" id="sources"><h2>Sources</h2><p class="note">Tags: P is a primary source or the institution's own page. S is a secondary source such as a data compilation or news report.</p><h3>Work</h3><ul><li><a href="https://ourworldindata.org/employment-in-agriculture">Our World in Data, Employment in agriculture</a><span>S</span></li><li><a href="https://ourworldindata.org/child-labor">Our World in Data, Child labor</a><span>S</span></li><li><a href="https://www.unicef.org/press-releases/despite-progress-child-labour-still-affects-138-million-children-globally-ilo-unicef">ILO and UNICEF, Despite progress, child labour still affects 138 million children globally</a><span>P</span></li><li><a href="https://ourworldindata.org/female-labor-force-participation-key-facts">Our World in Data, Female labor force participation: key facts</a><span>S</span></li><li><a href="https://www.peoplematters.in/news/economy-policy/nearly-58percent-of-global-workforce-still-trapped-in-informal-employment-ilo-report-49690">People Matters, Nearly 58% of global workforce in informal employment (ILO)</a><span>S</span></li></ul><h3>Inequality</h3><ul><li><a href="https://ourworldindata.org/global-economic-inequality-introduction">Our World in Data, Global economic inequality</a><span>S</span></li><li><a href="https://www.storyboard18.com/amp/how-it-works/worlds-richest-10-take-over-half-of-global-income-says-world-inequality-report-87155.htm">Storyboard18, World&#x27;s richest 10% take over half of global income (World Inequality Report 2026)</a><span>S</span></li></ul><h3>Population</h3><ul><li><a href="https://ourworldindata.org/world-population-growth">Our World in Data, World population growth</a><span>S</span></li><li><a href="https://ourworldindata.org/fertility-rate">Our World in Data, Fertility rate</a><span>S</span></li><li><a href="https://www.un.org/sustainabledevelopment/blog/2024/07/press-release-wpp2024/">United Nations, World Population Prospects 2024 press release</a><span>P</span></li><li><a href="https://ourworldindata.org/urbanization">Our World in Data, Urbanization</a><span>S</span></li></ul></section>
+<footer>Several figures are my own arithmetic on the sources' numbers: the 44% fall in child labour from 2000 to 2024, and the estimate of at least about 158 million children in child labour in 2020 (138 million plus the 'over 20 million' fall the release reports). The observations under “What the record shows” are my own reading.</footer>
+</div>

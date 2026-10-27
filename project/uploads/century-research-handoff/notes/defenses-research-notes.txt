@@ -1,0 +1,290 @@
+===== 515 WebFetch {"url": "https://ourworldindata.org/child-mortality", "prompt": "What share of children died before age 5 globally around 1925 (or the nearest early year given) versus the most recent year, and what are the absolute numbers of under-5 deaths now? Quote exact f
+The page doesn't include a figure for 1925 or a global under-5 mortality share. Its closest figures use a different threshold, deaths before age 15:
+
+- **Around 1950:** "By 1950, that figure had declined to around one-quarter globally."
+- **2020 (most recent):** "By 2020, it had fallen to 4%." Another passage gives "4.3%" for the global average by 2020.
+
+For absolute numbers, the page says "Around 5 million children under five years old die annually." It gives no specific year for this figure. It also cites about 6 million deaths per year among children under 15.
+
+===== 517 WebFetch {"url": "https://fas.org/initiative/status-world-nuclear-forces/", "prompt": "What was the peak global nuclear warhead inventory and in which year, what is the current estimated inventory, and by how much has it fallen? Quote exact figures."}
+- **Peak:** About 70,300 warheads in 1986, according to the page's historical context section.
+- **Current estimate:** The page gives two figures. The historical context section says "an estimated 12,321 at the beginning of 2026," while the introduction says "roughly 12,187 warheads as of the beginning of 2026." The page does not reconcile them.
+- **Decline:** Using 12,321, the inventory has fallen by about 57,979 warheads, or roughly 82 percent. Using 12,187 instead gives a drop of about 58,113.
+
+===== 518 WebSearch {"query": "WHO immunization saved at least 154 million lives over past 50 years Lancet 2024", "mode": "standard"}
+Web search results for query: "WHO immunization saved at least 154 million lives over past 50 years Lancet 2024"
+
+Links: [{"title":"Global immunization efforts have saved at least 154 million lives over the past 50 years","url":"https://www.unicef.org/kosovoprogramme/press-releases/global-immunization-efforts-have-saved-least-154-million-lives-over-past-50-years"},{"title":"Global immunization efforts have saved at least 154 million lives over the past 50 years","url":"https://pmnch.who.int/news-and-events/news/item/24-04-2024-global-immunization-efforts-have-saved-at-least-154-million-lives-over-the-past-50-years"},{"title":"Global immunization efforts have saved at least 154 million lives over the past 50 years","url":"https://www.unicef.org/tajikistan/press-releases/global-immunization-efforts-have-saved-least-154-million-lives-over-past-50-years"},{"title":"Global immunization efforts have saved at least 154 million lives over the past 50 years","url":"https://www.gatesfoundation.org/ideas/media-center/press-releases/2024/04/global-immunization-fifty-years"},{"title":"Global immunization efforts have saved at least 154 million lives over the past 50 years","url":"https://www.unicef.org/lac/en/press-releases/global-immunization-efforts-saved-154-million-lives-over-past-50-years"},{"title":"Global immunization efforts have saved at least 154 million lives over the past 50 years","url":"https://www.unicef.org/press-releases/global-immunization-efforts-have-saved-least-154-million-lives-over-past-50-years"},{"title":"Faizza Tanggol","url":"https://www.who.int/news/item/24-04-2024-global-immunization-efforts-have-saved-at-least-154-million-lives-over-the-past-50-years"},{"title":"Reliable Brokers","url":"https://www.dhakatribune.com/world/344853/who-vaccines-saved-at-least-154-million-lives-in"},{"title":"Մամուլի հաղորդագրություն","url":"https://armenia.un.org/hy/node/267546"},{"title":"Global immunization efforts have saved at least 154 million lives over the past 50 years","url":"https://epinews.emphnet.net/en/news/immunization-efforts-save-154-million-lives-over-50-years"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 520 WebSearch {"query": "WHO Pandemic Agreement adopted World Health Assembly May 2025 PABS annex status 2026 opened for signature", "mode": "standard"}
+Web search results for query: "WHO Pandemic Agreement adopted World Health Assembly May 2025 PABS annex status 2026 opened for signature"
+
+Links: [{"title":"the pandemic agreement is adopted entry into force awaits an annex","url":"https://healthpolicy-watch.news/the-pandemic-agreement-is-adopted-entry-into-force-awaits-an-annex/"},{"title":"who pandemic agreement ratification 2026","url":"https://analytics.uuxo.net/en/posts/who-pandemic-agreement-ratification-2026/"},{"title":"WHO Pandemic Agreement and International Health Regulations","url":"https://stm.fi/who-pandemic-treaty"},{"title":"healthpolicy-watch.news","url":"https://healthpolicy-watch.news/the-pandemic-agreement-is-adopted-entry-into-force-awaits-an-annex/'"},{"title":"BACK TO MAIN  |  ONLINE BOOKSTORE  |  HOW TO ORDER","url":"https://twn.my/title2/health.info/2025/hi250505.htm"},{"title":"PAHO and the Open-ended Intergovernmental Working Group (IGWG)","url":"https://www.paho.org/en/paho-and-open-ended-intergovernmental-working-group-igwg"},{"title":"ASIL Insights 2025 V29 I11","url":"https://www.asil.org/sites/default/files/ASIL_Insights_2025_V29_I11.pdf"},{"title":"BACK TO MAIN  |  ONLINE BOOKSTORE  |  HOW TO ORDER","url":"https://mail.twn.my/title2/health.info/2025/hi250505.htm"},{"title":"Asset Publisher","url":"https://www.kas.de/en/web/multilateraler-dialog-genf/geneva-telegram/detail/-/content/abs-annex-zum-who-pandemieab-kommen-fortsetzung-der-4-sitzung-der-zwischenstaatlichen-arbeitsgruppe-"},{"title":"www.the-microbiologist.com","url":"https://www.the-microbiologist.com/news/world-health-assembly-adopts-historic-pandemic-agreement-to-make-the-world-more-equitable-and-safer-from-future-pandemics/5908.article"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 522 WebFetch {"url": "https://www.worldbank.org/en/topic/poverty/overview", "prompt": "What does the World Bank say about the global extreme poverty rate and number of people (latest year, the 1990 level, current poverty line) and recent progress or slowdown? Quote exact f
+The World Bank reports that the number of people in extreme poverty fell from around **2.3 billion in 1990** to **837 million in 2026**, with each person living on less than **$3 per day** (2021 PPP). Its blog teaser cites a slightly different figure, around **831 million**.
+
+Progress has slowed. The World Bank says "global poverty reduction has slowed substantially" over the last decade, citing sluggish growth, high debt, COVID-19, conflict, and severe weather shocks. At the current pace, it says "it could take decades to eradicate extreme poverty."
+
+===== 523 WebSearch {"query": "wild poliovirus cases 2025 99 percent reduction since 1988 Global Polio Eradication Initiative", "mode": "standard"}
+Web search results for query: "wild poliovirus cases 2025 99 percent reduction since 1988 Global Polio Eradication Initiative"
+
+Links: [{"title":"www.who.int","url":"https://www.who.int/news-room/fact-sheets/detail/poliomyelitis?tp=uct127"},{"title":"www.who.int","url":"https://www.who.int/news-room/fact-sheets/detail/poliomyelitis%5C"},{"title":"who.int","url":"https://who.int/mediacentre/factsheets/fs114/en/"},{"title":"World Polio Day: Rotary celebrates 99.9% drop in global polio cases","url":"https://nannews.ng/?p=298112"},{"title":"Pakistan reports 6th wild poliovirus case, Saudi Arabia's monetary pledge for the global polio eradication effort","url":"https://outbreaknewstoday.substack.com/p/pakistan-reports-6th-wild-poliovirus"},{"title":"‘Let's finish the job’ to end polio: WHO","url":"https://www.wam.ae/en/article/15u6fpu-‘lets-finish-the-job’-end-polio-who"},{"title":"GPEI generalfactsheet 25 April 2025","url":"https://polioeradication.org/wp-content/uploads/2025/04/GPEI_generalfactsheet_25-April-2025.pdf"},{"title":"www.who.int","url":"https://www.who.int/news-room/q-a-detail/poliomyelitis"},{"title":"How Has Global Vaccination Reduced The Incidence Of Poliovirus?","url":"https://my.klarity.health/how-has-global-vaccination-reduced-the-incidence-of-poliovirus/"},{"title":"www.who.int","url":"https://www.who.int/philippines/news/q-a-detail/poliomyelitis"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 525 WebSearch {"query": "Cyclone Fani 2019 Odisha evacuated 1.2 million deaths compared with 1999 super cyclone", "mode": "standard"}
+Web search results for query: "Cyclone Fani 2019 Odisha evacuated 1.2 million deaths compared with 1999 super cyclone"
+
+Links: [{"title":"Cyclone Fani hits India’s east coast; 1.2 million evacuated","url":"https://newsinfo.inquirer.net/1113443/cyclone-fani-hits-indias-east-coast-1-2-million-evacuated/amp"},{"title":"Odisha cyclone: Early warning, targeted evacuation, minimised damage","url":"https://www.pressreader.com/india/india-review-analysis/20190530/281724091149413"},{"title":"Print Print    Close Close","url":"https://www.foxnews.com/world/cyclone-fani-lashes-eastern-india-killing-at-least-3-and-displacing-millions.print"},{"title":"Cyclone Fani: UN praises India’s response to devastating storm","url":"https://www.aljazeera.com/news/2019/05/cyclone-fani-praise-india-response-devastating-storm-190505072941472.html"},{"title":"Publication Date May 4, 2019 | Reuters","url":"https://climatesignals.org/headlines/cyclone-hits-bangladesh-after-battering-india-mass-evacuations-save-lives"},{"title":"Major disaster averted as weakened Fani hits Bangladesh","url":"https://gulfnews.com/world/asia/india/major-disaster-averted-as-weakened-fani-hits-bangladesh-1.63737201"},{"title":"cyclone fani kills at least 12 in india before","url":"https://www.dhakatribune.com/world/south-asia/175957/cyclone-fani-kills-at-least-12-in-india-before"},{"title":"Cyclone Fani barrels into India's densely populated east coast","url":"https://www.cbsnews.com/amp/live-news/india-cyclone-fani-odisha-kolkata-projected-path-death-toll-today-live-updates-2019-05-03"},{"title":"Accessibility links","url":"https://www.voazimbabwe.com/a/million-in-path-of-major-cyclone-headed-for-india/4901523.html"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 526 WebFetch {"url": "https://ourworldindata.org/natural-disasters", "prompt": "How have deaths and death rates from natural disasters changed over the last century, and what explains it? Quote exact figures, decades and any caveats about year-to-year variability."}
+Death rates from disasters have fallen by more than 90% over the last century. The page says death rates are measured per 100,000 people and are shown by decade since the early 20th century, but it doesn't give the decade-by-decade figures in the text. Total deaths have also fallen substantially, even though the world has about four times as many people as it did 100 years ago.
+
+The page attributes this to greater resilience rather than weaker hazards: "This is not because hazards have become weaker. It's because societies have become more resilient." Cited factors include:
+- Weather forecasts that give warning ahead of events, and early warning systems that help people take cover.
+- Better buildings that withstand earthquakes and hurricanes.
+- National and international cooperation, with transport and trade enabling outside assistance.
+- More productive and better-connected food systems, so a lost harvest does less damage than it once did.
+
+Caveats:
+- **Data quality:** Records from a century ago are much less complete, with many small and medium-sized events missed. The early death rates may therefore be underestimates, and the page cautions against inferring trends from pre-2000 data.
+- **Year-to-year variability:** Annual totals fluctuate widely. In the 20th century, more than a million deaths per year were not uncommon. Single events can kill tens to hundreds of thousands, and spikes usually come from severe earthquakes. For the last 10 to 15 years, excluding extreme temperature deaths, the typical figure is roughly 10,000 to 20,000 per year.
+- **Temperature deaths:** These are unevenly recorded. Including them can add 50,000 to 60,000 in some years, so the page presents figures with and without them.
+
+===== 528 WebSearch {"query": "Indian Ocean Tsunami Warning System established after 2004 tsunami UNESCO", "mode": "standard"}
+Web search results for query: "Indian Ocean Tsunami Warning System established after 2004 tsunami UNESCO"
+
+Links: [{"title":"By: Sophie Hebden","url":"https://www.scidev.net/global/?p=30750"},{"title":"Mars Exploration News","url":"https://www.marsdaily.com/reports/Indian_Ocean_Tsunami_Warning_System_Up_And_Running_999.html"},{"title":"www.vliz.be","url":"https://www.vliz.be/imisdocs/publications/ocrd/276938.pdf"},{"title":"Indian Ocean Tsunami Warning System up and running","url":"https://earsc.org/2006/06/27/indian-ocean-tsunami-warning-system-up-and-running/"},{"title":"Annan ‘saddened’ by toll of latest tsunami; UN agency assesses warning system","url":"https://news.un.org/en/story/2006/07/186272"},{"title":"• You are here:","url":"https://legacy.ioc-tsunami.org/legacy.ioc-tsunami.org/indexc34c.html"},{"title":"• You are here:","url":"https://legacy.ioc-tsunami.org/legacy.ioc-tsunami.org/index7119.html"},{"title":"www.i-scholar.in","url":"https://www.i-scholar.in/index.php/CURS/article/view/203885/189948"},{"title":"legacy.ioc-tsunami.org","url":"https://legacy.ioc-tsunami.org/legacy.ioc-tsunami.org/index7310.html"},{"title":"legacy.ioc-tsunami.org","url":"https://legacy.ioc-tsunami.org/legacy.ioc-tsunami.org/index38e3.html"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 530 WebSearch {"query": "Scientific Assessment of Ozone Depletion ozone layer recovery 2066 Antarctic Montreal Protocol avoided warming", "mode": "standard"}
+Web search results for query: "Scientific Assessment of Ozone Depletion ozone layer recovery 2066 Antarctic Montreal Protocol avoided warming"
+
+Links: [{"title":"The Montreal Protocol pays off","url":"https://iifiir.org/en/news/the-montreal-protocol-pays-off"},{"title":"Recovering Massive Hole in Ozone Layer Limits Global Warming By 0.5°C","url":"https://propakistani.pk/2023/01/10/recovering-massive-hole-in-ozone-layer-limits-global-warming-by-0-5c/"},{"title":"Maple Leaf","url":"https://www.agcanada.com/?p=136275"},{"title":"United Nations","url":"https://www.nbcdfw.com/news/national-international/changing-climate/ozone-layer-over-antarctica-should-heal-by-2066-un-says/3165908/?amp=1"},{"title":"propakistani.pk","url":"https://propakistani.pk/2023/01/10/recovering-massive-hole-in-ozone-layer-limits-global-warming-by-0-5c/amp/"},{"title":"United Nations","url":"https://www.nbcdfw.com/news/national-international/changing-climate/ozone-layer-over-antarctica-should-heal-by-2066-un-says/3165908/"},{"title":"United Nations","url":"https://www.nbcsandiego.com/changing-climate/ozone-layer-over-antarctica-should-heal-by-2066-un-says/3138268/?amp=1"},{"title":"Ozone layer recovery is on track, helping avoid global warming by 0.5°C","url":"https://wmo.int/ar/node/20740"},{"title":"ozone layer on course to recover in 40 years","url":"https://meteorologicaltechnologyinternational.com/news/data/ozone-layer-on-course-to-recover-in-40-years.html"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 531 WebFetch {"url": "https://internationalaisafetyreport.org/", "prompt": "What is the International AI Safety Report: who commissioned it, how many countries and experts contributed, the latest edition's date, and its stated purpose? Quote exactly."}
+**What it is:** The International AI Safety Report is described as "the world's first comprehensive review of the latest science" on general-purpose AI capabilities and risks.
+
+**Who commissioned it:** The page doesn't explicitly say who commissioned it. It was overseen by an international Expert Advisory Panel, which was nominated by over 30 countries and intergovernmental organisations. It is led by Turing Award winner Yoshua Bengio. Its partners are the UK AI Security Institute and Mila (Quebec Artificial Intelligence Institute).
+
+**Contributors:** Over 100 independent experts wrote it, and the page says it is backed by over 30 countries and international organisations.
+
+**Latest edition:** The second report, the International AI Safety Report 2026, was published on 3 February 2026.
+
+**Stated purpose:** The report "provides decision-makers in government and beyond with a shared and authorative global picture" of AI's risks and impacts.
+
+===== 537 WebSearch {"query": "IEA World Energy Investment 2026 clean energy investment versus fossil fuels trillion", "mode": "standard"}
+Web search results for query: "IEA World Energy Investment 2026 clean energy investment versus fossil fuels trillion"
+
+Links: [{"title":"clean energy investment hits 22 trillion in 2026 nearly doubling fossil fuel spending","url":"https://www.marketscale.com/industries/energy/clean-energy-investment-hits-22-trillion-in-2026-nearly-doubling-fossil-fuel-spending"},{"title":"Tuesday, August 25, 2026","url":"https://www.oilandgas360.com/?p=1047937"},{"title":"World News","url":"https://ognnews.com/ArticleOGN/464307/Clean_energy_overtakes_fossils_in_investment"},{"title":"• Hausa Edition","url":"https://leadership.ng/clean-energy-project-tops-fossil-fuel-with-2-2trn-investment/"},{"title":"Cite report","url":"https://www.iea.org/reports/world-energy-investment-2026/regional-dashboards"},{"title":"Sunday, June 21, 2026","url":"https://www.oilandgas360.com/tag/clean-energy-investment/"},{"title":"IEA: Global Clean Energy Investment to Reach $2.2 Trillion in 2026, Nearly Double Fossil Fuel Spending","url":"https://feedbagel.com/post/clean-energy-investment-hits-22-trillion-nearly-double-fossil-fuels-oilpricecom"},{"title":"Net Zero Compare","url":"https://netzerocompare.com/articles/clean-energy-investment-is-now-nearly-twice-fossil-fuel-spending-iea-data-shows"},{"title":"260602 clean energy investment nearly doubles fossil fuel spending iea says","url":"https://thepoint.com.au/news/260602-clean-energy-investment-nearly-doubles-fossil-fuel-spending-iea-says/"},{"title":"260602 clean energy investment nearly doubles fossil fuel spending iea says","url":"https://thepoint.com.au/new/260602-clean-energy-investment-nearly-doubles-fossil-fuel-spending-iea-says"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 538 WebSearch {"query": "UNEP Emissions Gap Report 2025 projected warming 2100 current policies pledges Paris", "mode": "standard"}
+Web search results for query: "UNEP Emissions Gap Report 2025 projected warming 2100 current policies pledges Paris"
+
+Links: [{"title":"Emissions Gap Report 2025 | 08 Nov 2025","url":"https://www.drishtiias.com/state-pcs-current-affairs/emissions-gap-report-2025/print_manually"},{"title":"UNEP Emissions Gap report 2025","url":"https://www.pbl.nl/en/publications/unep-emissions-gap-report-2025"},{"title":"apo nid332811 1","url":"https://apo.org.au/sites/default/files/resource-files/2025-11/apo-nid332811_1.pdf"},{"title":"UNEP Emissions Gap report 2025","url":"https://www.pbl.nl/en/node/9888"},{"title":"04 November 2025 Report","url":"https://unep.org/resources/emissions-gap-report-2025"},{"title":"a09f93a4 1aac 512a a744 7789d9eb8b49 Emissions Gap Report 2025","url":"https://proclim.scnat.ch/it/uuid/i/a09f93a4-1aac-512a-a744-7789d9eb8b49-Emissions_Gap_Report_2025"},{"title":"04 November 2025 Report","url":"https://www.unep.org/resources/emissions-gap-report-2025-target"},{"title":"new climate pledges only slightly lower dangerous global warming projections","url":"https://iiasa.ac.at/news/nov-2025/new-climate-pledges-only-slightly-lower-dangerous-global-warming-projections"},{"title":"The climate action emissions evidence","url":"https://thesourcemagazine.org/the-climate-action-emissions-evidence/"},{"title":"The climate action emissions evidence","url":"https://thesourcemagazine.org/?p=11857"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 539 WebFetch {"url": "https://ourworldindata.org/famines", "prompt": "How have famine deaths changed over the 20th and 21st centuries (deaths per decade, trend), and what explanation does the page give? Quote exact figures and years."}
+The page doesn't give exact per-decade totals for the 20th and 21st centuries in its text. Those figures appear only in charts.
+
+**20th century:** The "Global deaths from famines, 1870-2023" chart (y-axis 0 to 30 million) shows the Great Leap Forward at an estimated 36 million deaths from 1958 to 1962. It also shows famines during World War II claiming about 25 million lives across the USSR, Europe, and Asia. The death-rate chart shows famine mortality falling to very low levels in the second half of the century.
+
+**21st century:** The page lists major famines since 1990 in the Central African Republic, the DR Congo, Ethiopia, North Korea, Nigeria, Somalia, and Sudan. It says recent famines "have typically been *far* less deadly." It gives no decade total for the 2000s or 2010s, though it cites about 340k estimated deaths in Northeast Nigeria from 2016 to 2019.
+
+**Explanation:** The page attributes the decline mainly to modern development: more food per person, better markets and transport, healthcare, and lower poverty. It also says famine has become increasingly "man-made," linked to war and non-democratic governments. Reduced warfare, the spread of democracy, emergency aid, and early-warning monitoring have also helped. Today, the page says the most pertinent trigger of deadly famines is conflict or abuse of political power that can "block food supplies from reaching populations."
+
+===== 540 WebFetch {"url": "https://artificialintelligenceact.eu/implementation-timeline/", "prompt": "What are the key dates for the EU AI Act: entry into force, prohibited practices, general-purpose AI obligations, high-risk obligations, and any delay or 'digital omnibus' prop
+**Key dates (per the page, last updated 31 August 2026)**
+
+- **Entry into force:** 1 August 2024. The page says "Date of entry into force of the AI Act." Publication in the Official Journal was 12 July 2024. At this stage, none of the requirements apply yet.
+- **Prohibited practices:** Applied from 2 February 2025, when "Prohibitions on certain AI systems... start to apply." The prohibitions on AI systems generating non-consensual intimate imagery and child sexual abuse material are delayed to 2 December 2026.
+- **General-purpose AI (GPAI) obligations:** Chapter V applied from 2 August 2025. Codes of practice were due by 2 May 2025. Providers of GPAI models already on the market before 2 August 2025 must comply by 2 August 2027.
+- **High-risk obligations:**
+  - Annex III systems (Article 6(2)): 2 December 2027.
+  - Annex I systems (Article 6(1)): 2 August 2028.
+  - Public-authority systems already on the market: 2 August 2030.
+- **Delay or "digital omnibus" proposals:** The page does not mention a digital omnibus or any proposal to postpone these dates, so I can't confirm its status. The only deferred dates listed are the 2 December 2026 prohibitions and the 2 December 2026 Article 50(2) compliance deadline for systems already on the market, along with the later high-risk dates above.
+
+===== 548 WebFetch {"url": "https://www.who.int/news/item/24-04-2024-global-immunization-efforts-have-saved-at-least-154-million-lives-over-the-past-50-years", "prompt": "How many lives did immunization save over the 50 years since 1974, what share were infants, which vaccine co
+**Lives saved:** An estimated **154 million** lives over the past 50 years, "or the equivalent of 6 lives every minute of every year."
+
+**Infants:** **101 million** of those lives saved were infants, about two-thirds of the total (my calculation from the article's figures).
+
+**Top contributor:** The measles vaccine, which accounted for **60%** of lives saved through immunization. The article also says nearly 94 million of the lives saved since 1974 resulted from measles vaccines.
+
+**Other headline figures:**
+- Vaccination against 14 diseases has "directly contributed to reducing infant deaths by 40% globally," and by more than 50% in the African Region.
+- Each life saved gained an average of **66 years** of full health, for a total of **10.2 billion** full health years.
+- Over 20 million people are able to walk today who would otherwise have been paralysed due to polio vaccination.
+- Today, **84%** of infants are protected with 3 DTP doses, up from fewer than 5% of infants with routine immunization when EPI launched.
+
+===== 550 WebFetch {"url": "https://www.who.int/news-room/fact-sheets/detail/poliomyelitis", "prompt": "By how much have wild poliovirus cases fallen since 1988 (from how many to how many), which countries still have wild poliovirus, and how many of the three wild types are erad
+Wild poliovirus cases fell by over 99% since 1988, from an estimated 350,000 cases in more than 125 endemic countries to two. The page names Afghanistan and Pakistan as the countries where transmission continues.
+
+The page does not say how many of the three wild poliovirus types have been eradicated, so that question can't be answered from this source.
+
+===== 556 WebFetch {"url": "https://wmo.int/ar/node/20740", "prompt": "What does the WMO/UNEP ozone assessment say about when the ozone layer will recover (by region), how much warming was avoided, and what percentage of ozone-depleting substances have been phased out? Quote exa
+**Recovery timelines (if current policies remain):** The ozone layer is expected to return to 1980 levels, before the ozone hole appeared, by about 2066 over the Antarctic, 2045 over the Arctic, and 2040 for the rest of the world.
+
+**Warming avoided:** The Kigali Amendment, which phases down some hydrofluorocarbons (HFCs), is estimated to avoid 0.3–0.5°C of warming by 2100. This excludes HFC-23 emissions.
+
+**Substances phased out:** The phaseout covers nearly 99% of banned ozone-depleting substances.
+
+===== 558 WebFetch {"url": "https://www.iea.org/reports/world-energy-investment-2026", "prompt": "What are the headline figures for 2026 global energy investment: total, clean energy investment, fossil fuel investment, solar investment, and the ratio of clean to fossil? Quote ex
+The page doesn't give any of the figures you asked for. It has no total investment, clean energy or fossil fuel investment, solar investment, or clean-to-fossil ratio. It is a landing page that describes the report, which was published 28 May 2026.
+
+The page does say the report will include "the first set of full-year estimates for 2026," so the numbers should be in the full report. It also notes that the analysis considers "the ongoing energy crisis stemming from the conflict in the Middle East," which may affect how those estimates should be read.
+
+To get the figures, you could check:
+- The **Download PDF** of the full report
+- The **press release** linked on the page, "Impacts of Middle East conflict set to reshape energy investment plans"
+- The **Investment Data Explorer** or the **World Energy Investment 2026 Datafile**
+
+===== 560 WebFetch {"url": "https://www.who.int/news/item/20-05-2025-world-health-assembly-adopts-historic-pandemic-agreement-to-make-the-world-more-equitable-and-safer-from-future-pandemics", "prompt": "What did the World Health Assembly adopt in May 2025: the vote, what the ag
+**Adoption:** On 20 May 2025, the 78th World Health Assembly formally adopted the Pandemic Agreement by consensus, the first of its kind. The day before, the Committee approved it by vote: 124 in favour, 0 objections, and 11 abstentions.
+
+**What it establishes:** Principles, approaches, and tools for better international coordination on pandemic prevention, preparedness, and response, including equitable and timely access to vaccines, therapeutics, and diagnostics. Manufacturers in the PABS system are to provide "rapid access targeting 20% of their real time production of safe, quality and effective vaccines" for the pandemic pathogen. The Agreement also states that "Nothing in the WHO Pandemic Agreement shall be interpreted as providing the Secretariat" any authority to direct national law or policy.
+
+**Still needed:**
+- **PABS annex:** An Intergovernmental Working Group is negotiating the Pathogen Access and Benefit Sharing system, with the result to be considered at next year's Assembly.
+- **Signature and ratification:** Once the Assembly adopts the PABS annex, the Agreement opens for signature and ratification, including by national legislatures.
+- **Other steps:** Member States directed the working group to start setting up a Coordinating Financial Mechanism and a Global Supply Chain and Logistics Network.
+
+**Ratifications required:** "After 60 ratifications, the Agreement will enter into force."
+
+===== 561 WebFetch {"url": "https://www.unep.org/resources/emissions-gap-report-2025", "prompt": "What warming by 2100 does the Emissions Gap Report 2025 project under current policies and under new national pledges (NDCs), and how does it compare with earlier years? Quote exact
+The report projects warming of **2.8°C under current policies** and **2.3–2.5°C if new NDCs are fully implemented**. Last year's report gave 3.1°C and 2.6–2.8°C. The page describes these as projections "over this century," not specifically by 2100.
+
+Most of the improvement isn't due to new pledges. Methodological updates account for about 0.1°C, and the expected US withdrawal from the Paris Agreement cancels another 0.1°C. The report concludes that the new NDCs "have barely moved the needle."
+
+The gap remains large. Nations are far from the Paris goal of "well-below 2°C." Annual emissions would need to fall 35% (for 2°C) or 55% (for 1.5°C) below 2019 levels by 2035. A temporary overshoot of 1.5°C is very likely within the next decade. Returning to 1.5°C by 2100 is possible but extremely challenging.
+
+===== 563 WebSearch {"query": "WHO Pandemic Agreement PABS annex World Health Assembly May 2026 outcome agreed", "mode": "standard"}
+Web search results for query: "WHO Pandemic Agreement PABS annex World Health Assembly May 2026 outcome agreed"
+
+Links: [{"title":"WHO / Paul Garwood","url":"https://www.who.int/news/item/01-05-2026-who-member-states-agree-to-extend-negotiations-on-pathogen-access-and-benefit-sharing-annex"},{"title":"Asset Publisher","url":"https://www.kas.de/en/web/multilateraler-dialog-genf/geneva-telegram/detail/-/content/pabs-annex-zum-who-pandemieabkommen-who-mitgliedstaaten-verlaengern-verhandlungen-bis-2027"},{"title":"PAHO and the Open-ended Intergovernmental Working Group (IGWG)","url":"https://www.paho.org/en/paho-and-open-ended-intergovernmental-working-group-igwg"},{"title":"Date Posted","url":"https://www.channelafrica.co.za/channelafrica/?p=33523"},{"title":"Letter to Lord Hannay   Covid Commemoration","url":"https://data.parliament.uk/DepositedPapers/Files/DEP2025-0815/Letter_to_Lord_Hannay_-_Covid_Commemoration.pdf"},{"title":"WHO / Christopher Black","url":"https://www.who.int/news/item/28-03-2026-who-member-states-agree-to-extend-negotiations-on-key-annex-to-the-pandemic-agreement"},{"title":"www.the-microbiologist.com","url":"https://www.the-microbiologist.com/news/global-commitment-on-display-as-countries-negotiate-key-annex-to-the-pandemic-agreement/8099.article"},{"title":"who member states make progress on pandemic pact more time needed to finalise agreement","url":"https://www.lena.gov.ls/who-member-states-make-progress-on-pandemic-pact-more-time-needed-to-finalise-agreement/"},{"title":"WHO Member States agree to extend negotiations on Pathogen Access and Benefit Sharing annex","url":"https://epinews.emphnet.net/en/news/who-member-states-agree-to-extend-negotiations-on-pathogen-access-and-benefit-sharing-annex"},{"title":"WHO Member States agree to extend negotiations on key annex to the Pandemic Agreement","url":"https://epinews.emphnet.net/en/news/who-member-states-agree-to-extend-negotiations-on-key-annex-to-the-pandemic-agreement"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 565 WebSearch {"query": "IRENA Renewable Power Generation Costs in 2024 solar PV cost fall since 2010 percent cheaper than fossil fuels", "mode": "standard"}
+Web search results for query: "IRENA Renewable Power Generation Costs in 2024 solar PV cost fall since 2010 percent cheaper than fossil fuels"
+
+Links: [{"title":"IRENA: Solar Power Averaged $0.043/kWh Globally In 2024","url":"https://taiyangnews.info/business/irena-renewable-power-generation-costs-in-2024-report"},{"title":"top of page","url":"https://www.sustainabletimes.co.uk/post/irena-reveals-renewables-have-saved-the-world-467-billion-in-fossil-fuel-costs"},{"title":"IRENA: How have Renewables Avoided US$467bn of Fossil Fuels?","url":"https://sustainabilitymag.com/news/irena-how-have-renewables-avoided-us-467bn-of-fossil-fuels"},{"title":"irenas 2024 renewable power generation costs report confirms renewables outcompete fossil fuels with solar pv 41 and onshore wind 53 cheaper than lowest cost fossil alternatives","url":"https://solarquarter.com/2025/08/16/irenas-2024-renewable-power-generation-costs-report-confirms-renewables-outcompete-fossil-fuels-with-solar-pv-41-and-onshore-wind-53-cheaper-than-lowest-cost-fossil-alternatives/"},{"title":"Renewable energy projects retained cost advantage over fossil fuels in 2024 – Irena","url":"https://www.engineeringnews.co.za/article/renewable-energy-projects-retained-cost-advantage-over-fossil-fuels-in-2024-irena-2025-07-23"},{"title":"www.power technology","url":"https://www.power-technology.com/?p=392667"},{"title":"solarquarter.com","url":"https://solarquarter.com/2025/08/16/irenas-2024-renewable-power-generation-costs-report-confirms-renewables-outcompete-fossil-fuels-with-solar-pv-41-and-onshore-wind-53-cheaper-than-lowest-cost-fossil-alternatives/amp/"},{"title":"Solar panels located alongside wind energy farm in Netherlands. Photo for representation. iStock","url":"https://www.downtoearth.org.in/amp/story/energy/renewables-most-cost-effective-option-for-new-electricity-generation-irena"},{"title":"IRENA TEC RPGC in 2024 2025","url":"https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 567 WebSearch {"query": "NASA DART Dimorphos orbital period changed 32 minutes planetary defense first test", "mode": "standard"}
+Web search results for query: "NASA DART Dimorphos orbital period changed 32 minutes planetary defense first test"
+
+Links: [{"title":"asteroid s path altered in nasa s first test of","url":"https://www.dhakatribune.com/amp/world/295699/asteroid-s-path-altered-in-nasa-s-first-test-of"},{"title":"asteroid s path altered in nasa s first test of","url":"https://www.dhakatribune.com/world/295699/asteroid-s-path-altered-in-nasa-s-first-test-of"},{"title":"Smashing success: NASA’s first planetary defense test changes asteroid’s orbit by 32 minutes","url":"https://www.foxweather.com/earth-space/nasa-calls-first-planetary-defense-test-a-success"},{"title":"dart mission a success","url":"https://www.livescience.com/dart-mission-a-success"},{"title":"NASA spacecraft changes asteroid's orbit after collision","url":"https://english.madhyamam.com/science/nasa-spacecraft-changes-asteroids-orbit-after-collision-1083824"},{"title":"NASA is pumped about its asteroid-smacking accuracy","url":"https://www.popsci.com/science/nasa-dart-change-asteroid-orbit/"},{"title":"NASA confirms DART probe’s crash into asteroid successfully changed its course","url":"https://zee5.com/articles/?p=5775856"},{"title":"NASA's DART impact changed asteroid's orbit forever in planetary defense test","url":"https://www.space.com/nasa-dart-asteroid-impact-orbit-change-success"},{"title":"nasa dart didymos dimorphos asteroid test space defense 1849644501","url":"https://gizmodo.com/nasa-dart-didymos-dimorphos-asteroid-test-space-defense-1849644501"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 569 WebSearch {"query": "NASA near-Earth asteroids larger than 1 kilometer percent found 140 meters catalog completeness", "mode": "standard"}
+Web search results for query: "NASA near-Earth asteroids larger than 1 kilometer percent found 140 meters catalog completeness"
+
+Links: [{"title":"Grav 2023 Planet. Sci. J. 4 228","url":"https://authors.library.caltech.edu/records/e012t-4j043/files/Grav_2023_Planet._Sci._J._4_228.pdf?download=1"},{"title":"www.ipac.caltech.edu","url":"https://www.ipac.caltech.edu/publication/2023PSJ.....4..228G"},{"title":"odds killer asteroid 90432","url":"https://zmescience.com/space/odds-killer-asteroid-90432"},{"title":"9fba0b00 5d16 4dce be6d 8317aa59efe2","url":"https://www.nationalacademies.org/cdn/materials/9fba0b00-5d16-4dce-be6d-8317aa59efe2"},{"title":"doi.org","url":"https://doi.org/10.3847/PSJ/ad072e"},{"title":"NASA OIG Report: NASA’s Efforts to Identify Near-Earth Objects and Mitigate Hazards","url":"https://spaceref.com/?p=70313"},{"title":"www.arxiv.org","url":"https://www.arxiv.org/abs/2310.20149"},{"title":"Sky and Telescope - June 2018 - 14","url":"https://www.nxtbook.com/nxtbooks/aas/st_201806/index.php?startid=14"},{"title":"The known near-Earth object (NEO) population consists of over 32,000 objects,","url":"https://core.ac.uk/works/152503049"},{"title":"The NEO Surveyor Near-Earth Asteroid Known Object Model","url":"https://ouci.dntb.gov.ua/works/4Yw5GyP9"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 575 WebFetch {"url": "https://www.aljazeera.com/news/2019/05/cyclone-fani-praise-india-response-devastating-storm-190505072941472.html", "prompt": "How did the UN describe India's response to Cyclone Fani in 2019, how many people were evacuated, how many died, and how does
+**UN response:** The UN Office for Disaster Risk Reduction praised the government's "effective" evacuation, saying it had "saved many lives." UNISDR spokesperson Denis McClean credited "the almost pinpoint accuracy" of the early warnings with enabling a well-targeted evacuation.
+
+**Evacuation:** Odisha Chief Minister Naveen Patnaik said "a record 1.2 million people were evacuated in 24 hours."
+
+**Deaths:** The article gives several figures without reconciling them. The summary cites at least 33 deaths. Separately, it says at least 34 people were killed in Bangladesh, after the storm moved there. Local media reported at least 16 killed and at least 160 injured in the cyclone, and the Puri district magistrate put the Puri toll at 21.
+
+**Comparison with 1999:** The article describes the 1999 super-cyclone in the same state as a 30-hour storm that pushed a surge 20km inland and killed more than 10,000 people. Fani's toll was far lower, which the article attributes to better forecasting, public awareness, and evacuation planning. It calls Fani "the most powerful storm to hit India in 20 years," but it does not give a 1999 evacuation figure to compare with the 1.2 million.
+
+===== 576 WebFetch {"url": "https://disarmament.unoda.org/wmd/nuclear/npt/", "prompt": "What is the Nuclear Non-Proliferation Treaty: year opened for signature and entered into force, number of states parties, and its three pillars? Quote exact figures."}
+**Year opened for signature:** 1968. The page states: "Opened for signature in 1968, the Treaty entered into force in 1970."
+
+**Year entered into force:** 1970 (same sentence as above).
+
+**Number of states parties:** 191. The page states: "A total of 191 States have joined the Treaty, including the five nuclear-weapon States."
+
+**Three pillars:** The page mentions "the three pillars of the Treaty" but does not name them. The closest match is the three stated objectives:
+1. Preventing the spread of nuclear weapons and weapons technology: "to prevent the spread of nuclear weapons and weapons technology"
+2. Promoting cooperation on peaceful nuclear energy: "to promote cooperation in the peaceful uses of nuclear energy"
+3. Advancing nuclear and general disarmament: "to further the goal of achieving nuclear disarmament and general and complete disarmament"
+
+The page does not explicitly label these as the three pillars, so that mapping is my inference.
+
+===== 577 WebSearch {"query": "United States withdrawal from WHO took effect January 2026 funding impact", "mode": "standard"}
+Web search results for query: "United States withdrawal from WHO took effect January 2026 funding impact"
+
+Links: [{"title":"HHS Fact Sheet: U.S. Withdrawal from the World Health Organization","url":"https://cdc.gov/global-health/resources/us-withdrawal-who.html"},{"title":"fact sheet us withdrawal from the world health organization","url":"https://www.hhs.gov/press-room/fact-sheet-us-withdrawal-from-the-world-health-organization.html"},{"title":"us exits who after 78 years citing lack of accountability and transparency","url":"https://www.arise.tv/us-exits-who-after-78-years-citing-lack-of-accountability-and-transparency"},{"title":"US Officially Withdraws from World Health Organization in 2026","url":"https://greekcitytimes.com/?p=523969"},{"title":"us completes withdrawal from world health organization","url":"https://www.outlookindia.com/amp/story/international/us-completes-withdrawal-from-world-health-organization"},{"title":"Comment & Analysis","url":"https://universitytimes.ie/?p=115357"},{"title":"Comment & Analysis","url":"https://universitytimes.ie/2026/03/united-states-withdrawl-from-world-health-organization/"},{"title":"u s exit from who implications for global health cooperation and preparedness","url":"https://thalassaemia.org.cy/news/u-s-exit-from-who-implications-for-global-health-cooperation-and-preparedness/"},{"title":"the united states is no longer part of the who","url":"https://www.pressenza.com/2026/01/the-united-states-is-no-longer-part-of-the-who/"},{"title":"newsar.codejungle.org","url":"https://newsar.codejungle.org/stories/1960115"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 578 WebFetch {"url": "https://www.who.int/initiatives/global-influenza-surveillance-and-response-system", "prompt": "What is GISRS: when established, how many national influenza centres and countries participate, and what it does (e.g. vaccine strain selection, early detec
+**What GISRS is:** The Global Influenza Surveillance and Response System, WHO's global influenza surveillance network. The page says that "Global influenza surveillance has been conducted through WHO's Global Influenza Surveillance and Response System (GISRS) since 1952."
+
+**Participation:** The page says "GISRS currently comprises 166 institutions across 136 WHO Member States." It does not give a number of National Influenza Centres, so that figure isn't available here.
+
+**What it does:** The page lists its mission as functioning as:
+- "global mechanism of surveillance, preparedness and response for seasonal, pandemic and zoonotic influenza"
+- a global platform for monitoring influenza epidemiology and disease
+- "global alert for novel influenza viruses and other respiratory pathogens," which covers early detection of potentially pandemic viruses
+
+It also publishes vaccine composition recommendations, such as those for the 2026–2027 northern hemisphere and 2027 southern hemisphere seasons, which supports vaccine strain selection. The page does not explicitly say GISRS selects vaccine strains, so that link is inferred from these recommendations.
+
+===== 579 WebSearch {"query": "AI Impact Summit New Delhi February 2026 outcome declaration AI safety institutes network", "mode": "standard"}
+Web search results for query: "AI Impact Summit New Delhi February 2026 outcome declaration AI safety institutes network"
+
+Links: [{"title":"takeaways from ai impact summit 2026","url":"https://www.shankariasparliament.com/current-affairs/takeaways-from-ai-impact-summit-2026"},{"title":"Ashwini Vaishnaw sets AI Mission 2.0 agenda: Sovereign models, safety and mass diffusion","url":"https://storyboard18.com/special-coverage/ashwini-vaishnaw-sets-ai-mission-2-0-agenda-sovereign-models-safety-and-mass-diffusion-90307.htm"},{"title":"takeaways from ai impact summit 2026","url":"https://www.shankariasparliament.com/current-affairs/gs-iii/takeaways-from-ai-impact-summit-2026"},{"title":"takeaways from ai impact summit 2026","url":"https://www.shankariasparliament.com/current-affairs/gs-iii-s-t/takeaways-from-ai-impact-summit-2026"},{"title":"Ashwini Vaishnaw sets AI Mission 2.0 agenda: Sovereign models, safety and mass diffusion","url":"https://storyboard18.com/amp/special-coverage/ashwini-vaishnaw-sets-ai-mission-2-0-agenda-sovereign-models-safety-and-mass-diffusion-90307.htm"},{"title":"takeaways from ai impact summit 2026","url":"https://www.shankariasparliament.com/current-affairs/gs-iii/gs-iii-s-t/takeaways-from-ai-impact-summit-2026"},{"title":"takeaways from ai impact summit 2026","url":"https://www.shankariasparliament.com/current-affairs/mains-analysis/takeaways-from-ai-impact-summit-2026"},{"title":"AI Impact Summit 2026 New Delhi: Sutras, Chakras and Declaration","url":"https://anantamias.com/ai-impact-summit-2026-delhi/?pdf=1"},{"title":"anantamias.com","url":"https://anantamias.com/?p=26326"},{"title":"UPSC CSE 2026 Essay Paper Discussion","url":"https://anantamias.com/ai-impact-summit-2026-delhi/"}]
+
+
+REMINDER: You MUST include the sources above in your response to the user using markdown hyperlinks.
+
+===== 580 WebFetch {"url": "https://disarmament.unoda.org/biological-weapons/", "prompt": "What is the Biological Weapons Convention: year opened for signature and entered into force, number of states parties, and what it prohibits and lacks (e.g. verification)? Quote exact figu
+The page doesn't give the year the Biological Weapons Convention (BWC) opened for signature or entered into force, or the number of states parties.
+
+**Prohibitions:** The page says the BWC "effectively prohibits the development, production, acquisition, transfer, stockpiling and use" of biological and toxin weapons. It was also the first multilateral disarmament treaty to ban an entire category of weapons of mass destruction.
+
+**Gaps:** The page doesn't mention verification or any enforcement mechanism. It says the BWC instead relies "primarily on a network approach" of coordination with international, regional, and nongovernmental organizations. The page doesn't say the Convention lacks verification, only that it doesn't address it.
+
+For the dates and membership figures, see the "Biological Weapons Convention" subpage linked from this page.
+
+===== 581 WebFetch {"url": "https://www.croptrust.org/work/svalbard-global-seed-vault/", "prompt": "What is the Svalbard Global Seed Vault: year opened, number of seed samples or varieties stored, number of genebanks depositing, and its purpose? Quote exact figures."}
+**Svalbard Global Seed Vault**
+
+- **Year opened:** 2008, when it "opened as a partnership" between Norway's Ministry of Agriculture and Food, NordGen, and the Crop Trust.
+- **Seed samples stored:** "more than 1.4 million seed samples" as of 2026, with capacity for 4.5 million.
+- **Depositing genebanks:** 134 institutions, per "from 134 institutions around the world."
+- **Purpose:** It serves as "the ultimate insurance policy for the world's food supply." It backs up crop collections so genebanks can restore them if the originals are lost or become inaccessible.
+
+===== 582 WebFetch {"url": "https://earsc.org/2006/06/27/indian-ocean-tsunami-warning-system-up-and-running/", "prompt": "What does this article say about the Indian Ocean Tsunami Warning System: when it was set up, how many countries, what it consists of, and how many people di
+The article doesn't give the number of countries or the death toll from the 2004 tsunami.
+
+- **When it was set up:** It was up and running about eighteen months after the December 2004 tsunami, "as scheduled," according to UNESCO Director-General Koïchiro Matsuura.
+- **Countries:** The article doesn't say how many. It refers only to "the entire Indian Ocean region."
+- **What it consists of:** It is a "vital component of a global system." It can receive and distribute tsunami advisories at all hours.
+- **2004 death toll:** Not mentioned.
+

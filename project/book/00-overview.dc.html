@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,650;0,700;1,600;1,650&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>body{margin:0}a{color:inherit}.cc:hover{box-shadow:0 2px 0 currentColor}</style>
+</helmet>
+<sc-if value="{{dataReady}}" hint-placeholder-val="{{false}}">
+<div style="background:oklch(97.8% 0.007 75);color:oklch(21% 0.014 50);font-family:'Inter',system-ui,sans-serif;min-height:100vh;padding-bottom:60px">
+<div style="max-width:900px;margin:0 auto;padding:0 24px">
+
+<header style="padding:48px 0 32px">
+  <div style="width:56px;height:5px;background:oklch(48% 0.18 29);margin-bottom:22px"></div>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:oklch(42% 0.015 55)">{{data.kicker}}</div>
+  <h1 style="font-family:'Source Serif 4',serif;font-weight:700;font-size:clamp(46px,9vw,84px);line-height:0.98;margin:14px 0 18px;letter-spacing:-.015em;text-wrap:balance">{{data.title}}</h1>
+  <p style="font-family:'Source Serif 4',serif;font-style:italic;font-weight:600;font-size:clamp(20px,3vw,27px);line-height:1.3;margin:0 0 16px;color:oklch(40% 0.17 29);text-wrap:balance;max-width:26ch">{{data.sub}}</p>
+  <p style="max-width:66ch;color:oklch(42% 0.015 55);font-size:17.5px;line-height:1.65;margin:0 0 14px">{{data.lede}}</p>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:oklch(60% 0.013 55);padding-top:14px;border-top:2px solid oklch(48% 0.18 29);display:inline-block">{{data.asof}}</div>
+</header>
+
+<div style="border-left:4px solid oklch(48% 0.18 29);background:oklch(99.4% 0.003 75);padding:28px 32px;margin:12px 0 48px">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:oklch(60% 0.013 55);margin-bottom:10px">{{data.claim.tag}}</div>
+  <p style="font-family:'Source Serif 4',serif;font-style:italic;font-weight:650;font-size:clamp(21px,3vw,27px);line-height:1.45;margin:0;text-wrap:balance">{{data.claim.q}}</p>
+  <p style="font-size:14.5px;color:oklch(42% 0.015 55);margin:14px 0 0">{{data.claim.s}}</p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:60px">
+  <sc-for list="{{data.stats}}" as="s" hint-placeholder-count="4">
+    <div style="background:oklch(99.4% 0.003 75);border-top:3px solid oklch(48% 0.18 29);padding:18px 18px 16px;min-width:0">
+      <b style="display:block;font-family:'Source Serif 4',serif;font-weight:650;font-size:25px;line-height:1.15;overflow-wrap:anywhere">{{s.b}}</b>
+      <span style="display:block;font-size:13px;color:oklch(42% 0.015 55);margin-top:6px;line-height:1.45">{{s.span}}</span>
+    </div>
+  </sc-for>
+</div>
+
+<h2 style="font-family:'Source Serif 4',serif;font-weight:650;font-size:28px;margin:0 0 6px">The chapters</h2>
+<p style="color:oklch(42% 0.015 55);font-size:15px;margin:0 0 28px">Seventeen chapters in six parts. Each card opens its page.</p>
+
+<sc-for list="{{parts}}" as="part" hint-placeholder-count="6">
+  <section style="margin-bottom:44px">
+    <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px">
+      <div style="width:36px;height:4px;background:{{part.color}};flex:none"></div>
+      <h3 style="font-family:'Source Serif 4',serif;font-weight:650;font-size:21px;margin:0">{{part.header}}</h3>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:oklch(60% 0.013 55)">{{part.count}}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+      <sc-for list="{{part.items}}" as="item" hint-placeholder-count="3">
+        <a href="{{item.href}}" class="cc" style="display:block;text-decoration:none;color:inherit;background:oklch(99.4% 0.003 75);padding:18px 20px;border-top:3px solid {{part.color}};min-width:0">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:{{part.colorText}};letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px">{{item.when}}</div>
+          <div style="font-family:'Source Serif 4',serif;font-weight:650;font-size:17.5px;line-height:1.3;margin-bottom:8px">{{item.h3}}</div>
+          <div style="font-size:13.5px;color:oklch(42% 0.015 55);line-height:1.55">{{item.blurb}}</div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+</sc-for>
+
+<h2 style="font-family:'Source Serif 4',serif;font-weight:650;font-size:28px;margin:52px 0 16px">Supporting pages</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:56px">
+  <sc-for list="{{support}}" as="item" hint-placeholder-count="3">
+    <a href="{{item.href}}" class="cc" style="display:block;text-decoration:none;color:inherit;background:oklch(99.4% 0.003 75);padding:18px 20px;border-top:3px solid oklch(45% 0.05 255);min-width:0">
+      <div style="font-family:'Source Serif 4',serif;font-weight:650;font-size:17px;line-height:1.3;margin-bottom:8px">{{item.h3}}</div>
+      <div style="font-size:13.5px;color:oklch(42% 0.015 55);line-height:1.55">{{item.blurb}}</div>
+    </a>
+  </sc-for>
+</div>
+
+<section style="margin:48px 0">
+  <h2 style="font-family:'Source Serif 4',serif;font-weight:650;font-size:28px;margin:0 0 4px">Where it stands</h2>
+  <p style="font-size:12.5px;font-style:italic;color:oklch(60% 0.013 55);margin:0 0 18px">This is my reading of the chapters, not a finding from the sources.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px">
+    <sc-for list="{{data.patterns}}" as="pat" hint-placeholder-count="4">
+      <div style="border-top:2px solid oklch(48% 0.18 29);padding-top:12px;min-width:0">
+        <h4 style="font-family:'Source Serif 4',serif;font-style:italic;font-weight:650;font-size:17px;margin:0 0 6px;line-height:1.3">{{pat.h3}}</h4>
+        <sc-for list="{{pat.p}}" as="para" hint-placeholder-count="1"><p style="font-size:14px;color:oklch(42% 0.015 55);margin:0;line-height:1.55">{{para}}</p></sc-for>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin:40px 0">
+  <h2 style="font-family:'Source Serif 4',serif;font-weight:650;font-size:25px;margin:0 0 10px">What this overview cannot show</h2>
+  <ul style="margin:0;padding-left:20px;max-width:70ch">
+    <sc-for list="{{data.limits}}" as="lim" hint-placeholder-count="5"><li style="margin-bottom:8px;color:oklch(42% 0.015 55);font-size:14.5px;line-height:1.6">{{lim}}</li></sc-for>
+  </ul>
+</section>
+
+<footer style="margin-top:40px;padding-top:18px;border-top:1px solid oklch(87% 0.012 60);font-size:12px;color:oklch(60% 0.013 55);max-width:72ch;line-height:1.6">{{data.footer}}</footer>
+
+</div>
+</div>
+</sc-if>
+<sc-if value="{{loading}}" hint-placeholder-val="{{true}}">
+  <div style="min-height:100vh;background:oklch(97.8% 0.007 75);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;color:oklch(60% 0.013 55);font-size:13px">Loading…</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SLUGS = {1:'appearance-of-life',2:'pace-of-change',3:'life-and-health',4:'food-wealth-comfort',
+  5:'knowledge-and-connection',6:'century-of-vulnerability',7:'record-of-catastrophes',8:'defenses-built',
+  9:'nature-at-risk',10:'natures-catastrophes',11:'nature-defended',12:'work-inequality-population',
+  13:'literacy-wisdom-knowledge',14:'mind-and-wellbeing',15:'power-and-governance',16:'the-comparison',
+  17:'what-would-change-the-balance'};
+const PART_COLORS = [
+  { color: 'oklch(50% 0.12 255)', colorText: 'oklch(38% 0.1 255)' },
+  { color: 'oklch(50% 0.13 150)', colorText: 'oklch(37% 0.11 150)' },
+  { color: 'oklch(56% 0.17 55)', colorText: 'oklch(40% 0.15 55)' },
+  { color: 'oklch(50% 0.11 195)', colorText: 'oklch(38% 0.09 195)' },
+  { color: 'oklch(48% 0.14 305)', colorText: 'oklch(38% 0.12 305)' },
+  { color: 'oklch(48% 0.18 29)', colorText: 'oklch(40% 0.17 29)' }
+];
+class Component extends DCLogic {
+  state = { data: null };
+  componentDidMount() {
+    fetch('../data/00-overview.json').then(r => r.json()).then(d => this.setState({ data: d }));
+  }
+  renderVals() {
+    const data = this.state.data;
+    if (!data) return { dataReady: false, loading: true, data: {} };
+    const parts = (data.groups || []).map((g, i) => {
+      const pc = PART_COLORS[i] || PART_COLORS[0];
+      return {
+        header: g.header, count: g.count, color: pc.color, colorText: pc.colorText,
+        items: g.items.map(it => {
+          const num = parseInt((it.when || '').replace(/\D/g, ''), 10);
+          const slug = SLUGS[num];
+          return { when: it.when, h3: it.h3, blurb: (it.p && it.p[0]) || '', href: slug ? `./${String(num).padStart(2, '0')}-${slug}.dc.html` : '#' };
+        })
+      };
+    });
+    const support = [
+      { h3: 'Industrial breakthroughs', blurb: 'A timeline of the major industrial breakthroughs in human history.', href: './s1-industrial-breakthroughs.dc.html' },
+      { h3: 'Scientific progress, 1825–1925', blurb: 'A century of science, from the first railways to the eve of quantum mechanics.', href: './s2-science-1825-1925.dc.html' },
+      { h3: 'Scientific progress, 1925–2025', blurb: 'The following century of science.', href: './s3-science-1925-2025.dc.html' }
+    ];
+    return { dataReady: true, loading: false, data, parts, support };
+  }
+}
+</script>
+</body>
+</html>

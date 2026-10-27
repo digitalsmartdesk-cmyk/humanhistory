@@ -1,0 +1,166 @@
+<title>Knowledge and Connection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: headline numbers, one chart of share removed, nineteen defenses grouped by area, a section on thinning, patterns, limits, sources. */
+:root{
+  --bg:#edf0f2;
+  --surface:#f8fafb;
+  --ink:#18222b;
+  --ink-2:#4a5866;
+  --line:#c9d1d8;
+  --accent:#c2570c;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#f4a261;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#f4a261;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.65;padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:840px;margin:0 auto}
+a{color:var(--accent)}
+header{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,9.5vw,76px);line-height:1;margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,3.8vw,26px);line-height:1.25;margin:0;color:var(--accent);text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:64ch}
+.asof{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);padding-top:12px;border-top:2px solid var(--accent)}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--font-mono);font-size:12.5px;margin:0 0 8px}
+nav.jump a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);outline:none}
+h2{font-family:var(--font-display);font-weight:600;font-size:26px;line-height:1.15;margin:48px 0 10px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.note{font-size:13px;color:var(--ink-2);max-width:70ch}
+.chart-h{font-family:var(--font-display);font-weight:600;font-size:17px;margin:26px 0 2px}
+.rg{margin:8px 0 6px}
+.rg-axis{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 16px}
+.rg-axis div{position:relative;height:18px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2)}
+.rg-axis div span{position:absolute;top:0;transform:translateX(-50%)}
+.rg-axis div span:first-child{transform:none}
+.rg-axis div span:last-child{transform:translateX(-100%)}
+.rg-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 16px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.rg-lab{font-size:14px;line-height:1.3;min-width:0}
+.rg-lab b{display:block;font-weight:500}
+.rg-lab small{display:block;font-family:var(--font-mono);font-size:11px;color:var(--ink-2)}
+.rg-track{position:relative;height:20px;background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--line)}
+.rg-track.dlog{background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/12.5% 100%}
+.rg-bar{position:absolute;top:3px;bottom:3px;background:var(--accent);min-width:6px}
+.rg-bar.hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 4px,transparent 4px 7px);outline:1px solid var(--accent);outline-offset:-1px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.chip{font:500 13px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.count{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.grp{margin-top:8px}
+.gh{font-family:var(--font-display);font-weight:600;font-size:24px;margin:26px 0 4px;display:flex;align-items:baseline;gap:12px}
+.gh span{font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--ink-2)}
+.list{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--accent)}
+.item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 22px;padding:14px 0 18px;border-bottom:1px solid var(--line);position:relative}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-29px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.when{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:1.4}
+.when small{display:block;font-weight:400;font-size:11.5px;color:var(--accent);margin-top:3px}
+.what{min-width:0}
+.what h3{font-size:20px}
+.meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.what p{max-width:64ch}
+dl.kv{display:grid;grid-template-columns:90px minmax(0,1fr);gap:6px 16px;margin:10px 0 8px}
+dl.kv dt{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+dl.kv dd{margin:0;font-size:14.5px}
+.solid{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+.solid b{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.pat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 26px;margin-top:18px}
+.pat>div{min-width:0;border-top:2px solid var(--accent);padding-top:10px}
+.pat h3{font-size:18px}
+.pat p{font-size:14.5px;margin:4px 0 0}
+ul.plain{margin:10px 0 0;padding-left:20px;max-width:70ch}
+ul.plain li{margin-bottom:8px}
+.src h3{font-size:16px;margin:20px 0 6px}
+.src ul{list-style:none;margin:0;padding:0}
+.src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px}
+.src li a{word-break:break-word}
+.src li span{font-family:var(--font-mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;max-width:72ch}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 14px 12px;min-width:0}
+.stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:30px;line-height:1.1;overflow-wrap:anywhere}
+.stat span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.thin{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.thin>div{min-width:0;background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+.thin h3{font-size:18px}
+.thin p{font-size:14.5px;margin:4px 0 0}
+.thin .src-tag{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2);margin-top:8px}
+.rg-pt{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--ink)}
+.rg-mark{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed var(--ink)}
+.legend{font-size:12.5px;color:var(--ink-2);margin:2px 0 6px}
+@media (max-width:620px){
+  .rg-axis{grid-template-columns:minmax(0,1fr)}
+  .rg-axis>span{display:none}
+  .rg-row{grid-template-columns:minmax(0,1fr)}
+  .item{grid-template-columns:minmax(0,1fr)}
+  .list{padding-left:18px}
+  .item:before{left:-25px}
+  dl.kv{grid-template-columns:minmax(0,1fr);gap:0}
+  dl.kv dd{margin-bottom:8px}
+  .src li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.snap{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 6px}
+.snap th{text-align:left;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding:6px 14px 6px 0;border-bottom:2px solid var(--accent)}
+.snap td{vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.snap td.m{font-weight:500;width:21%}
+.snap td.na{color:var(--ink-2)}
+.dom{margin-top:34px}
+.dom h3{font-size:22px;margin-bottom:2px}
+.dom .intro{font-size:14.5px;color:var(--ink-2);max-width:68ch;margin:0 0 4px}
+@media (max-width:620px){
+  .snap,.snap tbody,.snap tr,.snap td{display:block;width:auto}
+  .snap thead{display:none}
+  .snap tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .snap td{border:0;padding:2px 0}
+  .snap td.m{width:auto;font-size:15.5px;padding-bottom:2px}
+  .snap td[data-l]::before{content:attr(data-l);display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-top:6px}
+}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Chapter 5 · Gains</div>
+  <h1>Knowledge and connection</h1>
+  <p class="sub">Five entries on reading, school, broadcasting, the telephone and the internet</p>
+  <p class="lede">How many people can read, how many are in school, and how many are reached by a telephone, a screen or a connection. This chapter measures access. It does not measure what people do with it.</p>
+  <div class="asof">Figures current to 27 October 2026. Several come from news reports of UNESCO and ITU estimates.</div>
+</header>
+<nav class="jump" aria-label="Sections"><a href="#scale">Scale</a><a href="#gains">The gains</a><a href="#limits-of-gains">Where they thin</a><a href="#patterns">What it shows</a><a href="#limits">Limits</a><a href="#sources">Sources</a></nav>
+<h2 id="scale">How large the gains are</h2>
+<div class="stats"><div class="stat"><b>1 in 10 → about 88%</b><span>of adults able to read: about 1 in 10 people in 1820 (Our World in Data) and about 88% of adults now (UNESCO)</span></div><div class="stat"><b>739 million</b><span>adults who still lack basic literacy, almost two-thirds of them women (UNESCO)</span></div><div class="stat"><b>16% → 74%</b><span>of the world&#x27;s people online, 2005 and 2025; about 6 billion users and 2.2 billion offline in 2025</span></div><div class="stat"><b>23% against 94%</b><span>using the internet in low-income and in high-income countries in 2025 (ITU)</span></div></div><h3 class="chart-h">Share of people able to read</h3>
+<p class="note">Hatched bars are rough figures from a page that names no source. Solid bars are UNESCO&#x27;s figures as reported. The adult and youth bars measure different age groups.</p>
+<div class="rg" role="img" aria-label="Bar chart of share able to read, from about 10 percent in 1820 to 88 percent of adults now"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:25.000%">25%</span><span style="left:50.000%">50%</span><span style="left:75.000%">75%</span><span style="left:100.000%">100%</span></div></div><div class="rg-row"><div class="rg-lab"><b>About 1820</b><small>About 1 in 10 could read and write; no source named</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:10.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>About 1870</b><small>About 1 in 5 could read; no source named</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:20.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Youth 15–24, 2000</b><small>UNESCO</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:87.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Youth 15–24, latest</b><small>UNESCO</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:93.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Adults, latest</b><small>About 88%, UNESCO</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:88.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Adults, sub-Saharan Africa</b><small>68.5%, the lowest region, UIS</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:68.50%"></i></div></div></div><h3 class="chart-h">Share of the world&#x27;s people online</h3>
+<p class="note">Figures from different pages, so the 2023 row shows Our World in Data&#x27;s 63%, where Wikipedia gives 67%.</p>
+<div class="rg" role="img" aria-label="Bar chart of share of the world online from 16 percent in 2005 to 74 percent in 2025"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:25.000%">25%</span><span style="left:50.000%">50%</span><span style="left:75.000%">75%</span><span style="left:100.000%">100%</span></div></div><div class="rg-row"><div class="rg-lab"><b>2005</b><small>16%</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:16.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2010</b><small>30%</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:30.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2020</b><small>60% (ITU)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:60.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2023</b><small>63% (Our World in Data); another page gives 67%</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:63.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2025</b><small>74% (ITU)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:74.00%"></i></div></div></div><h3 class="chart-h">Who is online: the gaps</h3>
+<p class="note">Each pair compares two groups in the same year. The gaps are 44 and 54 points between Africa and Europe, 71 points between low- and high-income countries, and 27 between rural and urban residents.</p>
+<div class="rg" role="img" aria-label="Bar chart of internet use for Africa and Europe, low and high income countries, and rural and urban residents"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:25.000%">25%</span><span style="left:50.000%">50%</span><span style="left:75.000%">75%</span><span style="left:100.000%">100%</span></div></div><div class="rg-row"><div class="rg-lab"><b>Africa, 2005</b><small>2%</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:2.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Europe, 2005</b><small>46%</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:46.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Africa, 2023</b><small>37%</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:37.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Europe, 2023</b><small>91%</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:91.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Low-income countries, 2025</b><small>23% (ITU)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:23.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>High-income countries, 2025</b><small>94% (ITU)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:94.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Rural residents, 2025</b><small>58% (ITU)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:58.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Urban residents, 2025</b><small>85% (ITU)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:85.00%"></i></div></div></div>
+<h2 id="gains">The gains</h2>
+<p>Five entries in two groups. Each gives the scale, the definitions and how solid the figures are.</p>
+<section class="grp"><h3 class="gh">Learning to read and going to school <span>2 entries</span></h3><ol class="list"><li class="item"><div class="when">1820 to now<small>Literacy</small></div><div class="what"><h3>Reading becomes the norm</h3><p>Our World in Data says only one in ten people in the world could read and write in 1820 and one in five in 1870, and that more than four in five can now. UNESCO puts adult literacy at about 88% and youth literacy at 93%, up from 87% in 2000. At least 739 million adults still lack basic literacy, almost two-thirds of them women, with 347 million in Central and Southern Asia. Sub-Saharan Africa has the lowest regional rate, 68.5%.</p><dl class="kv"><dt>Definitions</dt><dd>Historical estimates often count only people who could sign documents, which the page calls a very basic lower bound. Modern figures come from a yes or no question, &#x27;Can you read and write?&#x27;, which treats literacy as all or nothing.</dd></dl><p class="solid"><b>How solid</b> The 1820 and 1870 figures have no named source on the page, and its own text says both &#x27;one in ten remain illiterate&#x27; and &#x27;more than 4 out of 5 can read&#x27;, which it does not reconcile. The UNESCO figures come from a news report of UNESCO&#x27;s estimates, with no single data year given.</p></div></li><li class="item"><div class="when">1820 to 2025<small>Schooling</small></div><div class="what"><h3>More children in school, many still not learning</h3><p>Fewer than 1 in 5 adults had some basic education in 1820. Now less than 1 in 5 has none. Most children are enrolled in primary school, and girls are almost as likely as boys to be. Around 244 million children and youth were out of school in 2023 on Our World in Data&#x27;s page, and a June 2025 report of UNESCO&#x27;s estimate gave 272 million.</p><dl class="kv"><dt>Learning</dt><dd>In many lower-income countries fewer than 20% of children reach minimum reading proficiency by the end of primary school. Adults in some poorer countries average 2 to 3 years of schooling, about a decade less than in Europe or North America.</dd></dl><p class="solid"><b>How solid</b> The two out-of-school figures differ and come from different reports and years. The 272 million is a news report&#x27;s account, and it gave no reference year.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Telephones, broadcasting and the internet <span>3 entries</span></h3><ol class="list"><li class="item"><div class="when">1925 to 2016<small>Broadcast and telephone</small></div><div class="what"><h3>Radio, telephone and television in US homes</h3><p>In US households radio went from 10% in 1925 to 50% in 1931 and 90% in 1947. The landline telephone took from 1903 to 1946 to reach half of homes. Colour television went from 10% in 1966 to 90% in 1985, and the internet from 10% in 1993 to a peak of 88% in 2016.</p><dl class="kv"><dt>Detail</dt><dd>The first chapter gives the full series and the figures for the cell phone.</dd></dl><p class="solid"><b>How solid</b> From the Our World in Data household-technology chart, read from its data file. It covers the United States only, and I found no world series for these machines.</p></div></li><li class="item"><div class="when">1973 to 2024<small>Mobile phones</small></div><div class="what"><h3>A telephone for almost everyone</h3><p>The first handheld cellular call was made on 3 April 1973 with a handset weighing about 2 kilograms. The first commercial automated cellular network opened in Japan in 1979, and the first commercially available handheld phone, the DynaTAC 8000x, followed in 1983. Subscriptions passed seven billion in 2014 and reached over 9.1 billion in 2024.</p><dl class="kv"><dt>Smartphones</dt><dd>Smartphones were about half of mobile phone sales in 2024.</dd></dl><p class="solid"><b>How solid</b> From Wikipedia. Subscriptions count connections, not people, and the page says the 2024 total is enough for one per person on Earth. It gives no figures for the 1990s or for 2000.</p></div></li><li class="item"><div class="when">2005 to 2025<small>Internet</small></div><div class="what"><h3>Half the world, then three-quarters, online</h3><p>The share of the world&#x27;s people online was 16% in 2005, 30% in 2010, 60% in 2020 and 74% in 2025, about 6 billion people, with 2.2 billion still offline. The ITU puts use at 23% in low-income countries against 94% in high-income countries, and at 85% for urban residents against 58% for rural. Africa&#x27;s share rose from 2% in 2005 to 37% in 2023 while Europe&#x27;s went from 46% to 91%.</p><dl class="kv"><dt>Quality</dt><dd>5G covers an estimated 55% of the world&#x27;s people, 84% in high-income countries and 4% in low-income ones. Access remains unaffordable in around 60% of low- and middle-income countries.</dd></dl><p class="solid"><b>How solid</b> The 2005 to 2023 figures come from Wikipedia and the 2025 figures from a summary of the ITU&#x27;s Facts and Figures 2025. Pages disagree for 2023: 63% on Our World in Data and 67% on Wikipedia.</p></div></li></ol></section>
+<h2 id="limits-of-gains">Where the gains thin</h2>
+<p class="note">These four limits come from the same sources as the entries above.</p><div class="thin"><div><h3>Basic literacy is not universal</h3><p>At least 739 million adults lack basic literacy, almost two-thirds of them women. Sub-Saharan Africa&#x27;s adult rate is 68.5%.</p><p class="src-tag">UNESCO, via a news report</p></div><div><h3>Being in school is not the same as learning</h3><p>In many lower-income countries fewer than 20% of children reach minimum reading proficiency by the end of primary school, and 244 to 272 million children and youth are out of school, depending on the report.</p><p class="src-tag">Our World in Data; UNESCO via a news report</p></div><div><h3>Access to the internet is unequal</h3><p>In 2025 use was 23% in low-income countries against 94% in high-income countries, and 58% in rural areas against 85% in urban areas. Africa trailed Europe by 54 points in 2023.</p><p class="src-tag">ITU; Wikipedia</p></div><div><h3>Being connected is not being served well</h3><p>5G covers 4% of people in low-income countries against 84% in high-income ones, and access is unaffordable in around 60% of low- and middle-income countries.</p><p class="src-tag">ITU, via a summary</p></div></div>
+<h2 id="patterns">What the record shows</h2>
+<p class="note">These are my reading of the entries and my arithmetic, not findings from the sources.</p><div class="pat"><div><h3>The reach of reading took about two centuries</h3><p>From about 1 in 10 in 1820 to about 88% of adults now. The early figures have no named source and count a very basic skill, so the starting point is soft.</p></div><div><h3>The reach of the internet took about twenty years</h3><p>From 16% in 2005 to 74% in 2025. In US homes the internet took nine years to go from 10% to about half, as Chapter 2 shows.</p></div><div><h3>Access and learning are different things</h3><p>Adult literacy is about 88%, yet in many lower-income countries fewer than 20% of children reach minimum reading proficiency by the end of primary school. Mobile subscriptions exceed the world&#x27;s population, yet 2.2 billion people are offline.</p></div><div><h3>The gaps are along income and place</h3><p>Low-income against high-income countries, rural against urban residents, Africa against Europe: in each pair the gap in 2023 or 2025 is between 27 and 71 points, on my subtraction of the figures above.</p></div><div><h3>This chapter measures access, not what people do with it</h3><p>Whether wider access has made people wiser or less so is a different question, which the plan leaves to Chapter 13.</p></div></div>
+<h2 id="limits">What this chapter cannot show</h2>
+<ul class="plain"><li>The measures are literacy, schooling and connections. They say nothing about how much people know, how well they judge what they read, or what they use the connection for.</li><li>Early literacy estimates rest on signatures and small samples, and the pages that give them name no source.</li><li>Different pages give different figures for the same year: 63% or 67% online in 2023, and 244 or 272 million children out of school.</li><li>Mobile subscriptions count connections, not people. I found no count of unique mobile users.</li><li>Several figures come from news reports of UNESCO and ITU reports, not the reports themselves.</li><li>The data do not fall on 1825 and 1925. The chapter&#x27;s series start in 1820, 1925, 1973 and 2005, so the two-century split cannot be tested here.</li></ul>
+<section class="src" id="sources"><h2>Sources</h2><p class="note">Tag: S is a secondary source such as a data compilation, encyclopedia or news report. No primary report was read directly.</p><h3>Reading and school</h3><ul><li><a href="https://ourworldindata.org/literacy">Our World in Data, Literacy</a><span>S</span></li><li><a href="https://ourworldindata.org/global-education">Our World in Data, Global education</a><span>S</span></li><li><a href="https://articles.findmycollege.com/news/international-literacy-day-2026-60-years-on-739-million-adults-still-lack-basic-skills/">Find My College, International Literacy Day 2026 (UNESCO figures)</a><span>S</span></li><li><a href="https://www.siasat.com/over-272-million-children-out-of-school-across-the-globe-unesco-report-3233629/">Siasat, Over 272 million children out of school (UNESCO)</a><span>S</span></li></ul><h3>Telephones and the internet</h3><ul><li><a href="https://ourworldindata.org/internet">Our World in Data, Internet</a><span>S</span></li><li><a href="https://en.wikipedia.org/wiki/Global_Internet_usage">Wikipedia, Global Internet usage</a><span>S</span></li><li><a href="https://techblog.comsoc.org/?p=1074629">IEEE ComSoc Technology Blog, ITU&#x27;s Facts and Figures 2025</a><span>S</span></li><li><a href="https://en.wikipedia.org/wiki/Mobile_phone">Wikipedia, Mobile phone</a><span>S</span></li><li><a href="https://ourworldindata.org/technology-adoption">Our World in Data, Technology adoption</a><span>S</span></li></ul></section>
+<footer>Several figures are my own arithmetic on the sources' numbers: the gaps between groups (44 and 54 points between Africa and Europe, 71 between low- and high-income countries, 27 between rural and urban residents) and the range of 27 to 71 points. The observations under “What the record shows” are my own reading. The US household figures repeat those in Chapter 1 and the 2025 online figures rest on a summary of the ITU report.</footer>
+</div>

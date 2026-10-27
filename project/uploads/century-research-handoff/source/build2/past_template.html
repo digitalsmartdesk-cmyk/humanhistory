@@ -1,0 +1,188 @@
+<title>Record of Catastrophes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: two scale charts first, then nineteen events in date order grouped by period, then six patterns, limits and sources. */
+:root{
+  --bg:#edf0f2;
+  --surface:#f8fafb;
+  --ink:#18222b;
+  --ink-2:#4a5866;
+  --line:#c9d1d8;
+  --accent:#85540c;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#d9a24a;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#d9a24a;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.65;padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:840px;margin:0 auto}
+a{color:var(--accent)}
+header{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,9.5vw,76px);line-height:1;margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,3.8vw,26px);line-height:1.25;margin:0;color:var(--accent);text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:64ch}
+.asof{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);padding-top:12px;border-top:2px solid var(--accent)}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--font-mono);font-size:12.5px;margin:0 0 8px}
+nav.jump a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);outline:none}
+h2{font-family:var(--font-display);font-weight:600;font-size:26px;line-height:1.15;margin:48px 0 10px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.note{font-size:13px;color:var(--ink-2);max-width:70ch}
+.chart-h{font-family:var(--font-display);font-weight:600;font-size:17px;margin:26px 0 2px}
+.rg{margin:8px 0 6px}
+.rg-axis{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 16px}
+.rg-axis div{position:relative;height:18px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2)}
+.rg-axis div span{position:absolute;top:0;transform:translateX(-50%)}
+.rg-axis div span:first-child{transform:none}
+.rg-axis div span:last-child{transform:translateX(-100%)}
+.rg-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 16px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.rg-lab{font-size:14px;line-height:1.3;min-width:0}
+.rg-lab b{display:block;font-weight:500}
+.rg-lab small{display:block;font-family:var(--font-mono);font-size:11px;color:var(--ink-2)}
+.rg-track{position:relative;height:20px;background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--line)}
+.rg-track.dlog{background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/12.5% 100%}
+.rg-bar{position:absolute;top:3px;bottom:3px;background:var(--accent);min-width:6px}
+.rg-bar.hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 4px,transparent 4px 7px);outline:1px solid var(--accent);outline-offset:-1px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.chip{font:500 13px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.count{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.grp{margin-top:8px}
+.gh{font-family:var(--font-display);font-weight:600;font-size:24px;margin:26px 0 4px;display:flex;align-items:baseline;gap:12px}
+.gh span{font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--ink-2)}
+.list{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--accent)}
+.item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 22px;padding:14px 0 18px;border-bottom:1px solid var(--line);position:relative}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-29px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.when{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:1.4}
+.when small{display:block;font-weight:400;font-size:11.5px;color:var(--accent);margin-top:3px}
+.what{min-width:0}
+.what h3{font-size:20px}
+.meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.what p{max-width:64ch}
+dl.kv{display:grid;grid-template-columns:90px minmax(0,1fr);gap:6px 16px;margin:10px 0 8px}
+dl.kv dt{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+dl.kv dd{margin:0;font-size:14.5px}
+.solid{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+.solid b{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.pat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 26px;margin-top:18px}
+.pat>div{min-width:0;border-top:2px solid var(--accent);padding-top:10px}
+.pat h3{font-size:18px}
+.pat p{font-size:14.5px;margin:4px 0 0}
+ul.plain{margin:10px 0 0;padding-left:20px;max-width:70ch}
+ul.plain li{margin-bottom:8px}
+.src h3{font-size:16px;margin:20px 0 6px}
+.src ul{list-style:none;margin:0;padding:0}
+.src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px}
+.src li a{word-break:break-word}
+.src li span{font-family:var(--font-mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;max-width:72ch}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:620px){
+  .rg-axis{grid-template-columns:minmax(0,1fr)}
+  .rg-axis>span{display:none}
+  .rg-row{grid-template-columns:minmax(0,1fr)}
+  .item{grid-template-columns:minmax(0,1fr)}
+  .list{padding-left:18px}
+  .item:before{left:-25px}
+  dl.kv{grid-template-columns:minmax(0,1fr);gap:0}
+  dl.kv dd{margin-bottom:8px}
+  .src li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="kicker">Evidence brief: the record</div>
+  <h1>Record of catastrophes</h1>
+  <p class="sub">Nineteen events, from a volcano 74,000 years ago to COVID-19</p>
+  <p class="lede">Natural disasters, plagues, wars, famines and industrial accidents in date order. Each entry gives the scale, the cause, how it spread and what followed, and says how reliable the numbers are.</p>
+  <div class="asof">Figures current to 13 October 2026. Most come from Wikipedia summaries; see the notes on source quality at the end.</div>
+</header>
+
+<nav class="jump" aria-label="Sections">
+  <a href="#scale">Scale</a>
+  <a href="#events">The events</a>
+  <a href="#patterns">Patterns</a>
+  <a href="#limits">Limits</a>
+  <a href="#sources">Sources</a>
+</nav>
+
+<h2 id="scale">How large they were</h2>
+<p>Two views of scale. The first counts deaths on a log scale, because the totals differ by a factor of millions. The second shows the share of a population lost, for the events where the sources give a base. Hatched bars mark estimates that are disputed or weakly sourced.</p>
+
+<h3 class="chart-h">Estimated deaths</h3>
+<div class="rg" role="img" aria-label="Range chart of estimated deaths on a log scale for fifteen events, from Chernobyl in the thousands to smallpox in the hundreds of millions">
+@@DEATHS@@
+</div>
+<p class="note">Ranges are the lowest and highest estimates in the sources. The Atlantic slave trade bar adds deaths at sea to deaths inside Africa after capture, which is my arithmetic. The Americas, Toba, Tambora and the Bronze Age collapse have no death totals that I could confirm, so they are left out of this chart. Smallpox covers a whole century.</p>
+
+<h3 class="chart-h">Share of a population lost</h3>
+<div class="rg" role="img" aria-label="Range chart of the share of a population lost, from 80 to 90 percent in the Americas to about 0.2 percent for COVID-19">
+@@SHARES@@
+</div>
+<p class="note">The bases differ, so read each label. A region, a city, a country and the world are not the same denominator. The Bengal and COVID-19 shares are my arithmetic, using about 60.3 million people in Bengal and about 7.8 billion people in the world.</p>
+
+<h2 id="events">The events</h2>
+<div class="filters" id="filters" role="group" aria-label="Filter by type">@@CHIPS@@</div>
+<p class="count" id="count" aria-live="polite">Showing all @@N@@ events</p>
+
+@@EVENTS@@
+
+<h2 id="patterns">What the record shows</h2>
+<div class="pat">@@PATTERNS@@</div>
+
+<h2 id="limits">What this record cannot show</h2>
+<ul class="plain">@@LIMITS@@</ul>
+
+<section class="src" id="sources">
+  <h2>Sources</h2>
+  <p class="note">Tags: P is a primary source or an institution's own page, S is a secondary summary (here, mostly Wikipedia). I read the pages through a summarizing tool, so check figures against the original works before citing.</p>
+@@SOURCES@@
+</section>
+
+<footer>
+  Several statements are general knowledge and were not tied to a fetched source: that the WHO declared COVID-19 a pandemic about three months after the first reports, that the WHO's excess-death figure includes indirect deaths, and the 7.8 billion world population used for the COVID-19 share. The Bengal share, the slave-trade death range and the observations under "What the record shows" are my own arithmetic or reading.
+</footer>
+</div>
+
+<script>
+(function(){
+  var bar=document.getElementById('filters');
+  var chips=bar.querySelectorAll('.chip');
+  var items=document.querySelectorAll('.item');
+  var groups=document.querySelectorAll('.grp');
+  var count=document.getElementById('count');
+  var total=items.length;
+  bar.addEventListener('click',function(ev){
+    var b=ev.target.closest('.chip');
+    if(!b)return;
+    var f=b.getAttribute('data-f');
+    chips.forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false')});
+    var shown=0;
+    items.forEach(function(it){
+      var ok=(f==='all'||it.getAttribute('data-c')===f);
+      it.hidden=!ok;
+      if(ok)shown++;
+    });
+    groups.forEach(function(g){
+      g.hidden=g.querySelectorAll('.item:not([hidden])').length===0;
+    });
+    count.textContent=(f==='all')?('Showing all '+total+' events'):('Showing '+shown+' of '+total+' events');
+  });
+})();
+</script>

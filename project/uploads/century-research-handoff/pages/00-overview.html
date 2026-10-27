@@ -1,0 +1,170 @@
+<title>The Last Hundred Years</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: headline numbers, one chart of share removed, nineteen defenses grouped by area, a section on thinning, patterns, limits, sources. */
+:root{
+  --bg:#edf0f2;
+  --surface:#f8fafb;
+  --ink:#18222b;
+  --ink-2:#4a5866;
+  --line:#c9d1d8;
+  --accent:#2f5559;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#9fcdd1;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#9fcdd1;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.65;padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:840px;margin:0 auto}
+a{color:var(--accent)}
+header{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,9.5vw,76px);line-height:1;margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,3.8vw,26px);line-height:1.25;margin:0;color:var(--accent);text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:64ch}
+.asof{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);padding-top:12px;border-top:2px solid var(--accent)}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--font-mono);font-size:12.5px;margin:0 0 8px}
+nav.jump a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);outline:none}
+h2{font-family:var(--font-display);font-weight:600;font-size:26px;line-height:1.15;margin:48px 0 10px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.note{font-size:13px;color:var(--ink-2);max-width:70ch}
+.chart-h{font-family:var(--font-display);font-weight:600;font-size:17px;margin:26px 0 2px}
+.rg{margin:8px 0 6px}
+.rg-axis{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 16px}
+.rg-axis div{position:relative;height:18px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2)}
+.rg-axis div span{position:absolute;top:0;transform:translateX(-50%)}
+.rg-axis div span:first-child{transform:none}
+.rg-axis div span:last-child{transform:translateX(-100%)}
+.rg-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 16px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.rg-lab{font-size:14px;line-height:1.3;min-width:0}
+.rg-lab b{display:block;font-weight:500}
+.rg-lab small{display:block;font-family:var(--font-mono);font-size:11px;color:var(--ink-2)}
+.rg-track{position:relative;height:20px;background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--line)}
+.rg-track.dlog{background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/12.5% 100%}
+.rg-bar{position:absolute;top:3px;bottom:3px;background:var(--accent);min-width:6px}
+.rg-bar.hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 4px,transparent 4px 7px);outline:1px solid var(--accent);outline-offset:-1px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.chip{font:500 13px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.count{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.grp{margin-top:8px}
+.gh{font-family:var(--font-display);font-weight:600;font-size:24px;margin:26px 0 4px;display:flex;align-items:baseline;gap:12px}
+.gh span{font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--ink-2)}
+.list{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--accent)}
+.item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 22px;padding:14px 0 18px;border-bottom:1px solid var(--line);position:relative}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-29px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.when{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:1.4}
+.when small{display:block;font-weight:400;font-size:11.5px;color:var(--accent);margin-top:3px}
+.what{min-width:0}
+.what h3{font-size:20px}
+.meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.what p{max-width:64ch}
+dl.kv{display:grid;grid-template-columns:90px minmax(0,1fr);gap:6px 16px;margin:10px 0 8px}
+dl.kv dt{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+dl.kv dd{margin:0;font-size:14.5px}
+.solid{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+.solid b{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.pat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 26px;margin-top:18px}
+.pat>div{min-width:0;border-top:2px solid var(--accent);padding-top:10px}
+.pat h3{font-size:18px}
+.pat p{font-size:14.5px;margin:4px 0 0}
+ul.plain{margin:10px 0 0;padding-left:20px;max-width:70ch}
+ul.plain li{margin-bottom:8px}
+.src h3{font-size:16px;margin:20px 0 6px}
+.src ul{list-style:none;margin:0;padding:0}
+.src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px}
+.src li a{word-break:break-word}
+.src li span{font-family:var(--font-mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;max-width:72ch}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 14px 12px;min-width:0}
+.stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:30px;line-height:1.1;overflow-wrap:anywhere}
+.stat span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.thin{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.thin>div{min-width:0;background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+.thin h3{font-size:18px}
+.thin p{font-size:14.5px;margin:4px 0 0}
+.thin .src-tag{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2);margin-top:8px}
+.rg-pt{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--ink)}
+.rg-mark{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed var(--ink)}
+.legend{font-size:12.5px;color:var(--ink-2);margin:2px 0 6px}
+@media (max-width:620px){
+  .rg-axis{grid-template-columns:minmax(0,1fr)}
+  .rg-axis>span{display:none}
+  .rg-row{grid-template-columns:minmax(0,1fr)}
+  .item{grid-template-columns:minmax(0,1fr)}
+  .list{padding-left:18px}
+  .item:before{left:-25px}
+  dl.kv{grid-template-columns:minmax(0,1fr);gap:0}
+  dl.kv dd{margin-bottom:8px}
+  .src li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.snap{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 6px}
+.snap th{text-align:left;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding:6px 14px 6px 0;border-bottom:2px solid var(--accent)}
+.snap td{vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.snap td.m{font-weight:500;width:21%}
+.snap td.na{color:var(--ink-2)}
+.dom{margin-top:34px}
+.dom h3{font-size:22px;margin-bottom:2px}
+.dom .intro{font-size:14.5px;color:var(--ink-2);max-width:68ch;margin:0 0 4px}
+@media (max-width:620px){
+  .snap,.snap tbody,.snap tr,.snap td{display:block;width:auto}
+  .snap thead{display:none}
+  .snap tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .snap td{border:0;padding:2px 0}
+  .snap td.m{width:auto;font-size:15.5px;padding-bottom:2px}
+  .snap td[data-l]::before{content:attr(data-l);display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-top:6px}
+}
+
+.claim{border-left:5px solid var(--accent);background:var(--surface);padding:16px 20px;margin:14px 0 8px;max-width:72ch}
+.claim .tag{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);margin:0 0 6px}
+.claim p.q{font-family:var(--font-display);font-size:21px;line-height:1.4;margin:0;color:var(--ink)}
+.claim p.s{font-size:14.5px;color:var(--ink-2);margin:10px 0 0}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Project overview</div>
+  <h1>The last hundred years</h1>
+  <p class="sub">Seventeen chapters on what a century of advancement has done to humanity</p>
+  <p class="lede">From daily life and health to catastrophe, defenses, the living world and how people live, ending with the hypothesis tested and the open items to watch.</p>
+  <div class="asof">Index of the chapters as published on 28 October 2026.</div>
+</header>
+<nav class="jump" aria-label="Sections"><a href="#claim">The question</a><a href="#chapters">Chapters</a><a href="#support">Supporting pages</a><a href="#reading">Where it stands</a><a href="#limits">Limits</a></nav>
+<h2 id="claim">The question</h2>
+<p>This project asks what the last 100 years of advancement have done to humanity, including whether they left it more exposed to catastrophe than before. The chapters gather evidence on both sides, and only the sixteenth states and tests the hypothesis.</p>
+<div class="claim"><p class="tag">The hypothesis</p><p class="q">Humanity has made itself vulnerable to catastrophic outcomes through the last 100 years of advancement, unlike any other 100 years of advancement in known history.</p><p class="s">Tested in Chapter 16 against the evidence in the other chapters.</p></div><div class="stats"><div class="stat"><b>17</b><span>chapters in six parts, each ending with its own limits and sources</span></div><div class="stat"><b>3</b><span>supporting pages: the industrial timeline and two centuries of science</span></div><div class="stat"><b>Not supported</b><span>the claim that this century has had the worst realised losses, on share of people lost (Chapter 16)</span></div><div class="stat"><b>Supported in kind</b><span>the claim that human-made exposure now reaches the whole world, with global-scale harm also found in the past (Chapter 16)</span></div></div>
+<h2 id="chapters">The chapters</h2>
+<p>Seventeen chapters in six parts. Each title links to its page.</p>
+<section class="grp"><h3 class="gh">Part 1 · The century <span>2 chapters</span></h3><ol class="list"><li class="item"><div class="when">Chapter 1</div><div class="what"><h3><a href="https://claude.ai/artifact/7qSxXu33DCKP9HftfxH3Dc">The appearance of human life</a></h3><p>Six areas of daily life compared at about 1825, 1925 and 2025. The premise that life looked much the same in 1925 does not hold as stated for the United States, and holds better for parts of Asia and Africa. The biggest change after 1925 is in health and numbers (my reading).</p></div></li><li class="item"><div class="when">Chapter 2</div><div class="what"><h3><a href="https://claude.ai/artifact/Ut88jmTViQUCc7jbfrZd1b">The pace of change</a></h3><p>The pace of change rose over two centuries, but the measures do not show a break at 1925: output stepped up near 1900, population after 1926 and energy use after 1950 (my reading).</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Part 2 · Gains <span>3 chapters</span></h3><ol class="list"><li class="item"><div class="when">Chapter 3</div><div class="what"><h3><a href="https://claude.ai/artifact/79PSVNjqzAqJkcuARmF5wg">Life and health</a></h3><p>Children dying before 15 fell from about 1 in 2 to 4%, and life expectancy rose from 32 to 71 (1900–2021). Drug-resistant infection is one of the setbacks it records.</p></div></li><li class="item"><div class="when">Chapter 4</div><div class="what"><h3><a href="https://claude.ai/artifact/M7CcrBF81bKsbmrs98iQCq">Food, wealth and comfort</a></h3><p>Food supply rose from 2,184 to 3,006 kilocalories per person per day, and French working hours fell by more than half. 673 million still faced hunger in 2024.</p></div></li><li class="item"><div class="when">Chapter 5</div><div class="what"><h3><a href="https://claude.ai/artifact/1yPcv32YXUWW2jYuRESSNG">Knowledge and connection</a></h3><p>Adult literacy rose from about 1 in 10 people to about 88%, and internet use from 16% to 74%. 739 million adults lack basic literacy and 2.2 billion are offline.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Part 3 · Exposure <span>3 chapters</span></h3><ol class="list"><li class="item"><div class="when">Chapter 6</div><div class="what"><h3><a href="https://claude.ai/artifact/SJ3PdrbEz1U14tZftAh7p5">A century of vulnerability</a></h3><p>Six features of exposure: planetary reach, speed, irreversibility, concentrated dependence, few hands and thin margins. 12,187 warheads, seven of nine planetary boundaries transgressed, and about half of food resting on synthetic nitrogen.</p></div></li><li class="item"><div class="when">Chapter 7</div><div class="what"><h3><a href="https://claude.ai/artifact/21WkXcCqVbi5EXSyYgitEL">The record of catastrophes</a></h3><p>Nineteen events. In share terms the worst losses came earlier: the Black Death took 30–60% of Europe, against 3.0–3.7% of the world in the Second World War.</p></div></li><li class="item"><div class="when">Chapter 8</div><div class="what"><h3><a href="https://claude.ai/artifact/GgfHSBg2uJFXYtAS7QzhRU">Defenses built</a></h3><p>Nineteen systems. Large measured falls where the hazard is known and countable, and several defenses weakening: New START expired, the US left the WHO, the pandemic annex is unfinished.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Part 4 · Beyond humans <span>3 chapters</span></h3><ol class="list"><li class="item"><div class="when">Chapter 9</div><div class="what"><h3><a href="https://claude.ai/artifact/B7jDvigTvytm2ioPUncLbZ">Nature at risk</a></h3><p>Monitored wildlife populations fell by an average of 73% from 1970 to 2022, about a million species are threatened, and 84% of reef area met bleaching-level heat in 2023–2025.</p></div></li><li class="item"><div class="when">Chapter 10</div><div class="what"><h3><a href="https://claude.ai/artifact/NUTcZosxAhd7YLJJ5s85BQ">Nature&#x27;s catastrophes</a></h3><p>Mass extinctions removed about 70–85% of species at a time, and recovery took roughly 6 to 75 million years.</p></div></li><li class="item"><div class="when">Chapter 11</div><div class="what"><h3><a href="https://claude.ai/artifact/Xdv42PDasn3ETek7T5x8oB">Nature defended</a></h3><p>17.6% of land and 8.4% of ocean protected against 30% targets. Humpback whales recovered to about 93% of their pre-whaling size, and fewer than half of aligned national targets are on track.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Part 5 · How people live <span>4 chapters</span></h3><ol class="list"><li class="item"><div class="when">Chapter 12</div><div class="what"><h3><a href="https://claude.ai/artifact/SNJrCBY4SongkYejYANqSt">Work, inequality and population</a></h3><p>Child labour fell from 246 million to about 138 million. The richest 10% take 53% of income and the poorer half 8%. Population is projected to peak near 10.3 billion in the 2080s.</p></div></li><li class="item"><div class="when">Chapter 13</div><div class="what"><h3><a href="https://claude.ai/artifact/PtP9Rvnfn7VatTSYdnv6Y9">Literacy, wisdom and knowledge</a></h3><p>Measured scores rose for decades and now show reversals in several countries. Wisdom has no agreed measure, and the chapter gives no verdict.</p></div></li><li class="item"><div class="when">Chapter 14</div><div class="what"><h3><a href="https://claude.ai/artifact/9RZVCJrqYMM9PkrBB3YXEp">Mind and wellbeing</a></h3><p>1.2 billion people live with a mental disorder, one third of those with depression get formal care, and 1 in 6 people are affected by loneliness.</p></div></li><li class="item"><div class="when">Chapter 15</div><div class="what"><h3><a href="https://claude.ai/artifact/Q1B1ZSSMUHxtXhi72heMg4">Power and governance</a></h3><p>By V-Dem&#x27;s 2026 count 74% of people live in autocracies and democracy for the average person is back at its 1978 level. Freedom House reports 20 years of decline.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Part 6 · Weighing <span>2 chapters</span></h3><ol class="list"><li class="item"><div class="when">Chapter 16</div><div class="what"><h3><a href="https://claude.ai/artifact/6Q4xocHoggdkKuRGv4HUEa">The comparison</a></h3><p>The hypothesis, stated and tested six ways. Realised loss: not supported. Worst case: supported as a model result only. Reach: supported in kind. Reversibility and defenses: mixed. Dependence: cannot be compared.</p></div></li><li class="item"><div class="when">Chapter 17</div><div class="what"><h3><a href="https://claude.ai/artifact/VLRHDtiF4NdbNchLpzeUBN">What would change the balance</a></h3><p>Nine open items with their latest checked status and what to watch, from the pandemic annex and nuclear limits to a century-by-century tally nobody has yet built.</p></div></li></ol></section>
+<h2 id="support">Supporting pages</h2>
+<div class="thin"><div><h3><a href="https://claude.ai/artifact/EZXNpDinrBjMrY6HYzkxiS">Industrial breakthroughs</a></h3><p>A timeline of the major industrial breakthroughs in human history.</p></div><div><h3><a href="https://claude.ai/artifact/NJViUDxqQQfGjmSwVynETQ">Scientific progress, 1825–1925</a></h3><p>A century of science, from the first railways to the eve of quantum mechanics.</p></div><div><h3><a href="https://claude.ai/artifact/32HDo7P7ycKcZG6obVjPug">Scientific progress, 1925–2025</a></h3><p>The following century of science.</p></div></div>
+<h2 id="reading">Where it stands</h2>
+<p class="note">This is my reading of the chapters, not a finding from the sources.</p><div class="pat"><div><h3>The hypothesis is only partly borne out</h3><p>The evidence does not show that this century has been the worst in realised loss. It does show exposure at the scale of the whole world that none of the 19 earlier events I selected matches.</p></div><div><h3>The gains are large and counted</h3><p>Health, food, literacy and connection improved by wide margins, and Chapters 3 to 5 give the figures. The strains in Chapters 12 to 15 remain alongside them.</p></div><div><h3>The two sides are different kinds of evidence</h3><p>Gains and past losses are counted. Much of the exposure is modelled or judged, so the two cannot be added into one balance.</p></div><div><h3>A narrower claim fits better than the wording</h3><p>The best-supported form is that this is the first century in my record in which human choices carry measured or modelled effects at the scale of the whole world. That is my judgment, and the original claim can still be kept and tested.</p></div></div>
+<h2 id="limits">What this overview cannot show</h2>
+<ul class="plain"><li>Every chapter lists its own limits and the strength of each source, and those limits carry into this overview.</li><li>Most figures are secondhand: I read pages through a summarizing tool, so check figures against the originals before citing them.</li><li>Chapter 7 relies mostly on Wikipedia, and several later chapters rely on news reports of institutional reports.</li><li>The results in Chapters 16 and 17 are my judgment, not findings from the sources.</li><li>Chapters 12 to 15 rarely reach back to 1925, so for those the two centuries cannot be compared.</li><li>Figures are current to dates between 13 and 28 October 2026, and several items, such as nuclear limits and the pandemic annex, are still moving.</li></ul>
+
+<footer>The headline for each chapter is a summary of that chapter's page. The statements under “Where it stands” are my own reading.</footer>
+</div>

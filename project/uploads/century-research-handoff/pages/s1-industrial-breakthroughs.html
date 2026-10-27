@@ -1,0 +1,148 @@
+<title>Industrial Breakthroughs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow vertical rail, era filter bar on top, dates in a mono gutter, impact tags on the right of each entry. */
+:root{
+  --bg:#eceff2;
+  --surface:#f7f9fa;
+  --ink:#18222b;
+  --ink-2:#4a5866;
+  --line:#c9d1d8;
+  --e1:#6a5fc1;
+  --e2:#c2562b;
+  --e3:#16876a;
+  --e4:#2b6fb5;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;
+    --e1:#9d94ee;--e2:#ee8a63;--e3:#46c4a0;--e4:#6aaaf0;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;
+  --e1:#9d94ee;--e2:#ee8a63;--e3:#46c4a0;--e4:#6aaaf0;color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.6;padding-inline:16px;padding-block:40px 64px}
+.wrap{max-width:780px;margin:0 auto}
+header{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(34px,7vw,52px);line-height:1.05;margin:0;text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:60ch}
+.stats{display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--font-mono);font-size:12.5px;color:var(--ink-2);padding-top:12px;border-top:1px solid var(--line)}
+.stats b{color:var(--ink);font-weight:500}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.chip{font:500 13px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.chip i{width:9px;height:9px;border-radius:50%;background:var(--c,var(--ink-2));display:inline-block}
+.chip[aria-pressed="true"]{border-color:var(--c,var(--ink));box-shadow:inset 0 0 0 1px var(--c,var(--ink))}
+.chip:focus-visible,.item:focus-visible{outline:2px solid var(--e4);outline-offset:2px}
+.era-head{margin:0 0 4px;padding-block:16px 8px}
+.era-head h2{font-family:var(--font-display);font-weight:600;font-size:20px;margin:0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.era-head h2 span{font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--ink-2)}
+.list{list-style:none;margin:0 0 8px;padding:0 0 0 20px;border-left:2px solid var(--c)}
+.item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 20px;padding:14px 0 16px;border-bottom:1px solid var(--line);position:relative}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-27px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--c);border:3px solid var(--bg)}
+.when{font-family:var(--font-mono);font-size:13px;font-weight:500;line-height:1.4}
+.when small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-2);margin-top:2px}
+.what{min-width:0}
+.what h3{font-family:var(--font-display);font-weight:600;font-size:18px;line-height:1.25;margin:0 0 4px}
+.what p{margin:0;color:var(--ink-2);max-width:58ch}
+.tag{display:inline-block;margin-top:8px;font-family:var(--font-mono);font-size:11.5px;color:var(--c);border:1px solid var(--c);border-radius:4px;padding:1px 8px}
+.e1{--c:var(--e1)}.e2{--c:var(--e2)}.e3{--c:var(--e3)}.e4{--c:var(--e4)}
+footer{margin-top:32px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:560px){
+  .item{grid-template-columns:minmax(0,1fr)}
+  .list{padding-left:16px}
+  .item:before{left:-23px}
+}
+@media (prefers-reduced-motion:no-preference){.chip{transition:border-color .15s,box-shadow .15s}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="kicker">Human history, 2.6 million years</div>
+  <h1>Industrial breakthroughs</h1>
+  <p class="lede">Twenty inventions and processes that changed how people make things, from flaked stone to connected factories, grouped into four eras.</p>
+  <div class="stats">
+    <span><b>20</b> breakthroughs</span>
+    <span><b>13</b> in the last 315 years</span>
+    <span><b>4</b> eras</span>
+  </div>
+</header>
+
+<div class="filters" id="filters" role="group" aria-label="Filter by era">
+  <button class="chip" type="button" data-era="all" aria-pressed="true">All eras</button>
+  <button class="chip" type="button" data-era="e1" style="--c:var(--e1)" aria-pressed="false"><i></i>Ancient foundations</button>
+  <button class="chip" type="button" data-era="e2" style="--c:var(--e2)" aria-pressed="false"><i></i>Steam and mechanization</button>
+  <button class="chip" type="button" data-era="e3" style="--c:var(--e3)" aria-pressed="false"><i></i>Steel, electricity, mass production</button>
+  <button class="chip" type="button" data-era="e4" style="--c:var(--e4)" aria-pressed="false"><i></i>Digital</button>
+</div>
+
+<section class="era e1" data-era="e1">
+  <div class="era-head"><h2>Ancient foundations <span>2.6 million years ago to 1440s</span></h2></div>
+  <ol class="list">
+    <li class="item e1"><div class="when">c. 2.6 million BCE<small>≈ 2,600,000 yrs ago</small></div><div class="what"><h3>Stone tools</h3><p>Early hominins strike flakes from cores to make cutting edges, the first manufactured technology.</p><span class="tag">Tool making</span></div></li>
+    <li class="item e1"><div class="when">c. 400,000 BCE<small>≈ 400,000 yrs ago</small></div><div class="what"><h3>Regular use of fire</h3><p>Cooking and warmth first, then the heat later used for pottery kilns and metal smelting.</p><span class="tag">Energy</span></div></li>
+    <li class="item e1"><div class="when">c. 10,000 BCE<small>≈ 12,000 yrs ago</small></div><div class="what"><h3>Agriculture</h3><p>Crop farming and animal herding produce food surpluses, permanent settlements, and specialized trades.</p><span class="tag">Food</span></div></li>
+    <li class="item e1"><div class="when">c. 3500 BCE<small>≈ 5,500 yrs ago</small></div><div class="what"><h3>Bronze and the wheel</h3><p>Copper-tin alloys give harder tools, and wheeled carts and potter's wheels speed up trade and crafts.</p><span class="tag">Materials</span></div></li>
+    <li class="item e1"><div class="when">c. 1200 BCE<small>≈ 3,200 yrs ago</small></div><div class="what"><h3>Iron smelting</h3><p>Iron ore is more common than tin, so tougher, cheaper tools and plows spread widely.</p><span class="tag">Materials</span></div></li>
+    <li class="item e1"><div class="when">c. 105 CE<small>≈ 1,900 yrs ago</small></div><div class="what"><h3>Papermaking</h3><p>Plant-fiber paper, traditionally credited to Cai Lun in China, becomes a cheap medium for records and books.</p><span class="tag">Information</span></div></li>
+    <li class="item e1"><div class="when">1440s<small>≈ 590 yrs ago</small></div><div class="what"><h3>Movable-type printing press</h3><p>Gutenberg's press makes books affordable and standardizes the spread of knowledge across Europe.</p><span class="tag">Information</span></div></li>
+  </ol>
+</section>
+
+<section class="era e2" data-era="e2">
+  <div class="era-head"><h2>Steam and mechanization <span>1712 to 1830s</span></h2></div>
+  <ol class="list">
+    <li class="item e2"><div class="when">1712 to 1776<small>≈ 315 yrs ago</small></div><div class="what"><h3>Steam engine</h3><p>Newcomen's engine pumps mines, and Watt's separate condenser makes steam power efficient enough for factories.</p><span class="tag">Energy</span></div></li>
+    <li class="item e2"><div class="when">1764 to 1790s<small>≈ 262 yrs ago</small></div><div class="what"><h3>Mechanized textiles</h3><p>The spinning jenny, water frame, and power loom move cloth production from homes into mills.</p><span class="tag">Factory system</span></div></li>
+    <li class="item e2"><div class="when">1825<small>≈ 201 yrs ago</small></div><div class="what"><h3>Steam railways</h3><p>The Stockton and Darlington line opens the era of locomotive freight and passenger travel.</p><span class="tag">Transport</span></div></li>
+  </ol>
+</section>
+
+<section class="era e3" data-era="e3">
+  <div class="era-head"><h2>Steel, electricity, mass production <span>1856 to 1913</span></h2></div>
+  <ol class="list">
+    <li class="item e3"><div class="when">1856<small>≈ 170 yrs ago</small></div><div class="what"><h3>Bessemer steel process</h3><p>Blowing air through molten iron makes steel cheap enough for rails, ships, bridges, and skyscrapers.</p><span class="tag">Materials</span></div></li>
+    <li class="item e3"><div class="when">1882<small>≈ 144 yrs ago</small></div><div class="what"><h3>Central electric power stations</h3><p>Edison's Pearl Street Station in New York and a London plant begin selling electricity to customers, so factories can drop belt-driven shafts.</p><span class="tag">Energy</span></div></li>
+    <li class="item e3"><div class="when">1886<small>≈ 140 yrs ago</small></div><div class="what"><h3>Automobile</h3><p>Benz's Patent-Motorwagen puts the internal combustion engine into a practical road vehicle.</p><span class="tag">Transport</span></div></li>
+    <li class="item e3"><div class="when">1913<small>≈ 113 yrs ago</small></div><div class="what"><h3>Moving assembly line</h3><p>Ford's Highland Park plant cuts Model T assembly from over 12 hours to about 90 minutes.</p><span class="tag">Mass production</span></div></li>
+    <li class="item e3"><div class="when">1909 to 1913<small>≈ 113 yrs ago</small></div><div class="what"><h3>Haber-Bosch ammonia synthesis</h3><p>Fixing nitrogen from air at industrial scale gives the world synthetic fertilizer and supports modern population growth.</p><span class="tag">Chemicals</span></div></li>
+  </ol>
+</section>
+
+<section class="era e4" data-era="e4">
+  <div class="era-head"><h2>Digital <span>1947 to today</span></h2></div>
+  <ol class="list">
+    <li class="item e4"><div class="when">1947 to 1958<small>≈ 79 yrs ago</small></div><div class="what"><h3>Transistor and integrated circuit</h3><p>Solid-state switches replace vacuum tubes, then get packed onto chips, making computers small and cheap.</p><span class="tag">Electronics</span></div></li>
+    <li class="item e4"><div class="when">1956<small>≈ 70 yrs ago</small></div><div class="what"><h3>Shipping container</h3><p>Malcom McLean's first container voyage standardizes cargo and cuts the cost of moving goods between continents.</p><span class="tag">Logistics</span></div></li>
+    <li class="item e4"><div class="when">1961<small>≈ 65 yrs ago</small></div><div class="what"><h3>Industrial robot</h3><p>The Unimate arm starts work at a General Motors plant, handling hot die-cast parts.</p><span class="tag">Automation</span></div></li>
+    <li class="item e4"><div class="when">1990s<small>≈ 30 yrs ago</small></div><div class="what"><h3>Commercial internet</h3><p>Networked ordering, tracking, and design tools let companies coordinate suppliers worldwide.</p><span class="tag">Information</span></div></li>
+    <li class="item e4"><div class="when">2010s to now<small>≈ 10 yrs ago</small></div><div class="what"><h3>AI and connected factories</h3><p>Sensors and machine learning drive predictive maintenance, quality inspection, and adaptive production planning.</p><span class="tag">Automation</span></div></li>
+  </ol>
+</section>
+
+<footer>Dates for prehistoric and ancient items are approximate and often disputed. Years-ago figures are measured from 2026.</footer>
+</div>
+
+<script>
+(function(){
+  var bar=document.getElementById('filters');
+  var sections=document.querySelectorAll('section.era');
+  var chips=bar.querySelectorAll('.chip');
+  bar.addEventListener('click',function(e){
+    var b=e.target.closest('.chip');
+    if(!b)return;
+    var era=b.getAttribute('data-era');
+    chips.forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false')});
+    sections.forEach(function(s){s.hidden=!(era==='all'||s.getAttribute('data-era')===era)});
+  });
+})();
+</script>

@@ -1,0 +1,167 @@
+<title>Literacy, Wisdom and Knowledge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: headline numbers, one chart of share removed, nineteen defenses grouped by area, a section on thinning, patterns, limits, sources. */
+:root{
+  --bg:#edf0f2;
+  --surface:#f8fafb;
+  --ink:#18222b;
+  --ink-2:#4a5866;
+  --line:#c9d1d8;
+  --accent:#5b6b2f;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#c9d98a;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#c9d98a;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.65;padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:840px;margin:0 auto}
+a{color:var(--accent)}
+header{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,9.5vw,76px);line-height:1;margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,3.8vw,26px);line-height:1.25;margin:0;color:var(--accent);text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:64ch}
+.asof{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);padding-top:12px;border-top:2px solid var(--accent)}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--font-mono);font-size:12.5px;margin:0 0 8px}
+nav.jump a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);outline:none}
+h2{font-family:var(--font-display);font-weight:600;font-size:26px;line-height:1.15;margin:48px 0 10px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.note{font-size:13px;color:var(--ink-2);max-width:70ch}
+.chart-h{font-family:var(--font-display);font-weight:600;font-size:17px;margin:26px 0 2px}
+.rg{margin:8px 0 6px}
+.rg-axis{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 16px}
+.rg-axis div{position:relative;height:18px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2)}
+.rg-axis div span{position:absolute;top:0;transform:translateX(-50%)}
+.rg-axis div span:first-child{transform:none}
+.rg-axis div span:last-child{transform:translateX(-100%)}
+.rg-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 16px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.rg-lab{font-size:14px;line-height:1.3;min-width:0}
+.rg-lab b{display:block;font-weight:500}
+.rg-lab small{display:block;font-family:var(--font-mono);font-size:11px;color:var(--ink-2)}
+.rg-track{position:relative;height:20px;background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--line)}
+.rg-track.dlog{background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/12.5% 100%}
+.rg-bar{position:absolute;top:3px;bottom:3px;background:var(--accent);min-width:6px}
+.rg-bar.hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 4px,transparent 4px 7px);outline:1px solid var(--accent);outline-offset:-1px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.chip{font:500 13px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.count{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.grp{margin-top:8px}
+.gh{font-family:var(--font-display);font-weight:600;font-size:24px;margin:26px 0 4px;display:flex;align-items:baseline;gap:12px}
+.gh span{font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--ink-2)}
+.list{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--accent)}
+.item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 22px;padding:14px 0 18px;border-bottom:1px solid var(--line);position:relative}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-29px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.when{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:1.4}
+.when small{display:block;font-weight:400;font-size:11.5px;color:var(--accent);margin-top:3px}
+.what{min-width:0}
+.what h3{font-size:20px}
+.meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.what p{max-width:64ch}
+dl.kv{display:grid;grid-template-columns:90px minmax(0,1fr);gap:6px 16px;margin:10px 0 8px}
+dl.kv dt{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+dl.kv dd{margin:0;font-size:14.5px}
+.solid{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+.solid b{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.pat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 26px;margin-top:18px}
+.pat>div{min-width:0;border-top:2px solid var(--accent);padding-top:10px}
+.pat h3{font-size:18px}
+.pat p{font-size:14.5px;margin:4px 0 0}
+ul.plain{margin:10px 0 0;padding-left:20px;max-width:70ch}
+ul.plain li{margin-bottom:8px}
+.src h3{font-size:16px;margin:20px 0 6px}
+.src ul{list-style:none;margin:0;padding:0}
+.src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px}
+.src li a{word-break:break-word}
+.src li span{font-family:var(--font-mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;max-width:72ch}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 14px 12px;min-width:0}
+.stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:30px;line-height:1.1;overflow-wrap:anywhere}
+.stat span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.thin{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.thin>div{min-width:0;background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+.thin h3{font-size:18px}
+.thin p{font-size:14.5px;margin:4px 0 0}
+.thin .src-tag{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2);margin-top:8px}
+.rg-pt{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--ink)}
+.rg-mark{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed var(--ink)}
+.legend{font-size:12.5px;color:var(--ink-2);margin:2px 0 6px}
+@media (max-width:620px){
+  .rg-axis{grid-template-columns:minmax(0,1fr)}
+  .rg-axis>span{display:none}
+  .rg-row{grid-template-columns:minmax(0,1fr)}
+  .item{grid-template-columns:minmax(0,1fr)}
+  .list{padding-left:18px}
+  .item:before{left:-25px}
+  dl.kv{grid-template-columns:minmax(0,1fr);gap:0}
+  dl.kv dd{margin-bottom:8px}
+  .src li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.snap{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 6px}
+.snap th{text-align:left;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding:6px 14px 6px 0;border-bottom:2px solid var(--accent)}
+.snap td{vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.snap td.m{font-weight:500;width:21%}
+.snap td.na{color:var(--ink-2)}
+.dom{margin-top:34px}
+.dom h3{font-size:22px;margin-bottom:2px}
+.dom .intro{font-size:14.5px;color:var(--ink-2);max-width:68ch;margin:0 0 4px}
+@media (max-width:620px){
+  .snap,.snap tbody,.snap tr,.snap td{display:block;width:auto}
+  .snap thead{display:none}
+  .snap tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .snap td{border:0;padding:2px 0}
+  .snap td.m{width:auto;font-size:15.5px;padding-bottom:2px}
+  .snap td[data-l]::before{content:attr(data-l);display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-top:6px}
+}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Chapter 13 · How people live</div>
+  <h1>Have people dumbed down?</h1>
+  <p class="sub">Literacy, test scores, reading and wisdom, with evidence on both sides of the question</p>
+  <p class="lede">Access to knowledge has spread widely. Whether people have become wiser or less so is a different question, and wisdom has no accepted measure. This chapter sets the measurable evidence on each side and does not give a verdict.</p>
+  <div class="asof">Figures current to 27 October 2026. Several come from news reports of OECD and other studies.</div>
+</header>
+<nav class="jump" aria-label="Sections"><a href="#scale">At a glance</a><a href="#entries">The evidence</a><a href="#strains">Where it is weak</a><a href="#patterns">What it shows</a><a href="#limits">Limits</a><a href="#sources">Sources</a></nav>
+<h2 id="scale">The evidence at a glance</h2>
+<div class="stats"><div class="stat"><b>About 3 points a decade</b><span>gain in test scores of general ability through the 20th century in the United States, the Flynn effect</span></div><div class="stat"><b>− 15 points</b><span>fall in the average PISA mathematics score between 2018 and 2022, about three-quarters of a year of learning</span></div><div class="stat"><b>Over 40%</b><span>fall in the share of Americans reading for pleasure on a given day, 2003 to 2023</span></div><div class="stat"><b>70%</b><span>of 10-year-olds in low- and middle-income countries could not read and understand a simple text in 2022</span></div></div><h3 class="chart-h">Gains in test scores, IQ points a decade</h3>
+<p class="note">Estimates of the Flynn effect from different tests, countries and periods. The Dutch bar is my division of 21 points over 30 years. The hatched Danish bar is &#x27;nearly 2&#x27;.</p>
+<div class="rg" role="img" aria-label="Bar chart of Flynn effect gains in points per decade for several tests and countries, from 1.2 to 7"><div class="rg-axis"><span></span><div><span style="left:0.000%">0</span><span style="left:25.000%">2</span><span style="left:50.000%">4</span><span style="left:75.000%">6</span><span style="left:100.000%">8</span></div></div><div class="rg-row"><div class="rg-lab"><b>US, Wechsler scales</b><small>About 3 points a decade, 20th century</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:37.50%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>US, Trahan et al. 2014</b><small>2.93 points a decade</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:36.62%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Dutch conscripts, 1952–1982</b><small>21 points in 30 years</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:87.50%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Denmark, 1959–1979</b><small>About 3</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:37.50%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Denmark, 1979–1989</b><small>Nearly 2</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:25.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Denmark, 1989–1998</b><small>About 1.3</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:16.25%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>WAIS-5 comparison, Winter et al. 2024</b><small>About 1.2, against about 3 expected</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:15.00%"></i></div></div></div><h3 class="chart-h">Fall in PISA mathematics, 2018 to 2022, points</h3>
+<p class="note">As reported. The second bar is hatched because the report gives &#x27;a fall of 25 points or more&#x27;.</p>
+<div class="rg" role="img" aria-label="Bar chart of the fall in PISA mathematics scores between 2018 and 2022"><div class="rg-axis"><span></span><div><span style="left:0.000%">0</span><span style="left:33.333%">10</span><span style="left:66.667%">20</span><span style="left:100.000%">30</span></div></div><div class="rg-row"><div class="rg-lab"><b>Average, mathematics, 2018 to 2022</b><small>A fall of 15 points; 20 points is about one year of learning</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:50.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Germany, Iceland, Netherlands</b><small>Each fell 25 points or more</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:83.33%"></i></div></div></div><h3 class="chart-h">Learning poverty: 10-year-olds unable to read a simple text</h3>
+<p class="note">World Bank and UNICEF estimates for low- and middle-income countries. Hatched bars are predictions.</p>
+<div class="rg" role="img" aria-label="Bar chart of learning poverty rates from 53 percent in 2015 to 70 percent in 2022 and 89 percent in sub-Saharan Africa"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:25.000%">25%</span><span style="left:50.000%">50%</span><span style="left:75.000%">75%</span><span style="left:100.000%">100%</span></div></div><div class="rg-row"><div class="rg-lab"><b>2015</b><small>53%, an earlier estimate</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:53.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Before the pandemic</b><small>57%, on revised data</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:57.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2022</b><small>70% in low- and middle-income countries</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:70.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Sub-Saharan Africa, 2022</b><small>89%</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:89.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Latin America and the Caribbean</b><small>From about 50% to a predicted 80%</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:80.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>South Asia</b><small>From 60% to a predicted 78%</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:78.00%"></i></div></div></div>
+<h2 id="entries">The evidence</h2>
+<p>Eight entries in three groups: measured gains, signs of slipping, and what cannot be measured. Each gives the scale, the cause where the source gives one and how solid the figures are.</p>
+<section class="grp"><h3 class="gh">Measured gains <span>2 entries</span></h3><ol class="list"><li class="item"><div class="when">20th century to mid-1990s<small>Test scores</small></div><div class="what"><h3>Scores on intelligence tests rose for decades</h3><p>In the United States average scores on the Wechsler scales rose by about three IQ points a decade, and Trahan and colleagues put it at 2.93 a decade in 2014. Dutch conscripts gained 21 points over 30 years, 1952 to 1982, and British children on Raven&#x27;s Progressive Matrices gained 14 points from 1942 to 2008. Gains were continuous and roughly linear from the earliest testing to the mid-1990s.</p><dl class="kv"><dt>Proposed causes</dt><dd>Schooling, at 1 to 5 points for each extra year, nutrition, falling lead exposure, less infectious disease and a more visual, abstract environment. No single cause is agreed.</dd><dt>Meaning</dt><dd>Whether intelligence itself has risen is still controversial, the gains may reflect test-specific skills, and school-content subtests such as vocabulary and arithmetic changed little.</dd></dl><p class="solid"><b>How solid</b> From Wikipedia&#x27;s article on the Flynn effect, which cites the studies. Gains were concentrated at the lower end in some studies, and the sizes differ between tests and countries.</p></div></li><li class="item"><div class="when">1820 to now<small>Reading</small></div><div class="what"><h3>Reading became the norm</h3><p>About 1 in 10 people could read and write in 1820, and about 88% of adults and 93% of 15 to 24 year olds can now, on UNESCO figures as reported. Chapter 5 gives the series, the definitions and the 739 million adults who still lack basic literacy.</p><p class="solid"><b>How solid</b> Repeats Chapter 5, where the early figures are described as soft and the UNESCO figures come from a news report.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Signs of slipping <span>5 entries</span></h3><ol class="list"><li class="item"><div class="when">1962 to 2008<small>Reversal of the gains</small></div><div class="what"><h3>In several rich countries the rise stopped, then fell</h3><p>In Norway gains in general intelligence among conscripts stopped after the mid-1990s and numerical reasoning declined. Bratsberg and Rogeberg found that for men born 1962 to 1991 the rise, its turning point and the decline all appear within families, and they found no support for explanations based on genes or on factors that differ between families. In Denmark conscripts gained about 3 points a decade from 1959 to 1979 and about 1.3 from 1989 to 1998, then lost about as much between 1998 and 2004. In the UK the average 14 year old&#x27;s score fell by more than two points between 1980 and 2008.</p><dl class="kv"><dt>Not everywhere</dt><dd>Winter and colleagues found gains of about 1.2 points a decade in a 2024 comparison, rather than the 3 expected. Gonthier and colleagues argue there is no negative Flynn effect in France, and that tests based on cultural knowledge can misstate variation.</dd><dt>Australia</dt><dd>No rise in the scores of 6 to 12 year olds from 1975 to 2003.</dd></dl><p class="solid"><b>How solid</b> Norway&#x27;s data cover only men, with women&#x27;s scores approximated from years of schooling. The page gives no figures for Finland or France and the reversals are for specific tests and cohorts.</p></div></li><li class="item"><div class="when">2018 to 2022<small>School tests</small></div><div class="what"><h3>PISA 2022</h3><p>The average international score in mathematics fell by 15 points between 2018 and 2022, about three-quarters of a year of learning, and reading fell by about half a year. Science stayed about the same. The survey covered 81 countries and regions, and Germany, Iceland and the Netherlands each fell by 25 points or more in mathematics. Singapore ranked first.</p><dl class="kv"><dt>Cause</dt><dd>School closures in the pandemic are likely part of it, but the OECD said it is not just about Covid and that long-term issues in education systems are also to blame. The report does not say how much belongs to each.</dd></dl><p class="solid"><b>How solid</b> From a news report of the OECD&#x27;s results. It gives no point figure for reading and does not say whether the average is for the OECD alone.</p></div></li><li class="item"><div class="when">2012 to 2023<small>Adult skills</small></div><div class="what"><h3>Adults&#x27; literacy and numeracy</h3><p>The OECD&#x27;s second Survey of Adult Skills covered 31 countries and about 160,000 adults aged 16 to 65, with 27 countries also in the first survey. Only Finland and Denmark improved significantly in literacy, and most other countries declined or stayed flat. The lowest 10% fell in most countries while the top 10% rose. About one in five adults can only understand simple texts or do basic arithmetic.</p><dl class="kv"><dt>Who</dt><dd>Declines were larger among low-educated adults. In some places a rising share of foreign-born adults, who score lower, explains part of the fall. Men&#x27;s literacy fell more than women&#x27;s.</dd><dt>Numeracy</dt><dd>Eight countries raised their averages, Finland and Singapore the most.</dd></dl><p class="solid"><b>How solid</b> From a news summary of the OECD&#x27;s press release. I could not read the press release itself, and the summary gives no exact count of countries that declined.</p></div></li><li class="item"><div class="when">2003 to 2023<small>Reading habits</small></div><div class="what"><h3>Reading for pleasure</h3><p>A study of the American Time Use Survey, over 236,000 Americans, found the share reading for pleasure on a given day fell by more than 40% over 20 years, a steady decline of about 3% a year. It was published in iScience in August 2025.</p><p class="solid"><b>How solid</b> A university&#x27;s news release of the study. It gives no starting level and covers the United States only.</p></div></li><li class="item"><div class="when">2022<small>Learning poverty</small></div><div class="what"><h3>Children who cannot read a simple text</h3><p>The World Bank and UNICEF estimated in June 2022 that 70% of 10-year-olds in low- and middle-income countries could not read and understand a simple text, up from 57% before the pandemic. The rate was 89% in sub-Saharan Africa, and was predicted to rise from about 50% to 80% in Latin America and the Caribbean and from 60% to 78% in South Asia.</p><dl class="kv"><dt>Definition</dt><dd>Learning poverty is the share of 10-year-olds who cannot read and understand a simple text.</dd></dl><p class="solid"><b>How solid</b> A UNICEF press release of the estimate. Parts are predictions for the pandemic&#x27;s effect, and the pre-pandemic figure is a revised one against an earlier estimate of 53% for 2015.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">What cannot be measured <span>1 entry</span></h3><ol class="list"><li class="item"><div class="when">No date<small>Wisdom</small></div><div class="what"><h3>Wisdom has no agreed measure</h3><p>There is no scientific consensus on the definition of wisdom. Baltes&#x27;s Berlin Wisdom Paradigm describes five components, among them factual and procedural knowledge of life matters and an apprehension of uncertainty. Sternberg&#x27;s balance theory calls it the value-laden application of tacit knowledge to attain a common good. It is measured by self-report scales, which are prone to bias, by indices such as the Jeste-Thomas Wisdom Index, and by contextual measures of cognition, motivation and emotion in specific situations.</p><dl class="kv"><dt>Over time</dt><dd>I found no series that tracks wisdom over a century or even a decade.</dd></dl><p class="solid"><b>How solid</b> From Wikipedia. The page itself says the usefulness of the shortest scales is increasingly questioned.</p></div></li></ol></section>
+<h2 id="strains">Where the evidence is weak</h2>
+<p class="note">These four points come from the same sources as the entries above.</p><div class="thin"><div><h3>The tests may not measure intelligence</h3><p>The Flynn gains were largest on tests of abstract and visual reasoning and small on vocabulary and arithmetic, and Neisser calls it controversial whether intelligence itself has risen.</p><p class="src-tag">Wikipedia</p></div><div><h3>The reversals are partial</h3><p>Norway&#x27;s data cover only men, Denmark&#x27;s cover conscripts, and no reversal is shown for France or Australia. Scores are for particular tests and cohorts.</p><p class="src-tag">Wikipedia</p></div><div><h3>The causes are not settled</h3><p>The OECD says the PISA fall is not just Covid, while Bratsberg and Rogeberg find the Norwegian rise and fall both appear within families, which rules out some explanations and does not name the cause.</p><p class="src-tag">OECD, via a news report; PNAS</p></div><div><h3>Many pages are second-hand</h3><p>The PISA, adult skills and reading figures come from news summaries and a press release, and none was read in its full report.</p><p class="src-tag">News reports; university release</p></div></div>
+<h2 id="patterns">What the evidence shows</h2>
+<p class="note">These are my reading of the entries, not findings from the sources. This chapter does not give a verdict on whether people have dumbed down.</p><div class="pat"><div><h3>The evidence points both ways, by measure</h3><p>Test scores rose for most of the 20th century and the reading rate rose from 1 in 10 to 88%. Several recent measures fell: the Flynn gains reversed in some countries, PISA mathematics dropped, adult literacy fell or stayed flat in most surveyed countries and reading for pleasure fell in the United States.</p></div><div><h3>Where the evidence falls, it does not fall everywhere</h3><p>Finland and Denmark improved in adult literacy, Finland and Singapore in numeracy, Singapore led PISA 2022, and the top 10% of adults gained while the lowest 10% fell. The picture is one of widening gaps in some places, not a uniform decline.</p></div><div><h3>Access and ability are separate things</h3><p>Chapter 5 shows access to schooling and the internet rising, yet 70% of 10-year-olds in low- and middle-income countries could not read a simple text in 2022 and about 1 in 5 adults in the surveyed countries read only simple texts.</p></div><div><h3>The question asks about wisdom, which cannot be measured</h3><p>No agreed definition or series exists, so &#x27;dumbed down&#x27; can be tested only on the narrower measures of tests, skills and reading, and they give a mixed answer.</p></div><div><h3>The data do not reach back to 1925 on most measures</h3><p>The Flynn series start in the 1940s and 1950s, the literacy series in 1820, PISA in 2018 and the adult skills survey in 2012, so the two centuries cannot be compared.</p></div></div>
+<h2 id="limits">What this chapter cannot show</h2>
+<ul class="plain"><li>Wisdom, judgement and the use of knowledge have no accepted measure, and nothing here tracks them over time.</li><li>Test scores measure particular skills at particular dates. Tests change, and so do the people who take them, including through migration.</li><li>Most of the reversal evidence is from a few rich countries, and most of the learning evidence for poorer countries is from one estimate.</li><li>Several figures are news reports of reports and of studies. I could not read the OECD adult skills press release or the PNAS article and used a summary of each.</li><li>Not covered: critical thinking, belief in misinformation, civic knowledge, the effect of search engines and artificial intelligence, and how people judge what they read.</li><li>The chapter weighs evidence on one side and the other and does not reach a verdict on the question.</li></ul>
+<section class="src" id="sources"><h2>Sources</h2><p class="note">Tags: P is a primary source or the institution's own page. S is a secondary source such as an encyclopedia or news report.</p><h3>Ability and skills</h3><ul><li><a href="https://en.wikipedia.org/wiki/Flynn_effect">Wikipedia, Flynn effect</a><span>S</span></li><li><a href="https://frisch.uio.no/english/publications/?pubid=1372">Frisch Centre, Bratsberg and Rogeberg, Flynn effect and its reversal are both environmentally caused (PNAS 2018)</a><span>P</span></li><li><a href="https://www.aljazeera.com/news/2023/12/5/unprecedented-decline-in-global-literacy-scores-osce-report-says">Al Jazeera, Unprecedented decline in global literacy scores (OECD PISA 2022)</a><span>S</span></li><li><a href="https://www.developmentaid.org/news-stream/post/189000/adult-skills-numeracy-declining">DevelopmentAid, Adult skills in literacy and numeracy declining or stagnating (OECD 2024)</a><span>S</span></li><li><a href="https://www.unicef.org/press-releases/70-cent-10-year-olds-learning-poverty-unable-read-and-understand-simple-text">UNICEF, 70 per cent of 10-year-olds in learning poverty</a><span>P</span></li></ul><h3>Reading and wisdom</h3><ul><li><a href="https://news.ufl.edu/2025/08/reading-for-pleasure-study/">University of Florida, Reading for pleasure in free fall</a><span>P</span></li><li><a href="https://en.wikipedia.org/wiki/Wisdom">Wikipedia, Wisdom</a><span>S</span></li><li><a href="https://ourworldindata.org/literacy">Our World in Data, Literacy (see also Chapter 5)</a><span>S</span></li></ul></section>
+<footer>Several figures are my own arithmetic or reading of the sources' wording: the Dutch gain of about 7 points a decade (21 points over 30 years), and the plotting of 'nearly 2' and 'a fall of 25 points or more' as 2 and 25. The observations under “What the evidence shows” are my own reading.</footer>
+</div>

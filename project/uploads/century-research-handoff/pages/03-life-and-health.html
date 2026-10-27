@@ -1,0 +1,167 @@
+<title>Life and Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: headline numbers, one chart of share removed, nineteen defenses grouped by area, a section on thinning, patterns, limits, sources. */
+:root{
+  --bg:#edf0f2;
+  --surface:#f8fafb;
+  --ink:#18222b;
+  --ink-2:#4a5866;
+  --line:#c9d1d8;
+  --accent:#0e7490;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#67d4ec;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#67d4ec;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.65;padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:840px;margin:0 auto}
+a{color:var(--accent)}
+header{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,9.5vw,76px);line-height:1;margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,3.8vw,26px);line-height:1.25;margin:0;color:var(--accent);text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:64ch}
+.asof{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);padding-top:12px;border-top:2px solid var(--accent)}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--font-mono);font-size:12.5px;margin:0 0 8px}
+nav.jump a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);outline:none}
+h2{font-family:var(--font-display);font-weight:600;font-size:26px;line-height:1.15;margin:48px 0 10px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.note{font-size:13px;color:var(--ink-2);max-width:70ch}
+.chart-h{font-family:var(--font-display);font-weight:600;font-size:17px;margin:26px 0 2px}
+.rg{margin:8px 0 6px}
+.rg-axis{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 16px}
+.rg-axis div{position:relative;height:18px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2)}
+.rg-axis div span{position:absolute;top:0;transform:translateX(-50%)}
+.rg-axis div span:first-child{transform:none}
+.rg-axis div span:last-child{transform:translateX(-100%)}
+.rg-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 16px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.rg-lab{font-size:14px;line-height:1.3;min-width:0}
+.rg-lab b{display:block;font-weight:500}
+.rg-lab small{display:block;font-family:var(--font-mono);font-size:11px;color:var(--ink-2)}
+.rg-track{position:relative;height:20px;background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--line)}
+.rg-track.dlog{background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/12.5% 100%}
+.rg-bar{position:absolute;top:3px;bottom:3px;background:var(--accent);min-width:6px}
+.rg-bar.hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 4px,transparent 4px 7px);outline:1px solid var(--accent);outline-offset:-1px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.chip{font:500 13px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.count{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.grp{margin-top:8px}
+.gh{font-family:var(--font-display);font-weight:600;font-size:24px;margin:26px 0 4px;display:flex;align-items:baseline;gap:12px}
+.gh span{font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--ink-2)}
+.list{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--accent)}
+.item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 22px;padding:14px 0 18px;border-bottom:1px solid var(--line);position:relative}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-29px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.when{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:1.4}
+.when small{display:block;font-weight:400;font-size:11.5px;color:var(--accent);margin-top:3px}
+.what{min-width:0}
+.what h3{font-size:20px}
+.meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.what p{max-width:64ch}
+dl.kv{display:grid;grid-template-columns:90px minmax(0,1fr);gap:6px 16px;margin:10px 0 8px}
+dl.kv dt{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+dl.kv dd{margin:0;font-size:14.5px}
+.solid{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+.solid b{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.pat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 26px;margin-top:18px}
+.pat>div{min-width:0;border-top:2px solid var(--accent);padding-top:10px}
+.pat h3{font-size:18px}
+.pat p{font-size:14.5px;margin:4px 0 0}
+ul.plain{margin:10px 0 0;padding-left:20px;max-width:70ch}
+ul.plain li{margin-bottom:8px}
+.src h3{font-size:16px;margin:20px 0 6px}
+.src ul{list-style:none;margin:0;padding:0}
+.src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px}
+.src li a{word-break:break-word}
+.src li span{font-family:var(--font-mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;max-width:72ch}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 14px 12px;min-width:0}
+.stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:30px;line-height:1.1;overflow-wrap:anywhere}
+.stat span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.thin{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.thin>div{min-width:0;background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+.thin h3{font-size:18px}
+.thin p{font-size:14.5px;margin:4px 0 0}
+.thin .src-tag{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2);margin-top:8px}
+.rg-pt{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--ink)}
+.rg-mark{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed var(--ink)}
+.legend{font-size:12.5px;color:var(--ink-2);margin:2px 0 6px}
+@media (max-width:620px){
+  .rg-axis{grid-template-columns:minmax(0,1fr)}
+  .rg-axis>span{display:none}
+  .rg-row{grid-template-columns:minmax(0,1fr)}
+  .item{grid-template-columns:minmax(0,1fr)}
+  .list{padding-left:18px}
+  .item:before{left:-25px}
+  dl.kv{grid-template-columns:minmax(0,1fr);gap:0}
+  dl.kv dd{margin-bottom:8px}
+  .src li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.snap{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 6px}
+.snap th{text-align:left;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding:6px 14px 6px 0;border-bottom:2px solid var(--accent)}
+.snap td{vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.snap td.m{font-weight:500;width:21%}
+.snap td.na{color:var(--ink-2)}
+.dom{margin-top:34px}
+.dom h3{font-size:22px;margin-bottom:2px}
+.dom .intro{font-size:14.5px;color:var(--ink-2);max-width:68ch;margin:0 0 4px}
+@media (max-width:620px){
+  .snap,.snap tbody,.snap tr,.snap td{display:block;width:auto}
+  .snap thead{display:none}
+  .snap tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .snap td{border:0;padding:2px 0}
+  .snap td.m{width:auto;font-size:15.5px;padding-bottom:2px}
+  .snap td[data-l]::before{content:attr(data-l);display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-top:6px}
+}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Chapter 3 · Gains</div>
+  <h1>Life and health</h1>
+  <p class="sub">Eight gains in survival and length of life, and where they thin</p>
+  <p class="lede">Child survival, childbirth, smallpox, polio, vaccination, infection, life expectancy and causes of death. Each entry gives the scale, what drove the change and how solid the figures are, followed by the limits of the gains.</p>
+  <div class="asof">Figures current to 27 October 2026. Most are from Our World in Data pages and institutions' own reports.</div>
+</header>
+<nav class="jump" aria-label="Sections"><a href="#scale">Scale</a><a href="#gains">The gains</a><a href="#limits-of-gains">Where they thin</a><a href="#patterns">What it shows</a><a href="#limits">Limits</a><a href="#sources">Sources</a></nav>
+<h2 id="scale">How large the gains are</h2>
+<div class="stats"><div class="stat"><b>1 in 2 → 4%</b><span>of children dying before age 15: around 1 in 2 two centuries ago, 4% in 2020</span></div><div class="stat"><b>32 → 71</b><span>years of global life expectancy at birth, 1900 to 2021; WHO puts 2023 at 73.3</span></div><div class="stat"><b>300 million</b><span>estimated deaths from smallpox in the 20th century; the disease was certified eliminated in May 1980</span></div><div class="stat"><b>154 million</b><span>deaths estimated to have been prevented by routine vaccination over the last fifty years</span></div></div><h3 class="chart-h">Share of children dying before age 15, world</h3>
+<p class="note">Solid bars are Our World in Data&#x27;s figures. The 1800 bar is hatched because the page says only &#x27;around 1 in 2&#x27;.</p>
+<div class="rg" role="img" aria-label="Bar chart of share of children dying before 15, from about 50 percent around 1800 to 4 percent in 2020"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:20.000%">10%</span><span style="left:40.000%">20%</span><span style="left:60.000%">30%</span><span style="left:80.000%">40%</span><span style="left:100.000%">50%</span></div></div><div class="rg-row"><div class="rg-lab"><b>About 1800</b><small>Around 1 in 2; no exact figure given</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:100.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>1950</b><small>Around one-quarter</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:50.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2020</b><small>4% (4.3% on another line of the page)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:8.00%"></i></div></div></div><h3 class="chart-h">Mothers dying per 100,000 live births</h3>
+<p class="note">Different places and years, so compare the sizes, not a series. Hatched bars are a range or my own division. The 19th-century bar spans 500 to 1,000.</p>
+<div class="rg" role="img" aria-label="Bar chart of maternal deaths per 100,000 live births, from about 900 in Sweden and Finland around 1800 to about 11 in high-income countries in 2017"><div class="rg-axis"><span></span><div><span style="left:0.000%">0</span><span style="left:25.000%">250</span><span style="left:50.000%">500</span><span style="left:75.000%">750</span><span style="left:100.000%">1,000</span></div></div><div class="rg-row"><div class="rg-lab"><b>Sweden and Finland, 1800</b><small>Around 900</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:90.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>19th century, some countries</b><small>Roughly 500 to 1,000 (a range)</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:50.00%;width:50.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Low-income countries, 2017</b><small>Around 450</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:45.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>World, 2015</b><small>About 216: my division of 302,700 deaths by about 140 million births</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:21.60%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>High-income countries, 2017</b><small>Around 11</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:1.10%"></i></div></div></div><h3 class="chart-h">Life expectancy at birth, world, in years</h3>
+<p class="note">Different sources, so the 1900 and 1950 bars are not strictly comparable with the WHO bars. The 1950 bar is a range between two figures.</p>
+<div class="rg" role="img" aria-label="Bar chart of world life expectancy from 32 in 1900 to 73.3 in 2023, and healthy life expectancy of 62.8"><div class="rg-axis"><span></span><div><span style="left:0.000%">0</span><span style="left:25.000%">20</span><span style="left:50.000%">40</span><span style="left:75.000%">60</span><span style="left:100.000%">80</span></div></div><div class="rg-row"><div class="rg-lab"><b>1900</b><small>32 (Our World in Data)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:40.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>1950</b><small>45.7 to 48 (Wikipedia, two sources)</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:57.12%;width:2.87%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2019</b><small>73.4 (WHO)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:91.75%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2021, pandemic low</b><small>71.5 (WHO)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:89.38%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2023</b><small>73.3 (WHO)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:91.62%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2023, healthy life expectancy</b><small>62.8 (WHO)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:78.50%"></i></div></div></div>
+<h2 id="gains">The gains</h2>
+<p>Eight entries in three groups. Each gives the scale, what drove it and how solid the figures are.</p>
+<section class="grp"><h3 class="gh">Surviving birth and childhood <span>2 entries</span></h3><ol class="list"><li class="item"><div class="when">About 1800 to 2023<small>Child survival</small></div><div class="what"><h3>Children dying before they grow up</h3><p>Around two centuries ago, about 1 in 2 children died before the end of puberty. By 1950 the share had fallen to around one-quarter, and by 2020 to 4%. In 2023 the UN estimated 4.8 million children died before their fifth birthday, and said child deaths had dropped by more than half since 2000.</p><dl class="kv"><dt>Gaps</dt><dd>In 2020, 13% of children in Nigeria and 7% in Pakistan died before 15, against 0.4% in Italy, Iceland, Japan and Norway.</dd><dt>Reversal</dt><dd>Child mortality rose in South Africa and Zimbabwe in the 1990s and 2000s, largely because of HIV/AIDS.</dd><dt>Stillbirths</dt><dd>About 1.9 million in 2023, down by over a third since 2000.</dd></dl><p class="solid"><b>How solid</b> The 1800 figure is described only as &#x27;around 1 in 2&#x27;, with no exact value. The 1950 and 2020 figures are Our World in Data&#x27;s. The 2023 count and the &#x27;more than half since 2000&#x27; are from the UN&#x27;s own estimate, as reported by WHO.</p></div></li><li class="item"><div class="when">1800 to 2017<small>Childbirth</small></div><div class="what"><h3>Mothers dying in childbirth</h3><p>In Sweden and Finland around 1800, around 900 mothers died per 100,000 live births, and in some countries in the 19th century the figure was roughly 500 to 1,000. In most rich countries it is now below 10, a fall of 50- to 100-fold.</p><dl class="kv"><dt>2017</dt><dd>About 11 per 100,000 live births in high-income countries and about 450 in low-income countries, about 40 times higher.</dd><dt>2015</dt><dd>302,700 maternal deaths and about 140 million births, which I divide to about 216 per 100,000 as a rough world figure.</dd><dt>Lowest</dt><dd>Finland 3 and Sweden 4 per 100,000, with the year not given.</dd></dl><p class="solid"><b>How solid</b> The page gives no global ratio, so the 216 figure is my own division of two numbers it does give. The figures for the 1800s are for a few countries and are not world figures.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Defeating particular diseases <span>4 entries</span></h3><ol class="list"><li class="item"><div class="when">1967 to 1980<small>Eradication</small></div><div class="what"><h3>Smallpox</h3><p>Donald Henderson estimates about 300 million people died of the disease in the 20th century. In 1967 an estimated 10 to 15 million people were infected each year while only 132,000 cases were reported. The last natural case of the milder form was in Merka, Somalia, on 26 October 1977, and the World Health Assembly certified elimination in May 1980.</p><dl class="kv"><dt>Last severe case</dt><dd>The last case of the more severe form was in Bangladesh in October 1975.</dd></dl><p class="solid"><b>How solid</b> The death toll is one expert&#x27;s estimate. The page itself says reported cases were far below the real number, so the case figures for 1967 are estimates.</p></div></li><li class="item"><div class="when">1955 to 2021<small>Near-eradication</small></div><div class="what"><h3>Polio</h3><p>Salk&#x27;s vaccine was announced as effective in April 1955 and Sabin&#x27;s oral vaccine was licensed in 1961. In the early 1980s an estimated 300,000 to 400,000 people were paralysed each year, and polio was endemic in 125 countries in 1988. The page gives 1,873 estimated paralytic cases in 2020 and 649 reported cases in 2021.</p><dl class="kv"><dt>Where it remained</dt><dd>Wild poliovirus cases were recorded only in Afghanistan, Pakistan and Malawi as of 2021.</dd><dt>Fall</dt><dd>The page states no percentage. My arithmetic gives a fall of about 99.4–99.5% from the early 1980s to 2020 in estimated cases.</dd></dl><p class="solid"><b>How solid</b> The 1980s figure is an estimate and the 2021 figure is reported cases, so the two are not the same kind of count.</p></div></li><li class="item"><div class="when">1974 to 2024<small>Vaccination</small></div><div class="what"><h3>Routine childhood vaccination</h3><p>A 2024 study by Shattock and colleagues estimated that routine vaccinations prevented 154 million deaths worldwide in the last fifty years. Measles vaccination alone is credited with 94 million lives.</p><dl class="kv"><dt>Coverage</dt><dd>Over 80% of infants worldwide now receive the full DTP course, a year not stated.</dd><dt>Threshold</dt><dd>Measles needs coverage typically above 90% for herd immunity.</dd></dl><p class="solid"><b>How solid</b> These are modelled estimates, not counts. The page gives no period for the measles figure, though a related chart is titled 1974 to 2024, and it gives no coverage figures for earlier decades.</p></div></li><li class="item"><div class="when">1900 to the 1990s<small>Infection</small></div><div class="what"><h3>Pneumonia, tuberculosis and diarrhoea in the United States</h3><p>In 1900 pneumonia, tuberculosis and diarrhoea and enteritis were the leading causes of death, and with diphtheria they caused one-third of all deaths. In 1900, 194 of every 100,000 US residents died of tuberculosis.</p><dl class="kv"><dt>What changed it</dt><dd>The CDC credits clean water, chlorination, sewage disposal and hygiene education, penicillin from the 1940s and later antimicrobials, and childhood vaccination programmes from the 1950s and 1960s.</dd><dt>Not a straight line</dt><dd>Infectious disease mortality rose overall during the 1980s and early 1990s.</dd></dl><p class="solid"><b>How solid</b> From the CDC&#x27;s account of 20th-century public health. It is about the United States only, and the page text gives no overall infectious disease death rate for 1900 or 1996.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Length of life <span>2 entries</span></h3><ol class="list"><li class="item"><div class="when">1900 to 2023<small>Life expectancy</small></div><div class="what"><h3>Living longer</h3><p>Global life expectancy at birth was 32 years in 1900 and 71 in 2021, according to Our World in Data, which says no region had a life expectancy above 40 in 1800. WHO puts it at 73.4 in 2019, 71.5 in the pandemic low of 2021 and 73.3 in 2023.</p><dl class="kv"><dt>Gap</dt><dd>In 2021 life expectancy in Nigeria was thirty years lower than in Japan. Hong Kong had the highest female life expectancy, 88 years.</dd><dt>Healthy years</dt><dd>Healthy life expectancy was 62.8 in 2023, 0.4 years below its 2019 level.</dd></dl><p class="solid"><b>How solid</b> The 1900 figure is a reconstruction and differs between sources (the earlier chapter shows 31 to 32 on one page). The 2023 figures are from a news report of WHO&#x27;s October 2026 estimates.</p></div></li><li class="item"><div class="when">2023<small>Causes of death</small></div><div class="what"><h3>What people die of now</h3><p>Heart diseases cause a third of deaths worldwide and cancers almost one in five, together about every second death. Infectious diseases cause around 1 in 7. Neonatal and maternal deaths and accidents each account for about 4%, suicide for 1.3% and interpersonal violence for under 1%.</p><dl class="kv"><dt>Trend</dt><dd>Death rates from both infectious and non-communicable diseases have fallen since 1990, communicable ones faster.</dd></dl><p class="solid"><b>How solid</b> From the Global Burden of Disease via Our World in Data. The page gives no percentage for non-communicable diseases as a whole and no figures for how the shares shifted.</p></div></li></ol></section>
+<h2 id="limits-of-gains">Where the gains thin</h2>
+<p class="note">These four limits come from the same sources as the entries above.</p><div class="thin"><div><h3>Healthy years trail total years</h3><p>Healthy life expectancy was 62.8 in 2023, against a life expectancy of 73.3. The difference is 10.5 years, my subtraction, and healthy life expectancy was still 0.4 years below its 2019 level.</p><p class="src-tag">WHO, via a news report</p></div><div><h3>Resistance to antibiotics is growing</h3><p>In 2021 an estimated 4.71 million deaths were associated with bacterial antimicrobial resistance and 1.14 million were attributable to it. The forecast for 2050 is 1.91 million attributable and 8.22 million associated deaths. Deaths in children under 5 fell by more than 50% from 1990 to 2021, while deaths in people over 70 rose by over 80%.</p><p class="src-tag">IHME, Lancet analysis</p></div><div><h3>The gains are uneven</h3><p>In 2020, 13% of children in Nigeria died before 15, against 0.4% in Italy. In 2021, life expectancy in Nigeria was thirty years lower than in Japan.</p><p class="src-tag">Our World in Data</p></div><div><h3>Setbacks have occurred</h3><p>The pandemic cut global life expectancy to 71.5 in 2021, and HIV/AIDS reversed child survival in South Africa and Zimbabwe for years. The UN warns that cuts in aid are putting decades of progress in child survival at risk.</p><p class="src-tag">WHO and Our World in Data</p></div></div>
+<h2 id="patterns">What the record shows</h2>
+<p class="note">These are my reading of the entries, not findings from the sources.</p><div class="pat"><div><h3>A few named causes account for much of the change</h3><p>The entries that carry the largest numbers are infections of childhood and birth: smallpox, polio, tuberculosis, diarrhoea and childbirth. The CDC and Our World in Data both attribute the decline to clean water, vaccines and antibiotics.</p></div><div><h3>Several gains came from organised campaigns</h3><p>Smallpox and polio were attacked by programmes with a target, and the 1980 certification of smallpox elimination is the one finished case in the record.</p></div><div><h3>Most of the rise in life expectancy falls in the last 125 years</h3><p>No region exceeded 40 in 1800, the world averaged 32 in 1900, and it was 71 in 2021. The chapter&#x27;s data give no 1825 or 1925 figure, so the split at 1925 cannot be tested here.</p></div><div><h3>The gains depend on a continuing system</h3><p>Vaccination needs coverage above 90% for measles, antibiotics lose force as resistance grows, and the UN links aid cuts to disrupted vaccination and clinic closures.</p></div><div><h3>The gaps between countries remain large</h3><p>The sources show a 30-year gap in life expectancy between Nigeria and Japan in 2021, and in 2020 a share of children dying before 15 that was 13% in Nigeria against 0.4% in Italy, about 32 times higher by my division.</p></div></div>
+<h2 id="limits">What this chapter cannot show</h2>
+<ul class="plain"><li>This chapter covers only what could be counted as survival and length of life. It does not measure pain, disability or the quality of care.</li><li>The deaths &#x27;prevented&#x27; by vaccination and the deaths &#x27;attributable&#x27; to resistance are model estimates, not counts.</li><li>Early figures are reconstructions. The 1800 and 1900 values rest on thin records, and several are given as ranges or as &#x27;around&#x27;.</li><li>I did not find world figures for 1825 or 1925, so the two-century split used in earlier chapters cannot be applied here.</li><li>The list is a selection of eight gains. It leaves out insulin, anaesthesia, surgery, nutrition and many other advances.</li><li>Most figures were read through a summarizing tool from Our World in Data pages, which compile other sources. Check against the original studies before citing.</li></ul>
+<section class="src" id="sources"><h2>Sources</h2><p class="note">Tags: P is a primary source or the institution's own page. S is a secondary source such as a data compilation, encyclopedia or news report.</p><h3>Children and mothers</h3><ul><li><a href="https://ourworldindata.org/child-mortality">Our World in Data, Child mortality</a><span>S</span></li><li><a href="https://ourworldindata.org/maternal-mortality">Our World in Data, Maternal mortality</a><span>S</span></li><li><a href="https://www.who.int/news/item/25-03-2025-decades-of-progress-in-reducing-child-deaths-and-stillbirths-under-threat--warns-the-united-nations">WHO, Decades of progress in reducing child deaths and stillbirths under threat</a><span>P</span></li></ul><h3>Diseases</h3><ul><li><a href="https://ourworldindata.org/smallpox">Our World in Data, Smallpox</a><span>S</span></li><li><a href="https://ourworldindata.org/polio">Our World in Data, Polio</a><span>S</span></li><li><a href="https://ourworldindata.org/vaccination">Our World in Data, Vaccination</a><span>S</span></li><li><a href="https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4829a1.htm">CDC MMWR, Control of infectious diseases</a><span>P</span></li><li><a href="https://healthdata.org/node/12105">IHME, Global burden of bacterial antimicrobial resistance 1990–2021</a><span>P</span></li></ul><h3>Length of life</h3><ul><li><a href="https://ourworldindata.org/life-expectancy">Our World in Data, Life expectancy</a><span>S</span></li><li><a href="https://ourworldindata.org/causes-of-death">Our World in Data, Causes of death</a><span>S</span></li><li><a href="https://www.cp24.com/news/world/2026/10/02/life-expectancy-almost-back-to-pre-covid-levels-says-who/">CP24, Life expectancy almost back to pre-COVID levels, says WHO</a><span>S</span></li><li><a href="https://en.wikipedia.org/wiki/Life_expectancy">Wikipedia, Life expectancy</a><span>S</span></li></ul></section>
+<footer>Several figures are my own arithmetic on the sources: the world maternal ratio of about 216 per 100,000 births (302,700 divided by about 140 million), the 99.4–99.5% fall in estimated polio cases, the 10.5-year gap between life expectancy and healthy life expectancy, and the 32-fold ratio of Nigeria's child death share to Italy's. The observations under “What the record shows” are my own reading.</footer>
+</div>

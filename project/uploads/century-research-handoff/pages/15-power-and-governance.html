@@ -1,0 +1,168 @@
+<title>Power and Governance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: headline numbers, one chart of share removed, nineteen defenses grouped by area, a section on thinning, patterns, limits, sources. */
+:root{
+  --bg:#edf0f2;
+  --surface:#f8fafb;
+  --ink:#18222b;
+  --ink-2:#4a5866;
+  --line:#c9d1d8;
+  --accent:#1d3f8a;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#8fb0f0;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#8fb0f0;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.65;padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:840px;margin:0 auto}
+a{color:var(--accent)}
+header{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,9.5vw,76px);line-height:1;margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,3.8vw,26px);line-height:1.25;margin:0;color:var(--accent);text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:64ch}
+.asof{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);padding-top:12px;border-top:2px solid var(--accent)}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--font-mono);font-size:12.5px;margin:0 0 8px}
+nav.jump a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);outline:none}
+h2{font-family:var(--font-display);font-weight:600;font-size:26px;line-height:1.15;margin:48px 0 10px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.note{font-size:13px;color:var(--ink-2);max-width:70ch}
+.chart-h{font-family:var(--font-display);font-weight:600;font-size:17px;margin:26px 0 2px}
+.rg{margin:8px 0 6px}
+.rg-axis{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 16px}
+.rg-axis div{position:relative;height:18px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2)}
+.rg-axis div span{position:absolute;top:0;transform:translateX(-50%)}
+.rg-axis div span:first-child{transform:none}
+.rg-axis div span:last-child{transform:translateX(-100%)}
+.rg-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 16px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.rg-lab{font-size:14px;line-height:1.3;min-width:0}
+.rg-lab b{display:block;font-weight:500}
+.rg-lab small{display:block;font-family:var(--font-mono);font-size:11px;color:var(--ink-2)}
+.rg-track{position:relative;height:20px;background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--line)}
+.rg-track.dlog{background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/12.5% 100%}
+.rg-bar{position:absolute;top:3px;bottom:3px;background:var(--accent);min-width:6px}
+.rg-bar.hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 4px,transparent 4px 7px);outline:1px solid var(--accent);outline-offset:-1px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.chip{font:500 13px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.count{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.grp{margin-top:8px}
+.gh{font-family:var(--font-display);font-weight:600;font-size:24px;margin:26px 0 4px;display:flex;align-items:baseline;gap:12px}
+.gh span{font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--ink-2)}
+.list{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--accent)}
+.item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 22px;padding:14px 0 18px;border-bottom:1px solid var(--line);position:relative}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-29px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.when{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:1.4}
+.when small{display:block;font-weight:400;font-size:11.5px;color:var(--accent);margin-top:3px}
+.what{min-width:0}
+.what h3{font-size:20px}
+.meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.what p{max-width:64ch}
+dl.kv{display:grid;grid-template-columns:90px minmax(0,1fr);gap:6px 16px;margin:10px 0 8px}
+dl.kv dt{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+dl.kv dd{margin:0;font-size:14.5px}
+.solid{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+.solid b{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.pat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 26px;margin-top:18px}
+.pat>div{min-width:0;border-top:2px solid var(--accent);padding-top:10px}
+.pat h3{font-size:18px}
+.pat p{font-size:14.5px;margin:4px 0 0}
+ul.plain{margin:10px 0 0;padding-left:20px;max-width:70ch}
+ul.plain li{margin-bottom:8px}
+.src h3{font-size:16px;margin:20px 0 6px}
+.src ul{list-style:none;margin:0;padding:0}
+.src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px}
+.src li a{word-break:break-word}
+.src li span{font-family:var(--font-mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;max-width:72ch}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 14px 12px;min-width:0}
+.stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:30px;line-height:1.1;overflow-wrap:anywhere}
+.stat span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.thin{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.thin>div{min-width:0;background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+.thin h3{font-size:18px}
+.thin p{font-size:14.5px;margin:4px 0 0}
+.thin .src-tag{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2);margin-top:8px}
+.rg-pt{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--ink)}
+.rg-mark{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed var(--ink)}
+.legend{font-size:12.5px;color:var(--ink-2);margin:2px 0 6px}
+@media (max-width:620px){
+  .rg-axis{grid-template-columns:minmax(0,1fr)}
+  .rg-axis>span{display:none}
+  .rg-row{grid-template-columns:minmax(0,1fr)}
+  .item{grid-template-columns:minmax(0,1fr)}
+  .list{padding-left:18px}
+  .item:before{left:-25px}
+  dl.kv{grid-template-columns:minmax(0,1fr);gap:0}
+  dl.kv dd{margin-bottom:8px}
+  .src li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.snap{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 6px}
+.snap th{text-align:left;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding:6px 14px 6px 0;border-bottom:2px solid var(--accent)}
+.snap td{vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.snap td.m{font-weight:500;width:21%}
+.snap td.na{color:var(--ink-2)}
+.dom{margin-top:34px}
+.dom h3{font-size:22px;margin-bottom:2px}
+.dom .intro{font-size:14.5px;color:var(--ink-2);max-width:68ch;margin:0 0 4px}
+@media (max-width:620px){
+  .snap,.snap tbody,.snap tr,.snap td{display:block;width:auto}
+  .snap thead{display:none}
+  .snap tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .snap td{border:0;padding:2px 0}
+  .snap td.m{width:auto;font-size:15.5px;padding-bottom:2px}
+  .snap td[data-l]::before{content:attr(data-l);display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-top:6px}
+}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Chapter 15 · How people live</div>
+  <h1>Power and governance</h1>
+  <p class="sub">Seven entries on regimes, votes, freedom, the press, corruption and the United Nations</p>
+  <p class="lede">Who rules, who votes, and what checks the rulers. The sources give the present and long-run regime shares from 1800, but the other indexes begin in 2002 or later.</p>
+  <div class="asof">Figures current to 27 October 2026. Several come from news reports of the V-Dem and Transparency International reports.</div>
+</header>
+<nav class="jump" aria-label="Sections"><a href="#scale">The picture</a><a href="#entries">Power and governance</a><a href="#strains">Where it is hard</a><a href="#patterns">What it shows</a><a href="#limits">Limits</a><a href="#sources">Sources</a></nav>
+<h2 id="scale">The picture</h2>
+<div class="stats"><div class="stat"><b>74%</b><span>of the world&#x27;s people live in autocracies, about 6 billion, on the V-Dem Institute&#x27;s 2026 count</span></div><div class="stat"><b>20th year</b><span>in a row that Freedom House found global freedom declined, in 2025</span></div><div class="stat"><b>25-year low</b><span>for the average score in Reporters Without Borders&#x27; press freedom index, 2026</span></div><div class="stat"><b>122 of 182</b><span>countries score below 50 out of 100 on Transparency International&#x27;s 2025 corruption index</span></div></div><h3 class="chart-h">Share of the world&#x27;s people, V-Dem 2026 count</h3>
+<p class="note">As reported for developments through 2025. The first two bars add to 100%. The last two count people in countries that are moving, so they overlap the others.</p>
+<div class="rg" role="img" aria-label="Bar chart of share of world population in autocracies, democracies and countries autocratizing or democratizing"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:25.000%">25%</span><span style="left:50.000%">50%</span><span style="left:75.000%">75%</span><span style="left:100.000%">100%</span></div></div><div class="rg-row"><div class="rg-lab"><b>In autocracies</b><small>About 6 billion people</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:74.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>In democracies</b><small>26% in all</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:26.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>In liberal democracies</b><small>About 7%, roughly 600 million</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:7.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>In countries autocratizing</b><small>41%, in 44 countries</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:41.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>In countries democratizing</b><small>5%, in 18 countries</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:5.00%"></i></div></div></div><h3 class="chart-h">Countries by regime type, V-Dem 2026, out of 179</h3>
+<p class="note">Number of countries in each type.</p>
+<div class="rg" role="img" aria-label="Bar chart of countries by regime type: 57 electoral autocracies, 56 electoral democracies, 35 closed autocracies, 31 liberal democracies"><div class="rg-axis"><span></span><div><span style="left:0.000%">0</span><span style="left:33.333%">20</span><span style="left:66.667%">40</span><span style="left:100.000%">60</span></div></div><div class="rg-row"><div class="rg-lab"><b>Electoral autocracies</b><small>57 countries</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:95.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Electoral democracies</b><small>56 countries</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:93.33%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Closed autocracies</b><small>35 countries</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:58.33%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Liberal democracies</b><small>31 countries</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:51.67%"></i></div></div></div><h3 class="chart-h">Press freedom: share of countries rated difficult or very serious</h3>
+<p class="note">Reporters Without Borders. The share was 13.7% in 2002 and 52.2% in 2026.</p>
+<div class="rg" role="img" aria-label="Bar chart of share of countries with difficult or very serious press freedom in 2002 and 2026"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:33.333%">25%</span><span style="left:66.667%">50%</span><span style="left:100.000%">75%</span></div></div><div class="rg-row"><div class="rg-lab"><b>2002</b><small>13.7% of countries rated difficult or very serious</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:18.27%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>2026</b><small>52.2% of 180 countries and territories</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:69.60%"></i></div></div></div><h3 class="chart-h">When women won the national vote</h3>
+<p class="note">Each bar runs from 1880 to the year shown. Several dates were partial or applied to some regions or elections only, as labelled.</p>
+<div class="rg" role="img" aria-label="Bar chart of years women won the national vote in seven countries, from 1893 to 2015"><div class="rg-axis"><span></span><div><span style="left:13.793%">1900</span><span style="left:48.276%">1950</span><span style="left:82.759%">2000</span></div></div><div class="rg-row"><div class="rg-lab"><b>New Zealand</b><small>1893, national, the first</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:8.97%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>United Kingdom</b><small>1918 for some women; 1928 on the same terms as men</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:33.10%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>United States</b><small>1920, with the 19th Amendment</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:27.59%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>India</b><small>1921 in Bombay and Madras; 1929 in all provinces</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:33.79%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>France</b><small>1944, first elections in 1945</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:44.14%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Switzerland</b><small>1971 federal; some cantons 1959 to 1990</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:62.76%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Saudi Arabia</b><small>2015, local elections</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:93.10%"></i></div></div></div>
+<h2 id="entries">Power and governance</h2>
+<p>Seven entries in two groups. Each gives the scale, what the source says about change and how solid the figures are.</p>
+<section class="grp"><h3 class="gh">Who rules and who votes <span>4 entries</span></h3><ol class="list"><li class="item"><div class="when">1800 to 2025<small>Regimes</small></div><div class="what"><h3>From closed autocracy to electoral democracy and back</h3><p>Our World in Data, using the Regimes of the World classification, says almost everyone in 1800 lived under closed autocracies, with about 20 million people in electoral autocracies, which it names as the UK and US. Electoral and liberal democracy spread widely in the 20th century, especially in its second half. The world was at its democratic all-time high in the early 2010s and has fallen since. By 2025 about 1.6 billion people lived in electoral democracies and another 600 million in liberal democracies.</p><dl class="kv"><dt>Totals</dt><dd>The page says population growth outpaced democratic expansion, so the number of people without democratic rights is higher than ever, with many in China.</dd><dt>Classification</dt><dd>RoW reclassified India as an electoral autocracy in 2017, while other sources agree it has become less democratic but still count it as a democracy.</dd></dl><p class="solid"><b>How solid</b> One classification among several, which the page says sometimes sort countries differently. It gives no share of the world&#x27;s people in 1900 or 1950, and no count of countries by regime for 2025.</p></div></li><li class="item"><div class="when">2025<small>Democracy</small></div><div class="what"><h3>The V-Dem count for 2025</h3><p>The V-Dem Institute&#x27;s 2026 report, as reported, says democracy for the average person has fallen back to the level of 1978. Of 179 countries, 87 are democracies, 31 of them liberal and 56 electoral, and 92 are autocracies, 57 electoral and 35 closed. An estimated 74% of the world&#x27;s people, about 6 billion, live in autocracies and 26% in democracies. 44 countries, with 41% of the world&#x27;s population, are autocratizing, and 18, with 5%, are democratizing.</p><p class="solid"><b>How solid</b> A news report of V-Dem&#x27;s report, covering developments through 2025. I did not read the report, and V-Dem&#x27;s method differs from the Regimes of the World classification above.</p></div></li><li class="item"><div class="when">2025<small>Freedom</small></div><div class="what"><h3>Freedom House for 2025</h3><p>Freedom House&#x27;s Freedom in the World 2026 report says global freedom declined for the 20th consecutive year in 2025. 54 countries saw their political rights and civil liberties deteriorate and only 35 improved. 88 countries are rated Free.</p><p class="solid"><b>How solid</b> From Freedom House&#x27;s own press release. It gave no current count of Partly Free and Not Free countries.</p></div></li><li class="item"><div class="when">1893 to 2015<small>Women&#x27;s vote</small></div><div class="what"><h3>When women won the vote</h3><p>New Zealand granted women the national vote first, in 1893. The United States did so in 1920, Britain in 1918 for some women and in 1928 on the same terms as men, India in 1921 in two provinces and 1929 in all provinces, and France in 1944. Women could vote at the federal level in Switzerland from 1971 and in Saudi Arabia&#x27;s local elections from 2015.</p><dl class="kv"><dt>Not voting</dt><dd>The page lists Vatican City and Eritrea as having no voting, and notes that some countries have suspended national elections.</dd></dl><p class="solid"><b>How solid</b> From Wikipedia. The dates are for the vote, which in several places was partial or limited by race, region or class. The page gives no count of countries with women&#x27;s suffrage in any year.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Checks on power <span>3 entries</span></h3><ol class="list"><li class="item"><div class="when">2002 to 2026<small>Press</small></div><div class="what"><h3>Press freedom at a 25-year low</h3><p>Reporters Without Borders says the average score of all countries assessed in its 2026 index has never been so low in 25 years. 52.2% of countries and territories are rated difficult or very serious, against 13.7% in 2002, and less than 1% of the world&#x27;s population lives in a country rated good.</p><dl class="kv"><dt>Count</dt><dd>52.2% of 180 is about 94 countries, my calculation.</dd></dl><p class="solid"><b>How solid</b> From RSF&#x27;s own page. It gives no global average score and no count of countries in each category, and I did not use its journalist-casualty figures.</p></div></li><li class="item"><div class="when">2025<small>Corruption</small></div><div class="what"><h3>Perceived corruption</h3><p>Transparency International&#x27;s 2025 index, scored from 0 to 100 with lower meaning more perceived public-sector corruption, gives a global average of 42, the lowest in a decade. 122 of 182 countries score below 50. Denmark is first with 89 for the eighth year, and Somalia and South Sudan share last place with 9. 50 countries have declined since 2012.</p><dl class="kv"><dt>Examples</dt><dd>Declining examples include the US at 64, Canada at 75 and France at 66, while Estonia (76), South Korea (63) and Bhutan (71) are cited as consistent improvers.</dd></dl><p class="solid"><b>How solid</b> A law-firm summary of the index. The index measures perceptions of corruption, not corruption itself, and the summary&#x27;s statement of an 8-point drop in the average looks wrong, so I left it out.</p></div></li><li class="item"><div class="when">2011<small>Institutions</small></div><div class="what"><h3>States and the United Nations</h3><p>The United Nations now lists 193 member states, the most recent being South Sudan, admitted on 14 July 2011.</p><p class="solid"><b>How solid</b> Thin. The page gives the count and the latest member only, and I found no figure for the number of independent states in 1825 or 1925.</p></div></li></ol></section>
+<h2 id="strains">Where the record is hard</h2>
+<p class="note">These four points come from the same sources as the entries above.</p><div class="thin"><div><h3>Democracy has slipped back</h3><p>V-Dem says democracy for the average person has fallen to its 1978 level, and OWID says the world peaked in the early 2010s. 44 countries, holding 41% of the world&#x27;s people, are autocratizing.</p><p class="src-tag">V-Dem, via a news report; Our World in Data</p></div><div><h3>Freedom has fallen for 20 years</h3><p>Freedom House found that more countries declined than improved in 2025, 54 against 35, the 20th consecutive year of overall decline.</p><p class="src-tag">Freedom House</p></div><div><h3>Press freedom and corruption scores are low</h3><p>RSF&#x27;s 2026 average is the lowest in 25 years and half of countries rate difficult or very serious. Transparency International&#x27;s average of 42 is the lowest in a decade.</p><p class="src-tag">RSF; Transparency International, via a summary</p></div><div><h3>The vote came late to many</h3><p>Women gained the national vote between 1893 in New Zealand and 1971 in Switzerland among the examples, and 2015 in Saudi Arabia&#x27;s local elections.</p><p class="src-tag">Wikipedia</p></div></div>
+<h2 id="patterns">What the record shows</h2>
+<p class="note">These are my reading of the entries, not findings from the sources.</p><div class="pat"><div><h3>Four independent measures point the same way for recent years</h3><p>V-Dem, Freedom House, RSF and Transparency International all report decline in the latest year or decade, with different methods and different data. That is agreement in direction, not in size.</p></div><div><h3>Counting countries and counting people give different answers</h3><p>The world is about evenly split between democracies and autocracies by country, but V-Dem puts 74% of people in autocracies, because the populous countries weigh heavily, with China named by OWID.</p></div><div><h3>The spread of the vote took more than a century</h3><p>Among the examples, women&#x27;s suffrage spans 1893 to 2015, and Switzerland&#x27;s federal vote in 1971 came after France&#x27;s in 1944.</p></div><div><h3>Classification is part of the story</h3><p>India was reclassified in 2017 by one system and still counted a democracy by others, so the headline counts depend on whose rules are used.</p></div><div><h3>No series here compares 1925 with now</h3><p>The regime shares start in 1800 and 2025 and the other indexes begin in 2002 or later, so the two centuries cannot be compared on these figures.</p></div></div>
+<h2 id="limits">What this chapter cannot show</h2>
+<ul class="plain"><li>Governance indexes rest on expert judgement and perceptions, and different systems classify the same country differently.</li><li>The V-Dem, Transparency International and Freedom House figures are partly from news reports and summaries. I read the Freedom House and RSF pages directly but not the full reports.</li><li>I found no count of independent states, or of democracies, for 1825 or 1925.</li><li>The chapter does not cover military power, nuclear weapons, state capacity, surveillance or the power of firms, and it does not measure whether people trust their governments.</li><li>The women&#x27;s suffrage dates describe the law and not who could vote in practice.</li><li>The list is seven entries, a selection and not a full account of governance.</li></ul>
+<section class="src" id="sources"><h2>Sources</h2><p class="note">Tags: P is a primary source or the institution's own page. S is a secondary source such as a compilation, summary or news report.</p><h3>Who rules and who votes</h3><ul><li><a href="https://ourworldindata.org/democracy">Our World in Data, Democracy</a><span>S</span></li><li><a href="https://www.democracywithoutborders.org/41651/v-dem-report-finds-global-democracy-is-back-at-1978-levels/">Democracy Without Borders, V-Dem report finds global democracy is back at 1978 levels</a><span>S</span></li><li><a href="https://freedomhouse.org/article/new-report-global-freedom-declined-20th-consecutive-year-2025">Freedom House, Global freedom declined for the 20th consecutive year</a><span>P</span></li><li><a href="https://en.wikipedia.org/wiki/Women%27s_suffrage">Wikipedia, Women&#x27;s suffrage</a><span>S</span></li></ul><h3>Checks on power</h3><ul><li><a href="https://rsf.org/en/2026-rsf-index-press-freedom-25-year-low">Reporters Without Borders, 2026 RSF Index</a><span>P</span></li><li><a href="https://www.hsfkramer.com/zh_HK/notes/fsrandcorpcrime/2026-posts/transparency-international-publishes-the-cpi-2025">Herbert Smith Freehills Kramer, Transparency International publishes the CPI 2025</a><span>S</span></li><li><a href="https://www.un.org/en/about-us/member-states">United Nations, Member States</a><span>P</span></li></ul></section>
+<footer>Several statements are my own arithmetic: that 52.2% of 180 countries is about 94, and the bar chart of voting years, which plots the year as a distance from 1880. The observations under “What the record shows” are my own reading.</footer>
+</div>

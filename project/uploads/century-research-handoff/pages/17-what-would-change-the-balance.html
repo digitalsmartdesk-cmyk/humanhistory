@@ -1,0 +1,164 @@
+<title>What Would Change the Balance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: headline numbers, one chart of share removed, nineteen defenses grouped by area, a section on thinning, patterns, limits, sources. */
+:root{
+  --bg:#edf0f2;
+  --surface:#f8fafb;
+  --ink:#18222b;
+  --ink-2:#4a5866;
+  --line:#c9d1d8;
+  --accent:#3b4a63;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#b9c6e0;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161c;--surface:#18212a;--ink:#e8edf1;--ink-2:#9fadba;--line:#2e3a45;--accent:#b9c6e0;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.65;padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:840px;margin:0 auto}
+a{color:var(--accent)}
+header{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,9.5vw,76px);line-height:1;margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,3.8vw,26px);line-height:1.25;margin:0;color:var(--accent);text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:64ch}
+.asof{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);padding-top:12px;border-top:2px solid var(--accent)}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--font-mono);font-size:12.5px;margin:0 0 8px}
+nav.jump a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);outline:none}
+h2{font-family:var(--font-display);font-weight:600;font-size:26px;line-height:1.15;margin:48px 0 10px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.note{font-size:13px;color:var(--ink-2);max-width:70ch}
+.chart-h{font-family:var(--font-display);font-weight:600;font-size:17px;margin:26px 0 2px}
+.rg{margin:8px 0 6px}
+.rg-axis{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 16px}
+.rg-axis div{position:relative;height:18px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2)}
+.rg-axis div span{position:absolute;top:0;transform:translateX(-50%)}
+.rg-axis div span:first-child{transform:none}
+.rg-axis div span:last-child{transform:translateX(-100%)}
+.rg-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 16px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.rg-lab{font-size:14px;line-height:1.3;min-width:0}
+.rg-lab b{display:block;font-weight:500}
+.rg-lab small{display:block;font-family:var(--font-mono);font-size:11px;color:var(--ink-2)}
+.rg-track{position:relative;height:20px;background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--line)}
+.rg-track.dlog{background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/12.5% 100%}
+.rg-bar{position:absolute;top:3px;bottom:3px;background:var(--accent);min-width:6px}
+.rg-bar.hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 4px,transparent 4px 7px);outline:1px solid var(--accent);outline-offset:-1px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.chip{font:500 13px var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.count{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.grp{margin-top:8px}
+.gh{font-family:var(--font-display);font-weight:600;font-size:24px;margin:26px 0 4px;display:flex;align-items:baseline;gap:12px}
+.gh span{font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--ink-2)}
+.list{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--accent)}
+.item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 22px;padding:14px 0 18px;border-bottom:1px solid var(--line);position:relative}
+.item:last-child{border-bottom:0}
+.item:before{content:"";position:absolute;left:-29px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.when{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:1.4}
+.when small{display:block;font-weight:400;font-size:11.5px;color:var(--accent);margin-top:3px}
+.what{min-width:0}
+.what h3{font-size:20px}
+.meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:0 0 8px}
+.what p{max-width:64ch}
+dl.kv{display:grid;grid-template-columns:90px minmax(0,1fr);gap:6px 16px;margin:10px 0 8px}
+dl.kv dt{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+dl.kv dd{margin:0;font-size:14.5px}
+.solid{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+.solid b{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.pat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 26px;margin-top:18px}
+.pat>div{min-width:0;border-top:2px solid var(--accent);padding-top:10px}
+.pat h3{font-size:18px}
+.pat p{font-size:14.5px;margin:4px 0 0}
+ul.plain{margin:10px 0 0;padding-left:20px;max-width:70ch}
+ul.plain li{margin-bottom:8px}
+.src h3{font-size:16px;margin:20px 0 6px}
+.src ul{list-style:none;margin:0;padding:0}
+.src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px}
+.src li a{word-break:break-word}
+.src li span{font-family:var(--font-mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;max-width:72ch}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 14px 12px;min-width:0}
+.stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:30px;line-height:1.1;overflow-wrap:anywhere}
+.stat span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.thin{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.thin>div{min-width:0;background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+.thin h3{font-size:18px}
+.thin p{font-size:14.5px;margin:4px 0 0}
+.thin .src-tag{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2);margin-top:8px}
+.rg-pt{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--ink)}
+.rg-mark{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed var(--ink)}
+.legend{font-size:12.5px;color:var(--ink-2);margin:2px 0 6px}
+@media (max-width:620px){
+  .rg-axis{grid-template-columns:minmax(0,1fr)}
+  .rg-axis>span{display:none}
+  .rg-row{grid-template-columns:minmax(0,1fr)}
+  .item{grid-template-columns:minmax(0,1fr)}
+  .list{padding-left:18px}
+  .item:before{left:-25px}
+  dl.kv{grid-template-columns:minmax(0,1fr);gap:0}
+  dl.kv dd{margin-bottom:8px}
+  .src li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.snap{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 6px}
+.snap th{text-align:left;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding:6px 14px 6px 0;border-bottom:2px solid var(--accent)}
+.snap td{vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.snap td.m{font-weight:500;width:21%}
+.snap td.na{color:var(--ink-2)}
+.dom{margin-top:34px}
+.dom h3{font-size:22px;margin-bottom:2px}
+.dom .intro{font-size:14.5px;color:var(--ink-2);max-width:68ch;margin:0 0 4px}
+@media (max-width:620px){
+  .snap,.snap tbody,.snap tr,.snap td{display:block;width:auto}
+  .snap thead{display:none}
+  .snap tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .snap td{border:0;padding:2px 0}
+  .snap td.m{width:auto;font-size:15.5px;padding-bottom:2px}
+  .snap td[data-l]::before{content:attr(data-l);display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-top:6px}
+}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Chapter 17 · Weighing</div>
+  <h1>What would change the balance</h1>
+  <p class="sub">Nine open items, what the sources say about each, and what to watch</p>
+  <p class="lede">Chapter 16 left several questions open. This chapter lists what could move them: decisions that are pending, exposures with no recorded defense, and evidence nobody has yet put together. It does not predict how any of them will turn out.</p>
+  <div class="asof">Status checked on 28 October 2026 for New START, the pandemic annex and COP31. Other figures are current to the dates of the earlier chapters.</div>
+</header>
+<nav class="jump" aria-label="Sections"><a href="#scale">Where they stand</a><a href="#entries">What to watch</a><a href="#patterns">What it shows</a><a href="#limits">Limits</a><a href="#sources">Sources</a></nav>
+<h2 id="scale">Where the open items stand</h2>
+<div class="stats"><div class="stat"><b>5 Feb 2026</b><span>New START expired. Reports differ on whether either side still observes its limits</span></div><div class="stat"><b>Not finished</b><span>the pandemic agreement&#x27;s access annex after the seventh negotiating meeting, 6–17 July 2026. It is expected back before the Assembly no later than May 2027</span></div><div class="stat"><b>9–20 Nov 2026</b><span>COP31 in Antalya, which launches the second Global Stocktake</span></div><div class="stat"><b>2.8 °C</b><span>projected warming this century under current policies (UNEP 2025), against 2.3–2.5 °C if new pledges are fully implemented</span></div></div><h3 class="chart-h">Warming: measured, and as projected by UNEP</h3>
+<p class="note">Degrees above pre-industrial levels. The dashed line is 1.5 °C. Solid bars are as the sources state them. Ranges run from the lower to the upper figure.</p>
+<div class="rg" role="img" aria-label="Bar chart of measured warming of 1.43 degrees in 2025 and UNEP projections of 2.8 and 3.1 degrees under current policies and 2.3 to 2.8 degrees with pledges"><div class="rg-axis"><span></span><div><span style="left:0.000%">0</span><span style="left:28.571%">1</span><span style="left:57.143%">2</span><span style="left:85.714%">3</span></div></div><div class="rg-row"><div class="rg-lab"><b>Measured, 2025</b><small>About 1.43 °C above pre-industrial, ±0.13 (WMO)</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:40.86%"></i><i class="rg-mark" style="left:42.86%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Current policies, 2025 report</b><small>UNEP projection, 2.8 °C</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:80.00%"></i><i class="rg-mark" style="left:42.86%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Current policies, 2024 report</b><small>UNEP, a year earlier, 3.1 °C</small></div><div class="rg-track"><i class="rg-bar" style="left:0.00%;width:88.57%"></i><i class="rg-mark" style="left:42.86%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Pledges in full, 2025 report</b><small>UNEP projection, 2.3–2.5 °C</small></div><div class="rg-track"><i class="rg-bar" style="left:65.71%;width:5.71%"></i><i class="rg-mark" style="left:42.86%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Pledges in full, 2024 report</b><small>UNEP, a year earlier, 2.6–2.8 °C</small></div><div class="rg-track"><i class="rg-bar" style="left:74.29%;width:5.71%"></i><i class="rg-mark" style="left:42.86%"></i></div></div></div><h3 class="chart-h">How far three targets have got</h3>
+<p class="note">Each bar is the current figure as a share of its target. All three are my arithmetic. The finance figure is for 2023 and its target is for 2025.</p>
+<div class="rg" role="img" aria-label="Bar chart of progress toward targets: land protected 59 percent of target, ocean protected 28 percent, biodiversity finance 84 percent"><div class="rg-axis"><span></span><div><span style="left:0.000%">0%</span><span style="left:25.000%">25%</span><span style="left:50.000%">50%</span><span style="left:75.000%">75%</span><span style="left:100.000%">100%</span></div></div><div class="rg-row"><div class="rg-lab"><b>Land protected</b><small>17.6% against a 30% target by 2030</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:58.70%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Ocean protected</b><small>8.4% against a 30% target by 2030</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:28.00%"></i></div></div><div class="rg-row"><div class="rg-lab"><b>Biodiversity finance</b><small>$16.8 billion in 2023 against a $20 billion target for 2025</small></div><div class="rg-track"><i class="rg-bar hatch" style="left:0.00%;width:84.00%"></i></div></div></div>
+<h2 id="entries">What to watch</h2>
+<p>Nine items in four groups. Each gives the recorded status, what to watch and how solid the figures are.</p>
+<section class="grp"><h3 class="gh">Decisions with dates on the calendar <span>3 entries</span></h3><ol class="list"><li class="item"><div class="when">6–17 Jul 2026 and after<small>Negotiation</small></div><div class="what"><h3>The pandemic agreement&#x27;s access annex</h3><p>The agreement was adopted on 20 May 2025, but it opens for signature only after the Assembly adopts the annex on pathogen access and benefit sharing, and it enters into force after 60 ratifications. The seventh negotiating meeting, on 6–17 July 2026, streamlined the draft but did not finish it. WHO says the remaining issues are challenging and the eighth meeting was set for 14–18 September 2026. A Geneva briefing from May 2026 says the annex is expected to be resubmitted no later than the Assembly of May 2027.</p><dl class="kv"><dt>Watch</dt><dd>An agreed annex text, the opening for signature, and the 60th ratification.</dd><dt>Earlier plan</dt><dd>A May 2025 report said the working group was supposed to conclude the annex by the 2026 Assembly. The deadline has since moved to 2027.</dd><dt>Not found</dt><dd>I did not find the outcome of the September 2026 meeting.</dd></dl><p class="solid"><b>How solid</b> WHO&#x27;s own page for the July meeting, which gives no deadline, and a Geneva dialogue briefing for the May 2027 date. The 60-ratification threshold comes from Chapter 8.</p></div></li><li class="item"><div class="when">9–20 Nov 2026<small>Summit</small></div><div class="what"><h3>COP31 and the climate path</h3><p>The 31st UN climate conference runs in Antalya, Türkiye, and launches the second Global Stocktake. A summary of what to expect lists the unfinished Global Goal on Adaptation, 59 adaptation indicators and a commitment to at least triple adaptation finance for developing countries by 2035, and says exceeding 1.5 °C appears likely. Chapter 8 records UNEP&#x27;s projection of 2.8 °C under current policies, down from 3.1 a year earlier, and 2.3–2.5 °C if new national pledges are fully implemented.</p><dl class="kv"><dt>Watch</dt><dd>New or revised national pledges, UNEP&#x27;s next projection, and the monthly carbon dioxide reading, which was 432 ppm at its May 2026 peak.</dd><dt>Cost side</dt><dd>Chapter 8 also records solar power 41% cheaper than the lowest-cost fossil option in 2024, from a trade-press summary of IRENA, so I give it low weight.</dd></dl><p class="solid"><b>How solid</b> The conference dates and agenda come from a university article about what to expect, not from the UN. The UNEP figures are from UNEP&#x27;s own report, as recorded in Chapter 8. I have no result from the summit, since it has not taken place.</p></div></li><li class="item"><div class="when">2025 to 2028<small>Law</small></div><div class="what"><h3>Rules for artificial intelligence</h3><p>Chapter 8 records the EU AI Act as in force since 1 August 2024, with obligations on general-purpose models from 2 August 2025 and high-risk obligations from 2 December 2027 and 2 August 2028. The International AI Safety Report of February 2026 informs decisions but does not set rules. Chapter 6 records that the evidence for catastrophic risk from advanced AI is the least established of the exposures it lists.</p><dl class="kv"><dt>Watch</dt><dd>Whether the dates hold, and any figures on harm before and after the rules apply.</dd><dt>Not found</dt><dd>I found no outcome data on whether either has reduced harm, and I did not re-check the timeline for a proposed postponement.</dd></dl><p class="solid"><b>How solid</b> The dates come from an implementation-timeline site, last updated 31 August 2026, as read for Chapter 8. They cover the EU only.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Decisions without a date <span>3 entries</span></h3><ol class="list"><li class="item"><div class="when">5 Feb 2026 and after<small>Treaty</small></div><div class="what"><h3>Nuclear limits after New START</h3><p>New START expired on 5 February 2026. It had capped deployed warheads at 1,550. Axios reported that day, citing three sources, that the United States and Russia were close to an understanding to keep observing its terms for at least six months while negotiating a new deal. Kremlin spokesman Dmitry Peskov confirmed an understanding, but one US official said it would not be formalised, and President Trump called for a new treaty. A page summarising the treaty says Russia&#x27;s foreign ministry stated on 4 February that without a US response it considered the obligations no longer binding, and it does not report informal observance. Six months from 5 February is early August 2026, on my arithmetic.</p><dl class="kv"><dt>Watch</dt><dd>A signed text, an exchange of data, and the warhead count in the next SIPRI yearbook, against the January 2026 figure of 12,187.</dd><dt>Not found</dt><dd>I found no report of what happened after the six months, and nothing dated later than early February on the status of the limits.</dd></dl><p class="solid"><b>How solid</b> The reports conflict and rest on unnamed sources and a summary page. Chapter 8 recorded a public radio headline that there were no limits. I treat the status as unsettled.</p></div></li><li class="item"><div class="when">Targets to 2030<small>Frameworks</small></div><div class="what"><h3>Protection, money and the unfinished treaties</h3><p>Chapter 11 records 17.6% of land and 8.4% of ocean protected against 30% targets, only 5.7% of ocean actively managed and 2.8% strictly protected, and fewer than half of aligned national targets on track. International biodiversity finance was $16.8 billion in 2023 against a $20 billion target for 2025. The plastics treaty talks ended without agreement in August 2025, and the deep-seabed Mining Code is unfinished.</p><dl class="kv"><dt>Watch</dt><dd>The next Protected Planet figures, the finance total against the $20 billion target, and any date for resumed plastics or seabed talks.</dd><dt>Not found</dt><dd>Chapter 11 gives no next date for the plastics talks, and I did not search for one.</dd></dl><p class="solid"><b>How solid</b> Figures are as Chapter 11 recorded them, mostly from institutions&#x27; own pages. The shares of the targets in the chart are my arithmetic.</p></div></li><li class="item"><div class="when">Ongoing<small>Survey</small></div><div class="what"><h3>Finding the large asteroids</h3><p>Chapter 8 records that NASA&#x27;s DART spacecraft shortened the orbit of a small asteroid by 32 minutes in 2022, and that about 38% of near-Earth asteroids larger than 140 metres were known in a 2023 study. The test shows a method exists. It does not help against an object nobody has found.</p><dl class="kv"><dt>Watch</dt><dd>A newer completeness figure for objects over 140 metres, and one for objects over 1 kilometre, which I did not find.</dd></dl><p class="solid"><b>How solid</b> One test and one study, both three or four years old. Completeness has probably risen since.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Exposure with no defense recorded <span>1 entry</span></h3><ol class="list"><li class="item"><div class="when">Present<small>Dependence</small></div><div class="what"><h3>Fertilizer, energy and chips</h3><p>Chapter 6 records that synthetic nitrogen fertilizer underpins about 40 to 50% of the world&#x27;s food and that about 92% of the most advanced logic chips are made in Taiwan. None of the 19 entries in Chapter 8 is aimed at either. The seed vault backs up crop collections, which is a different safeguard.</p><dl class="kv"><dt>Watch</dt><dd>Any published measure of how many people depend on a single process or place, and any change in the share of chips made in one place.</dd><dt>Gap</dt><dd>Chapter 12 puts the world at 8.2 billion people, but the chapters hold no dependence figure for 1825 or 1925.</dd></dl><p class="solid"><b>How solid</b> The two present-day figures are secondhand. That no defense is listed in Chapter 8 reflects my selection of 19 entries, not a survey of every defense that exists.</p></div></li></ol></section>
+<section class="grp"><h3 class="gh">Evidence that would settle the open questions <span>2 entries</span></h3><ol class="list"><li class="item"><div class="when">To find<small>Evidence gap</small></div><div class="what"><h3>A century-by-century tally of losses</h3><p>The claim of “unlike any other 100 years” could be tested with a consistent series of losses per century, as a share of the people affected, with ranges and with the regions where records are thin. Chapter 7 is 19 events I selected, and it says a record kept by survivors lists only the catastrophes that were survived. I do not know of a ready-made series, and I did not search for one.</p><dl class="kv"><dt>What it would change</dt><dd>Test 1 in Chapter 16 would stand or fall on it, and so would the claim that no earlier century matched this one.</dd></dl><p class="solid"><b>How solid</b> A research task, not a finding. The chapters give no indication of how good such a series could be for periods before about 1800.</p></div></li><li class="item"><div class="when">To find<small>Evidence gap</small></div><div class="what"><h3>Measured outcomes for the newest defenses</h3><p>For artificial intelligence, engineered pathogens and the pandemic agreement, Chapter 8 describes rules and negotiations and found no figures showing a fall in harm. Expert estimates of the risk also differ widely: for extinction from AI by 2100, domain experts gave 3% and superforecasters 0.38%, while Toby Ord gives 1 in 10 for the century, and says his figures are order-of-magnitude indications.</p><dl class="kv"><dt>What it would change</dt><dd>Tests 2 and 6 in Chapter 16 rest on modelled scenarios and judged probabilities. Measured outcomes would give them firmer ground in either direction.</dd></dl><p class="solid"><b>How solid</b> The probability figures are opinions, not measurements. I give them only to show the spread.</p></div></li></ol></section>
+<h2 id="patterns">What the items show</h2>
+<p class="note">These are my reading of the entries, not findings from the sources.</p><div class="pat"><div><h3>Most of the levers are decisions by governments</h3><p>The treaty, the annex, the climate pledges, the AI rules and the protection targets are all choices by states or institutions. The physical measures, such as carbon dioxide, warheads and wildlife counts, change on their own schedule.</p></div><div><h3>Some dates have already moved</h3><p>The pandemic annex was to be done by the 2026 Assembly and is now due by May 2027. The six-month window reported for New START has passed without a report I could find.</p></div><div><h3>Targets run ahead of delivery</h3><p>The 30% targets stand against 17.6% and 8.4%, and the finance target stands against $16.8 billion. The chart shows how far each had got.</p></div><div><h3>Exposure and defense update at different speeds</h3><p>Carbon dioxide is read monthly and warhead counts yearly. The defenses move by negotiation and only show up in outcome figures years later, if at all.</p></div><div><h3>The hypothesis tests do not all move together</h3><p>Test 1 in Chapter 16 is about the past and changes only if a large loss occurs or the record is revised. The other tests depend on the items above, and the tally in the last group would settle whether the claim of uniqueness holds.</p></div></div>
+<h2 id="limits">What this chapter cannot show</h2>
+<ul class="plain"><li>This chapter makes no forecasts. It names items the earlier chapters left open, with what the sources say about their status, and gives no probabilities.</li><li>Status was newly checked for three items only: New START, the pandemic annex and COP31. The others carry the dates of the earlier chapters, mostly 13 to 27 October 2026.</li><li>I found nothing on the September 2026 annex meeting, on the status of nuclear limits after early February, or on any result from the November summit.</li><li>The New START reports rest on unnamed sources and a summary page, and they conflict. I read the pages through a summarizing tool.</li><li>The list is my selection of nine items. It leaves out many hazards and many possible defenses.</li><li>Nothing here is advice on what should be done. It lists what to watch.</li></ul>
+<section class="src" id="sources"><h2>Sources</h2><p class="note">Tags: P is an institution's own page, S is a secondary source such as a news report, briefing or encyclopedia, and C is an earlier chapter of this project, where the original sources are listed.</p><h3>Checked for this chapter</h3><ul><li><a href="https://www.who.int/news/item/20-07-2026-who-member-states-continue-negotiations-on-the-pathogen-access-and-benefit-sharing-annex">WHO, Member States continue negotiations on the PABS annex, 20 July 2026</a><span>P</span></li><li><a href="https://www.kas.de/en/web/multilateraler-dialog-genf/geneva-telegram/detail/-/content/pabs-annex-zum-who-pandemieabkommen-who-mitgliedstaaten-verlaengern-verhandlungen-bis-2027">Konrad-Adenauer-Stiftung, Geneva Telegram on the PABS annex extension</a><span>S</span></li><li><a href="https://healthpolicy-watch.news/next-steps-tension-about-how-to-settle-the-pandemic-agreements-annex/">Health Policy Watch, 21 May 2025, on the annex timetable</a><span>S</span></li><li><a href="https://unu.edu/ehs/article/5-expectations-cop-31-antalya">United Nations University, 5 expectations for COP31 in Antalya</a><span>S</span></li><li><a href="https://www.axios.com/2026/02/05/new-start-arms-control-us-russia-extend">Axios, US and Russia agree to observe New START after expiration (5 February 2026)</a><span>S</span></li><li><a href="https://en.wikipedia.org/wiki/New_START">Wikipedia, New START</a><span>S</span></li></ul><h3>Earlier chapters</h3><ul><li><a href="https://claude.ai/artifact/SJ3PdrbEz1U14tZftAh7p5">Chapter 6, A century of vulnerability</a><span>C</span></li><li><a href="https://claude.ai/artifact/21WkXcCqVbi5EXSyYgitEL">Chapter 7, The record of catastrophes</a><span>C</span></li><li><a href="https://claude.ai/artifact/GgfHSBg2uJFXYtAS7QzhRU">Chapter 8, Defenses built</a><span>C</span></li><li><a href="https://claude.ai/artifact/Xdv42PDasn3ETek7T5x8oB">Chapter 11, Nature defended</a><span>C</span></li><li><a href="https://claude.ai/artifact/SNJrCBY4SongkYejYANqSt">Chapter 12, Work, inequality and population</a><span>C</span></li><li><a href="https://claude.ai/artifact/6Q4xocHoggdkKuRGv4HUEa">Chapter 16, The comparison</a><span>C</span></li></ul></section>
+<footer>Several statements are my own arithmetic: that six months from 5 February 2026 is early August, and that 17.6, 8.4 and 16.8 are about 59%, 28% and 84% of their targets of 30, 30 and 20. The observations under “What the items show”, and the descriptions of what each evidence gap would change, are my own reading.</footer>
+</div>
