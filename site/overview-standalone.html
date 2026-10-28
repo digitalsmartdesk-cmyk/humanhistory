@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The last hundred years</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,650;0,700;1,600;1,650&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>:root{
+  --bg:oklch(97.8% 0.007 75);--card:oklch(99.4% 0.003 75);--ink:oklch(21% 0.014 50);
+  --muted:oklch(42% 0.015 55);--faint:oklch(60% 0.013 55);--rule:oklch(87% 0.012 60);
+  --accent:oklch(48% 0.18 29);--accent-text:oklch(40% 0.17 29);--support:oklch(45% 0.05 255);
+  --serif:'Source Serif 4',serif;--mono:'IBM Plex Mono',monospace;--sans:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans)}
+a{color:inherit}
+.loading{min-height:100vh;display:flex;align-items:center;justify-content:center;font:13px var(--mono);color:var(--faint)}
+.page{min-height:100vh;padding-bottom:60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+header{padding:48px 0 32px}
+.bar{width:56px;height:5px;background:var(--accent);margin-bottom:22px}
+.kicker{font:12.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(46px,9vw,84px)/.98 var(--serif);margin:14px 0 18px;letter-spacing:-.015em;text-wrap:balance}
+.sub{font:italic 600 clamp(20px,3vw,27px)/1.3 var(--serif);margin:0 0 16px;color:var(--accent-text);text-wrap:balance;max-width:26ch}
+.lede{max-width:66ch;color:var(--muted);font-size:17.5px;line-height:1.65;margin:0 0 14px}
+.asof{font:12.5px var(--mono);color:var(--faint);padding-top:14px;border-top:2px solid var(--accent);display:inline-block}
+.claim{border-left:4px solid var(--accent);background:var(--card);padding:28px 32px;margin:12px 0 48px}
+.claim .tag{font:12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.claim .q{font:italic 650 clamp(21px,3vw,27px)/1.45 var(--serif);margin:0;text-wrap:balance}
+.claim .s{font-size:14.5px;color:var(--muted);margin:14px 0 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:60px}
+.stat{background:var(--card);border-top:3px solid var(--accent);padding:18px 18px 16px;min-width:0}
+.stat b{display:block;font:650 25px/1.15 var(--serif);overflow-wrap:anywhere}
+.stat span{display:block;font-size:13px;color:var(--muted);margin-top:6px;line-height:1.45}
+h2{font:650 28px var(--serif);margin:0 0 6px}
+.intro{color:var(--muted);font-size:15px;margin:0 0 28px}
+.part{margin-bottom:44px}
+.part-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+.part-head i{width:36px;height:4px;flex:none}
+.part-head h3{font:650 21px var(--serif);margin:0}
+.part-head span{font:12px var(--mono);color:var(--faint)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.grid.sm{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-bottom:56px}
+.cc{display:block;text-decoration:none;color:inherit;background:var(--card);padding:18px 20px;min-width:0}
+.cc:hover{box-shadow:0 2px 0 currentColor}
+.cc .when{font:11.5px var(--mono);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+.cc .h{font:650 17.5px/1.3 var(--serif);margin-bottom:8px}
+.cc .b{font-size:13.5px;color:var(--muted);line-height:1.55}
+h2.support{margin:52px 0 16px}
+.stands{margin:48px 0}
+.stands .note{font-size:12.5px;font-style:italic;color:var(--faint);margin:0 0 18px}
+.pats{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px}
+.pat{border-top:2px solid var(--accent);padding-top:12px;min-width:0}
+.pat h4{font:italic 650 17px/1.3 var(--serif);margin:0 0 6px}
+.pat p{font-size:14px;color:var(--muted);margin:0;line-height:1.55}
+.limits{margin:40px 0}
+.limits h2{font-size:25px;margin-bottom:10px}
+.limits ul{margin:0;padding-left:20px;max-width:70ch}
+.limits li{margin-bottom:8px;color:var(--muted);font-size:14.5px;line-height:1.6}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--rule);font-size:12px;color:var(--faint);max-width:72ch;line-height:1.6}
+</style>
+</head>
+<body>
+<div id="app"><div class="loading">Loading…</div></div>
+<script>const INLINE_DATA={"title": "The last hundred years", "kicker": "Project overview", "sub": "Seventeen chapters on what a century of advancement has done to humanity", "lede": "From daily life and health to catastrophe, defenses, the living world and how people live, ending with the hypothesis tested and the open items to watch.", "asof": "Index of the chapters as published on 28 October 2026.", "stats": [{"b": "17", "span": "chapters in six parts, each ending with its own limits and sources"}, {"b": "3", "span": "supporting pages: the industrial timeline and two centuries of science"}, {"b": "Not supported", "span": "the claim that this century has had the worst realised losses, on share of people lost (Chapter 16)"}, {"b": "Supported in kind", "span": "the claim that human-made exposure now reaches the whole world, with global-scale harm also found in the past (Chapter 16)"}], "charts": [], "domains": [], "groups": [{"header": "Part 1 \u00b7 The century", "count": "2 chapters", "items": [{"when": "Chapter 1", "whenSmall": null, "h3": "The appearance of human life", "href": "https://claude.ai/artifact/7qSxXu33DCKP9HftfxH3Dc", "meta": null, "p": ["Six areas of daily life compared at about 1825, 1925 and 2025. The premise that life looked much the same in 1925 does not hold as stated for the United States, and holds better for parts of Asia and Africa. The biggest change after 1925 is in health and numbers (my reading)."], "kv": [], "solid": null}, {"when": "Chapter 2", "whenSmall": null, "h3": "The pace of change", "href": "https://claude.ai/artifact/Ut88jmTViQUCc7jbfrZd1b", "meta": null, "p": ["The pace of change rose over two centuries, but the measures do not show a break at 1925: output stepped up near 1900, population after 1926 and energy use after 1950 (my reading)."], "kv": [], "solid": null}]}, {"header": "Part 2 \u00b7 Gains", "count": "3 chapters", "items": [{"when": "Chapter 3", "whenSmall": null, "h3": "Life and health", "href": "https://claude.ai/artifact/79PSVNjqzAqJkcuARmF5wg", "meta": null, "p": ["Children dying before 15 fell from about 1 in 2 to 4%, and life expectancy rose from 32 to 71 (1900\u20132021). Drug-resistant infection is one of the setbacks it records."], "kv": [], "solid": null}, {"when": "Chapter 4", "whenSmall": null, "h3": "Food, wealth and comfort", "href": "https://claude.ai/artifact/M7CcrBF81bKsbmrs98iQCq", "meta": null, "p": ["Food supply rose from 2,184 to 3,006 kilocalories per person per day, and French working hours fell by more than half. 673 million still faced hunger in 2024."], "kv": [], "solid": null}, {"when": "Chapter 5", "whenSmall": null, "h3": "Knowledge and connection", "href": "https://claude.ai/artifact/1yPcv32YXUWW2jYuRESSNG", "meta": null, "p": ["Adult literacy rose from about 1 in 10 people to about 88%, and internet use from 16% to 74%. 739 million adults lack basic literacy and 2.2 billion are offline."], "kv": [], "solid": null}]}, {"header": "Part 3 \u00b7 Exposure", "count": "3 chapters", "items": [{"when": "Chapter 6", "whenSmall": null, "h3": "A century of vulnerability", "href": "https://claude.ai/artifact/SJ3PdrbEz1U14tZftAh7p5", "meta": null, "p": ["Six features of exposure: planetary reach, speed, irreversibility, concentrated dependence, few hands and thin margins. 12,187 warheads, seven of nine planetary boundaries transgressed, and about half of food resting on synthetic nitrogen."], "kv": [], "solid": null}, {"when": "Chapter 7", "whenSmall": null, "h3": "The record of catastrophes", "href": "https://claude.ai/artifact/21WkXcCqVbi5EXSyYgitEL", "meta": null, "p": ["Nineteen events. In share terms the worst losses came earlier: the Black Death took 30\u201360% of Europe, against 3.0\u20133.7% of the world in the Second World War."], "kv": [], "solid": null}, {"when": "Chapter 8", "whenSmall": null, "h3": "Defenses built", "href": "https://claude.ai/artifact/GgfHSBg2uJFXYtAS7QzhRU", "meta": null, "p": ["Nineteen systems. Large measured falls where the hazard is known and countable, and several defenses weakening: New START expired, the US left the WHO, the pandemic annex is unfinished."], "kv": [], "solid": null}]}, {"header": "Part 4 \u00b7 Beyond humans", "count": "3 chapters", "items": [{"when": "Chapter 9", "whenSmall": null, "h3": "Nature at risk", "href": "https://claude.ai/artifact/B7jDvigTvytm2ioPUncLbZ", "meta": null, "p": ["Monitored wildlife populations fell by an average of 73% from 1970 to 2022, about a million species are threatened, and 84% of reef area met bleaching-level heat in 2023\u20132025."], "kv": [], "solid": null}, {"when": "Chapter 10", "whenSmall": null, "h3": "Nature's catastrophes", "href": "https://claude.ai/artifact/NUTcZosxAhd7YLJJ5s85BQ", "meta": null, "p": ["Mass extinctions removed about 70\u201385% of species at a time, and recovery took roughly 6 to 75 million years."], "kv": [], "solid": null}, {"when": "Chapter 11", "whenSmall": null, "h3": "Nature defended", "href": "https://claude.ai/artifact/Xdv42PDasn3ETek7T5x8oB", "meta": null, "p": ["17.6% of land and 8.4% of ocean protected against 30% targets. Humpback whales recovered to about 93% of their pre-whaling size, and fewer than half of aligned national targets are on track."], "kv": [], "solid": null}]}, {"header": "Part 5 \u00b7 How people live", "count": "4 chapters", "items": [{"when": "Chapter 12", "whenSmall": null, "h3": "Work, inequality and population", "href": "https://claude.ai/artifact/SNJrCBY4SongkYejYANqSt", "meta": null, "p": ["Child labour fell from 246 million to about 138 million. The richest 10% take 53% of income and the poorer half 8%. Population is projected to peak near 10.3 billion in the 2080s."], "kv": [], "solid": null}, {"when": "Chapter 13", "whenSmall": null, "h3": "Literacy, wisdom and knowledge", "href": "https://claude.ai/artifact/PtP9Rvnfn7VatTSYdnv6Y9", "meta": null, "p": ["Measured scores rose for decades and now show reversals in several countries. Wisdom has no agreed measure, and the chapter gives no verdict."], "kv": [], "solid": null}, {"when": "Chapter 14", "whenSmall": null, "h3": "Mind and wellbeing", "href": "https://claude.ai/artifact/9RZVCJrqYMM9PkrBB3YXEp", "meta": null, "p": ["1.2 billion people live with a mental disorder, one third of those with depression get formal care, and 1 in 6 people are affected by loneliness."], "kv": [], "solid": null}, {"when": "Chapter 15", "whenSmall": null, "h3": "Power and governance", "href": "https://claude.ai/artifact/Q1B1ZSSMUHxtXhi72heMg4", "meta": null, "p": ["By V-Dem's 2026 count 74% of people live in autocracies and democracy for the average person is back at its 1978 level. Freedom House reports 20 years of decline."], "kv": [], "solid": null}]}, {"header": "Part 6 \u00b7 Weighing", "count": "2 chapters", "items": [{"when": "Chapter 16", "whenSmall": null, "h3": "The comparison", "href": "https://claude.ai/artifact/6Q4xocHoggdkKuRGv4HUEa", "meta": null, "p": ["The hypothesis, stated and tested six ways. Realised loss: not supported. Worst case: supported as a model result only. Reach: supported in kind. Reversibility and defenses: mixed. Dependence: cannot be compared."], "kv": [], "solid": null}, {"when": "Chapter 17", "whenSmall": null, "h3": "What would change the balance", "href": "https://claude.ai/artifact/VLRHDtiF4NdbNchLpzeUBN", "meta": null, "p": ["Nine open items with their latest checked status and what to watch, from the pandemic annex and nuclear limits to a century-by-century tally nobody has yet built."], "kv": [], "solid": null}]}], "decadeGroups": [], "patterns": [{"h3": "The hypothesis is only partly borne out", "p": ["The evidence does not show that this century has been the worst in realised loss. It does show exposure at the scale of the whole world that none of the 19 earlier events I selected matches."]}, {"h3": "The gains are large and counted", "p": ["Health, food, literacy and connection improved by wide margins, and Chapters 3 to 5 give the figures. The strains in Chapters 12 to 15 remain alongside them."]}, {"h3": "The two sides are different kinds of evidence", "p": ["Gains and past losses are counted. Much of the exposure is modelled or judged, so the two cannot be added into one balance."]}, {"h3": "A narrower claim fits better than the wording", "p": ["The best-supported form is that this is the first century in my record in which human choices carry measured or modelled effects at the scale of the whole world. That is my judgment, and the original claim can still be kept and tested."]}], "limits": ["Every chapter lists its own limits and the strength of each source, and those limits carry into this overview.", "Most figures are secondhand: I read pages through a summarizing tool, so check figures against the originals before citing them.", "Chapter 7 relies mostly on Wikipedia, and several later chapters rely on news reports of institutional reports.", "The results in Chapters 16 and 17 are my judgment, not findings from the sources.", "Chapters 12 to 15 rarely reach back to 1925, so for those the two centuries cannot be compared.", "Figures are current to dates between 13 and 28 October 2026, and several items, such as nuclear limits and the pandemic annex, are still moving."], "sourceGroups": [], "footer": "The headline for each chapter is a summary of that chapter's page. The statements under \u201cWhere it stands\u201d are my own reading.", "claim": {"tag": "The hypothesis", "q": "Humanity has made itself vulnerable to catastrophic outcomes through the last 100 years of advancement, unlike any other 100 years of advancement in known history.", "s": "Tested in Chapter 16 against the evidence in the other chapters."}};
+// Renders the overview from data/00-overview.json.
+// Chapter pages are still the design prototypes; links point at them until they are ported.
+const BOOK = '../project/book/';
+const SLUGS = {1:'appearance-of-life',2:'pace-of-change',3:'life-and-health',4:'food-wealth-comfort',
+  5:'knowledge-and-connection',6:'century-of-vulnerability',7:'record-of-catastrophes',8:'defenses-built',
+  9:'nature-at-risk',10:'natures-catastrophes',11:'nature-defended',12:'work-inequality-population',
+  13:'literacy-wisdom-knowledge',14:'mind-and-wellbeing',15:'power-and-governance',16:'the-comparison',
+  17:'what-would-change-the-balance'};
+const PART_COLORS = [
+  ['oklch(50% 0.12 255)', 'oklch(38% 0.1 255)'],
+  ['oklch(50% 0.13 150)', 'oklch(37% 0.11 150)'],
+  ['oklch(56% 0.17 55)', 'oklch(40% 0.15 55)'],
+  ['oklch(50% 0.11 195)', 'oklch(38% 0.09 195)'],
+  ['oklch(48% 0.14 305)', 'oklch(38% 0.12 305)'],
+  ['oklch(48% 0.18 29)', 'oklch(40% 0.17 29)']
+];
+const SUPPORT = [
+  ['Industrial breakthroughs', 'A timeline of the major industrial breakthroughs in human history.', 's1-industrial-breakthroughs'],
+  ['Scientific progress, 1825–1925', 'A century of science, from the first railways to the eve of quantum mechanics.', 's2-science-1825-1925'],
+  ['Scientific progress, 1925–2025', 'The following century of science.', 's3-science-1925-2025']
+];
+
+function el(tag, cls, text, attrs) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+function add(parent, ...kids) { kids.forEach(k => parent.appendChild(k)); return parent; }
+
+function card(href, color, colorText, when, h, b) {
+  const a = el('a', 'cc', null, { href });
+  a.style.borderTop = '3px solid ' + color;
+  if (when) { const w = el('div', 'when', when); w.style.color = colorText; a.appendChild(w); }
+  return add(a, el('div', 'h', h), el('div', 'b', b));
+}
+
+function render(d) {
+  const page = el('div', 'page'), wrap = el('div', 'wrap');
+  page.appendChild(wrap);
+
+  const header = el('header');
+  add(header, el('div', 'bar'), el('div', 'kicker', d.kicker), el('h1', null, d.title),
+    el('p', 'sub', d.sub), el('p', 'lede', d.lede), el('div', 'asof', d.asof));
+  wrap.appendChild(header);
+
+  const claim = el('div', 'claim');
+  add(claim, el('div', 'tag', d.claim.tag), el('p', 'q', d.claim.q), el('p', 's', d.claim.s));
+  wrap.appendChild(claim);
+
+  const stats = el('div', 'stats');
+  d.stats.forEach(s => { const c = el('div', 'stat'); add(c, el('b', null, s.b), el('span', null, s.span)); stats.appendChild(c); });
+  wrap.appendChild(stats);
+
+  add(wrap, el('h2', null, 'The chapters'), el('p', 'intro', 'Seventeen chapters in six parts. Each card opens its page.'));
+  (d.groups || []).forEach((g, i) => {
+    const [color, colorText] = PART_COLORS[i] || PART_COLORS[0];
+    const part = el('section', 'part'), head = el('div', 'part-head'), grid = el('div', 'grid');
+    const bar = el('i'); bar.style.background = color;
+    add(head, bar, el('h3', null, g.header), el('span', null, g.count));
+    g.items.forEach(it => {
+      const num = parseInt((it.when || '').replace(/\D/g, ''), 10);
+      const slug = SLUGS[num];
+      const href = slug ? `${BOOK}${String(num).padStart(2, '0')}-${slug}.dc.html` : '#';
+      grid.appendChild(card(href, color, colorText, it.when, it.h3, (it.p && it.p[0]) || ''));
+    });
+    add(part, head, grid);
+    wrap.appendChild(part);
+  });
+
+  wrap.appendChild(el('h2', 'support', 'Supporting pages'));
+  const sg = el('div', 'grid sm');
+  SUPPORT.forEach(([h, b, slug]) => sg.appendChild(card(`${BOOK}${slug}.dc.html`, 'var(--support)', null, null, h, b)));
+  wrap.appendChild(sg);
+
+  const stands = el('section', 'stands'), pats = el('div', 'pats');
+  d.patterns.forEach(p => {
+    const c = el('div', 'pat');
+    c.appendChild(el('h4', null, p.h3));
+    p.p.forEach(t => c.appendChild(el('p', null, t)));
+    pats.appendChild(c);
+  });
+  add(stands, el('h2', null, 'Where it stands'),
+    el('p', 'note', 'This is my reading of the chapters, not a finding from the sources.'), pats);
+  wrap.appendChild(stands);
+
+  const limits = el('section', 'limits'), ul = el('ul');
+  d.limits.forEach(t => ul.appendChild(el('li', null, t)));
+  add(limits, el('h2', null, 'What this overview cannot show'), ul);
+  wrap.appendChild(limits);
+
+  wrap.appendChild(el('footer', null, d.footer));
+  return page;
+}
+
+Promise.resolve(INLINE_DATA).then(d => {
+  document.title = d.title;
+  const app = document.getElementById('app');
+  app.replaceChildren(render(d));
+}).catch(e => { document.getElementById('app').textContent = 'Failed to load: ' + e.message; });
+</script>
+</body>
+</html>
